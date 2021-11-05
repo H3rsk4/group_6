@@ -384,7 +384,7 @@ public class tile_manager : MonoBehaviour
 
     // finds tilemanager scripts from other chunks by checking collisions
     private void GetNeighbours(){
-            
+            /*
             //self
             Neighbours[0] = this;
 
@@ -411,8 +411,23 @@ public class tile_manager : MonoBehaviour
             if(hitColliders[3] != null){
                 Neighbours[4] = hitColliders[3].transform.GetComponent<tile_manager>();
             }
+            */
+            int i = 0;
+            for(int x = 0; x < Mathf.Sqrt(Neighbours.Length); x++){
+                for(int y = 0; y < Mathf.Sqrt(Neighbours.Length); y++){
+                    
+                    //vector3((x * chunkWidth) - chunkWidth, (y * chunkHeight) - chunkHeight, 0)
+                    Collider2D currentCollider = Physics2D.OverlapCircle(transform.position + new Vector3Int((x * basicWorldGen.worldWidth) - basicWorldGen.worldWidth, (y * basicWorldGen.worldHeight) - basicWorldGen.worldHeight, 0), 1, layerMask);
+                    if(currentCollider != null){
+                        //add this chunk's tilemanager to neighbours
+                        Neighbours[i] = currentCollider.transform.GetComponent<tile_manager>();
 
-            
+                        currentCollider.transform.GetComponent<tile_manager>().Neighbours[Mathf.Abs(i - 8)] = this;
+
+                    }
+                    i++;
+                }
+            }
     }
 
     // This method tries to find a correct tilemanager with a given position from the neighbours list

@@ -32,7 +32,7 @@ public class basic_world_generation_script : MonoBehaviour
         //Mesh mesh = GetComponent<MeshFilter>().mesh;
         //Debug.Log(mesh.bounds.center);
         
-        Invoke("GenerateWorld", .5f);
+        //Invoke("GenerateWorld", .5f);
 
     }
 
@@ -67,7 +67,7 @@ public class basic_world_generation_script : MonoBehaviour
                 //if not, do not +.5f
                 //tileManager.UpdateMesh(new Vector3(x-worldWidth/2 + offsetX,y-worldHeight/2 + offsetY, 0) ,ground,0 /*Random.Range(0,4)*/);
                 int chance = Random.Range(0,10);
-                if(chance < 2){
+                if(chance < 1){
                     tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
                 }
                 tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), ground, tileManager.maps[0]);
