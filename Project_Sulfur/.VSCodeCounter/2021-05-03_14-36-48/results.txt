@@ -1,0 +1,80 @@
+Date : 2021-05-03 14:36:48
+Directory : e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts
+Total : 48 files,  2289 codes, 716 comments, 708 blanks, all 3713 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C#       |         48 |      2,289 |        716 |        708 |      3,713 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                      | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                         |         48 |      2,289 |        716 |        708 |      3,713 |
+| Enemies                                                                                                                   |          1 |         39 |          7 |         10 |         56 |
+| Inventory                                                                                                                 |          7 |        346 |         26 |        106 |        478 |
+| Main Menu                                                                                                                 |          1 |         14 |          0 |          5 |         19 |
+| Player                                                                                                                    |          5 |        257 |         44 |         76 |        377 |
+| SO Scripts                                                                                                                |         10 |        354 |        110 |        102 |        566 |
+| Scoreboard                                                                                                                |          1 |         86 |          0 |         11 |         97 |
+| Tiles                                                                                                                     |          8 |        791 |        463 |        282 |      1,536 |
+| UI                                                                                                                        |          3 |        152 |         16 |         42 |        210 |
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                  | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Enemies\basic_gob.cs                   | C#       |         39 |          7 |         10 |         56 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Inventory\IItemContainer.cs            | C#       |          8 |          0 |          2 |         10 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Inventory\build_button.cs              | C#       |        113 |         11 |         51 |        175 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Inventory\drop_down.cs                 | C#       |         20 |          3 |          6 |         29 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Inventory\inventory.cs                 | C#       |         72 |          2 |         10 |         84 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Inventory\item_drag.cs                 | C#       |         29 |          0 |          6 |         35 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Inventory\item_hotbar.cs               | C#       |         38 |          5 |         10 |         53 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Inventory\item_script.cs               | C#       |         66 |          5 |         21 |         92 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Main Menu\MainMenu.cs                  | C#       |         14 |          0 |          5 |         19 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Player\mouse_touch_controller.cs       | C#       |         92 |          5 |         24 |        121 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Player\player.cs                       | C#       |         11 |          0 |          2 |         13 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Player\player_death.cs                 | C#       |         41 |          2 |         10 |         53 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Player\player_stats.cs                 | C#       |          9 |          1 |          2 |         12 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Player\ui_joystick.cs                  | C#       |        104 |         36 |         38 |        178 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\Tilebase.cs                 | C#       |          7 |          0 |          2 |          9 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\_CraftingRecipe.cs          | C#       |         36 |         35 |          8 |         79 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\_Explosives.cs              | C#       |         60 |         39 |         16 |        115 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\_Item.cs                    | C#       |         12 |          0 |          6 |         18 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\_Miner.cs                   | C#       |         62 |         11 |          9 |         82 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\_Searchable.cs              | C#       |         19 |          2 |          5 |         26 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\_Tile.cs                    | C#       |         22 |          3 |         10 |         35 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\_Transporter.cs             | C#       |         97 |         19 |         33 |        149 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\_Turret.cs                  | C#       |         29 |          0 |          9 |         38 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\SO Scripts\_Vein.cs                    | C#       |         10 |          1 |          4 |         15 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Scoreboard\playfabManager.cs           | C#       |         86 |          0 |         11 |         97 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Tiles\basic_world_generation_script.cs | C#       |         90 |         10 |         24 |        124 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Tiles\check_chunks.cs                  | C#       |         80 |         20 |         26 |        126 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Tiles\check_tiles_script.cs            | C#       |         27 |          3 |          7 |         37 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Tiles\chunk.cs                         | C#       |         10 |          0 |          3 |         13 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Tiles\chunk_inventory_manager.cs       | C#       |         51 |         22 |         18 |         91 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Tiles\collision_tiles_script.cs        | C#       |         63 |         37 |         18 |        118 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Tiles\entity_updater.cs                | C#       |         46 |          3 |         19 |         68 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\Tiles\tile_manager.cs                  | C#       |        424 |        368 |        167 |        959 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\UI\container_script.cs                 | C#       |         61 |          7 |         21 |         89 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\UI\item_container.cs                   | C#       |         57 |          4 |          7 |         68 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\UI\scoreboard_handler_script.cs        | C#       |         34 |          5 |         14 |         53 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\audio_pitch_randomizer.cs              | C#       |         14 |          2 |          4 |         20 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\destroy_self.cs                        | C#       |         13 |          1 |          3 |         17 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\explosion_damager.cs                   | C#       |         18 |          8 |          7 |         33 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\follow_mouse_grid.cs                   | C#       |         14 |          1 |          3 |         18 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\follow_target_grid_nomesh.cs           | C#       |         18 |          2 |          7 |         27 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\follow_target_nogrid.cs                | C#       |         11 |          0 |          3 |         14 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\pickup_script.cs                       | C#       |         42 |          6 |          9 |         57 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\projectile_script.cs                   | C#       |         39 |          9 |         12 |         60 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\shake_camera.cs                        | C#       |         25 |          3 |          8 |         36 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\stats.cs                               | C#       |         25 |          3 |          6 |         34 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\tick_system.cs                         | C#       |         18 |         13 |          6 |         37 |
+| e:\GitProjects\Mobiilisovellusten-kehitysprojekti-Ryhm-4\MobileTest\Assets\Scripts\tnt_script.cs                          | C#       |         13 |          2 |          6 |         21 |
+| Total                                                                                                                     |          |      2,289 |        716 |        708 |      3,713 |
++---------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334a980b6778f324784b2c41d24c834f, type: 3}
+  m_Name: tnt_water
+  m_EditorClassIdentifier: 
+  name: tnt_water
+  buildLayer: 2
+  icon: {fileID: 21300000, guid: 46d38ef44360b8d49ae00262ae650d09, type: 3}
+  isWalkable: 0
+  needsUpdate: 1
+  isDemolishable: 1
+  demolishItem: {fileID: 11400000, guid: 3fc783f75d0188f49ad7f1be4f7f2600, type: 2}
+  isInteractable: 0
+  hasContainer: 0
+  containerSize: 0
+  hasMultipleSprites: 0
+  xPos: 3
+  yPos: 6
+  tiles:
+  - {fileID: 11400000, guid: 1b20303cc7b30f94eb6b25e203aa0337, type: 2}
+  ticksToExplode: 5
+  explosion: {fileID: 1390175843769098884, guid: 03acf3ceed107064399158d05442d41b, type: 3}
+  nugget: {fileID: 0}
+  destroys: {fileID: 11400000, guid: 89527561367c068448d43d054c66460e, type: 2}
+  replacedWith: {fileID: 11400000, guid: 9f009fa9b42694c41801d1faef7fedbc, type: 2}

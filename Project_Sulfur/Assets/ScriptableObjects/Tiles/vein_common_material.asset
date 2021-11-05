@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7db0e6b21c94d0439e9a0fb58735c8b, type: 3}
+  m_Name: vein_common_material
+  m_EditorClassIdentifier: 
+  name: vein_common_material
+  buildLayer: 2
+  icon: {fileID: 0}
+  isWalkable: 0
+  needsUpdate: 0
+  isDemolishable: 0
+  demolishItem: {fileID: 0}
+  isInteractable: 0
+  hasContainer: 0
+  containerSize: 0
+  needsItems: 0
+  hasMultipleSprites: 0
+  xPos: 1
+  yPos: 1
+  yields: {fileID: 11400000, guid: 716a1d8d89ba09b49950d1d0dee43801, type: 2}
