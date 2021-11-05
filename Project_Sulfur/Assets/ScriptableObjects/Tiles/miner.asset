@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c8ae7680a17d54b89c51249ad2af86, type: 3}
+  m_Name: miner
+  m_EditorClassIdentifier: 
+  name: miner
+  buildLayer: 2
+  icon: {fileID: 0}
+  isWalkable: 0
+  needsUpdate: 1
+  isDemolishable: 1
+  demolishItem: {fileID: 11400000, guid: daebc6c6c9ce4d043b85206c9c5debc8, type: 2}
+  isInteractable: 0
+  hasContainer: 0
+  containerSize: 0
+  hasMultipleSprites: 1
+  xPos: 0
+  yPos: 3
+  ticksToMine: 10

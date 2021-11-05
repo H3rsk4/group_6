@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290f12f3dba4cec40b8517ecb4bb5490, type: 3}
+  m_Name: turret
+  m_EditorClassIdentifier: 
+  name: turret
+  buildLayer: 2
+  icon: {fileID: 0}
+  isWalkable: 0
+  needsUpdate: 1
+  isDemolishable: 1
+  demolishItem: {fileID: 0}
+  isInteractable: 0
+  hasContainer: 1
+  containerSize: 1
+  hasMultipleSprites: 0
+  xPos: 4
+  yPos: 7
+  ticksToShoot: 5
+  projectile: {fileID: 9127671783260093364, guid: 3ed7dab56b5a4cc4ebb7fa9bff9bdbfc, type: 3}
+  damage: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
