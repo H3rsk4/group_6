@@ -35,6 +35,7 @@ public class tile_manager : MonoBehaviour
 
     public int tiles;
 
+    public Vector3Int mousePosition;
 
     public _Tile water;
     public _Tile ground;
@@ -78,7 +79,7 @@ public class tile_manager : MonoBehaviour
         //map = GetComponent<Tilemap>();
 
         //meshRenderer = GetComponent<MeshRenderer>();
-
+        
         currentTile = water;
 
         entityUpdater = GetComponent<entity_updater>();
@@ -571,7 +572,6 @@ public class tile_manager : MonoBehaviour
     //Chooses the correct input regarding if it is a touch or a mouseinput
     public Vector3 GetInputPosition(){
         Vector3 newPos = new Vector3(0,0,0);
-        //Debug.Log(debugMouse);
         if(mouse_touch_controller.instance.debugMouse){
             //mouseInput
             if(mouse_touch_controller.isBuilding){
@@ -612,6 +612,7 @@ public class tile_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("hello" + this);   
         /*
         if(CheckActivity()){
             meshRenderer.enabled = true;
@@ -672,13 +673,16 @@ public class tile_manager : MonoBehaviour
 
         //MOUSEPOSGRID IMPORTANT
         //TRANSLATES MOUSEPOSITION TO 2D
-        Vector3 mousePos = GetInputPosition();
+        Vector3 mousePos = Input.mousePosition;
+        //Vector3 mousePos = GetInputPosition();
         //Vector3 mousePos = touch.position;
+        
         mousePos.z = 10;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
         //Vector3 mousePosGrid = new Vector3(Mathf.Floor(mousePos.x),Mathf.Floor(mousePos.y),Mathf.Floor(mousePos.z));
         Vector3Int mousePosGrid = maps[1].WorldToCell(mousePos);
-        
+        mousePosition = new Vector3Int((int)mousePos.x, (int)mousePos.y, (int)mousePos.z);
         /*
         if(Input.GetKeyDown(KeyCode.G)){
             isPlacing = !isPlacing;
