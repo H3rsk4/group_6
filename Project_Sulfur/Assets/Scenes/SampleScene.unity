@@ -2924,11 +2924,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6458cec890b8c7a47a1ee3abc38ed217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 256
-  height: 256
-  scale: 20
-  offsetX: 100
-  offsetY: 100
+  width: 10
+  height: 10
+  texScale: 2
+  textureOffsetMultiplier: 0.2
   seed: 0
 --- !u!23 &871603352
 MeshRenderer:
@@ -5697,6 +5696,7 @@ GameObject:
   - component: {fileID: 1683293052}
   - component: {fileID: 1683293053}
   - component: {fileID: 1683293054}
+  - component: {fileID: 1683293055}
   m_Layer: 0
   m_Name: Chunks
   m_TagString: Untagged
@@ -5738,13 +5738,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683293051}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 472102ca85f2ef14d841d1173d091a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chunkPrefab: {fileID: 6039700909655365934, guid: 619d158f8341cad4f961a30da341e248, type: 3}
   viewer: {fileID: 1468719557}
+--- !u!114 &1683293055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683293051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6458cec890b8c7a47a1ee3abc38ed217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 256
+  height: 256
+  texScale: 5
+  textureOffsetMultiplier: 0.1
+  seed: 0
 --- !u!1 &1714496799
 GameObject:
   m_ObjectHideFlags: 0

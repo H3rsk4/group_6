@@ -606,6 +606,7 @@ MonoBehaviour:
   veinIterations: 3
   gobIterations: 5
   ground: {fileID: 11400000, guid: 7a7268beb116966409dd90b3d88b1f41, type: 2}
+  water: {fileID: 11400000, guid: 812cb880b3dd28241aa90104d32e5426, type: 2}
   tree: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
   foliage: {fileID: 11400000, guid: d0a6f2496c98b8c44a26e007ff6e0e3a, type: 2}
   veins: {fileID: 11400000, guid: 20d69e409eafcff448d1a023694d2ad5, type: 2}

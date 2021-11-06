@@ -16,6 +16,7 @@ public class basic_world_generation_script : MonoBehaviour
     public int gobIterations = 5;
 
     public TileBase ground;
+    public TileBase water;
     public TileBase tree;
     //public _Tile ground;
     public _Tile foliage;
@@ -56,24 +57,36 @@ public class basic_world_generation_script : MonoBehaviour
         
     }
 
+    
     private void GenerateRectangleWorld(){
+        float[,] myNoiseMap = perlin_noise_script.GenerateNoise(worldWidth,worldHeight, transform.position);
         for(int x = 0; x < worldWidth; x++){
             for(int y = 0; y < worldHeight; y++){
-                //collisionTile.transform.position = new Vector3(1+x-width/2,1+y-height/2,0);
-                //collisionTile.transform.position = new Vector3(x-width/2+.5f,y-width/2+.5f,0);
+                if(myNoiseMap[Mathf.Abs(x-(worldWidth-1)),Mathf.Abs(y-(worldHeight-1))] > .4f){
+                    //generate water
+                    //Debug.Log("here1");
+                    int chance = Random.Range(0,10);
+                    if(chance < 1){
+                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
+                    }
+                    tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), ground, tileManager.maps[0]);
+                }else{
+                    //generate ground
+                    tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), water, tileManager.maps[0]);
+                }
+                
 
-                //***IMPORTANT NOTE HERE******
-                //if x/2 leaves a .5f in the end result -> +.5f
-                //if not, do not +.5f
-                //tileManager.UpdateMesh(new Vector3(x-worldWidth/2 + offsetX,y-worldHeight/2 + offsetY, 0) ,ground,0 /*Random.Range(0,4)*/);
+                /*
                 int chance = Random.Range(0,10);
                 if(chance < 1){
                     tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
                 }
                 tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), ground, tileManager.maps[0]);
+                */
             }
         }
     }
+    
 
     private void GenerateStuff(int iterations, _Tile tile){
         for(int i = 0; i < Random.Range(0,iterations + 1); i++){
