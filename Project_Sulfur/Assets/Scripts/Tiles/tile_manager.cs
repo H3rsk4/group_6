@@ -612,7 +612,7 @@ public class tile_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("hello" + this);   
+        //Debug.Log("hello" + this);   
         /*
         if(CheckActivity()){
             meshRenderer.enabled = true;
@@ -911,7 +911,8 @@ public class tile_manager : MonoBehaviour
     }
 
     public bool PlaceTile(_Tile currentTile, Vector3Int tilePosition){
-        if(currentTile.buildLayer == 0 && build_button.currentTile.buildLayer == 1){
+        if(currentTile != null){
+            if(currentTile.buildLayer == 0 && build_button.currentTile.buildLayer == 1){
             
             if(inventory.instance.ItemCount(build_button.currentItem) <= 0){
                 if(build_button.currentCR != null){
@@ -923,28 +924,32 @@ public class tile_manager : MonoBehaviour
 
             inventory.instance.RemoveItem(build_button.currentItem);
             return true;
-        }
-        if(currentTile.buildLayer == 1 && build_button.currentTile.buildLayer == 2){
-
-            if(inventory.instance.ItemCount(build_button.currentItem) <= 0){
-                if(build_button.currentCR != null){
-                    build_button.currentCR.Craft(inventory.instance);
-                }
             }
+            if(currentTile.buildLayer == 1 && build_button.currentTile.buildLayer == 2){
 
-            ReplaceTile(tilePosition, build_button.currentTile.tiles[0], maps[1]);
-            /*
-            if(build_button.currentTile.hasMultipleTiles){
-                for(int i = 0; i < build_button.currentTile.tileParts.Length; i++){
-                    ReplaceTile(tilePosition + build_button.currentTile.tilePartPositions[i], build_button.currentTile.tileParts[i], maps[2]);
+                if(inventory.instance.ItemCount(build_button.currentItem) <= 0){
+                    if(build_button.currentCR != null){
+                        build_button.currentCR.Craft(inventory.instance);
+                    }
                 }
-            }
-            */
 
-            inventory.instance.RemoveItem(build_button.currentItem);
-            return true;
+                ReplaceTile(tilePosition, build_button.currentTile.tiles[0], maps[1]);
+                /*
+                if(build_button.currentTile.hasMultipleTiles){
+                    for(int i = 0; i < build_button.currentTile.tileParts.Length; i++){
+                        ReplaceTile(tilePosition + build_button.currentTile.tilePartPositions[i], build_button.currentTile.tileParts[i], maps[2]);
+                    }
+                }
+                */
+
+                inventory.instance.RemoveItem(build_button.currentItem);
+                return true;
+            }
+            return false;
+        }else{
+            return false;
         }
-        return false;
+        
     }
 
     /*
