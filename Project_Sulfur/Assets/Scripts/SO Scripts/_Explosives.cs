@@ -29,19 +29,77 @@ public class _Explosives : _Tile
         if(tileManager.entityUpdater.saveValues[entityIndex] >= ticksToExplode){
             //Debug.Log("Explosion");
             //activate correct tilemanager
-            tile_manager currentTileManager = tileManager.CheckTileManager(tilePosition + new Vector3Int(1,0,0));
+            Vector3 worldPosition = tileManager.maps[1].CellToWorld(tilePosition);
+            tile_manager currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(1,0,0));
+            Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(1,0,0));
+            
             //check right of tnt position if wall and replace it
-            Debug.Log(currentTileManager.transform.position);
             if(currentTileManager != null){
-                _Tile rightTile = tile_dictionary.GetTileSO(tilePosition + new Vector3Int(1,0,0), currentTileManager.maps[1]);
+                _Tile rightTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
                     //maybe destructible bool in SO??
                     //Debug.Log(rightTile + " " + (tilePosition + new Vector3Int(1,0,0)));
                     if(rightTile == destroys){
                         //we found wall -> destroy it
                         
-                        currentTileManager.ReplaceTile(tilePosition + new Vector3Int(1,0,0), null, currentTileManager.maps[1]);
+                        currentTileManager.ReplaceTile(cellPosition, null, currentTileManager.maps[1]);
                         if(nugget != null){
-                            Instantiate(nugget, tilePosition, Quaternion.identity);
+                            Instantiate(nugget, worldPosition + new Vector3Int(1,0,0), Quaternion.identity);
+                        }
+                        
+                    }
+                
+            }
+            currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(-1,0,0));
+            cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(-1,0,0));
+            //check left of tnt position if wall and replace it
+            if(currentTileManager != null){
+                _Tile rightTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                    //maybe destructible bool in SO??
+                    //Debug.Log(rightTile + " " + (tilePosition + new Vector3Int(1,0,0)));
+                    if(rightTile == destroys){
+                        //we found wall -> destroy it
+                        
+                        currentTileManager.ReplaceTile(cellPosition, null, currentTileManager.maps[1]);
+                        if(nugget != null){
+                            Instantiate(nugget, worldPosition + new Vector3Int(-1,0,0), Quaternion.identity);
+                        }
+                        
+                    }
+                
+            }
+            currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(0,1,0));
+            cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(0,1,0));
+
+            //check up of tnt position if wall and replace it
+            if(currentTileManager != null){
+                _Tile rightTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                    //maybe destructible bool in SO??
+                    //Debug.Log(rightTile + " " + (tilePosition + new Vector3Int(1,0,0)));
+                    if(rightTile == destroys){
+                        //we found wall -> destroy it
+                        
+                        currentTileManager.ReplaceTile(cellPosition, null, currentTileManager.maps[1]);
+                        if(nugget != null){
+                            Instantiate(nugget, worldPosition + new Vector3Int(0,1,0), Quaternion.identity);
+                        }
+                        
+                    }
+                
+            }
+            currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(0,-1,0));
+            cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(0,-1,0));
+
+            //check down of tnt position if wall and replace it
+            if(currentTileManager != null){
+                _Tile rightTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                    //maybe destructible bool in SO??
+                    //Debug.Log(rightTile + " " + (tilePosition + new Vector3Int(1,0,0)));
+                    if(rightTile == destroys){
+                        //we found wall -> destroy it
+                        
+                        currentTileManager.ReplaceTile(cellPosition, null, currentTileManager.maps[1]);
+                        if(nugget != null){
+                            Instantiate(nugget, worldPosition + new Vector3Int(0,-1,0), Quaternion.identity);
                         }
                         
                     }
@@ -57,7 +115,7 @@ public class _Explosives : _Tile
             tileManager.entityUpdater.valueRemoveList.Add(tileManager.entityUpdater.saveValues[entityIndex]);
             
             
-            Instantiate(explosion, tilePosition, Quaternion.identity);
+            Instantiate(explosion, worldPosition, Quaternion.identity);
         }
         /*
         if(!setTick){

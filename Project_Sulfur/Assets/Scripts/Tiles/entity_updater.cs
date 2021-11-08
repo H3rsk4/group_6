@@ -51,7 +51,9 @@ public class entity_updater : MonoBehaviour
         int entityIndex = 0;
         foreach(Vector3Int tilePosition in tilePositions){
             _Tile currentTileSO = tile_dictionary.GetTileSO(tilePosition, tileManager.maps[1]);
-            currentTileSO.Do(tilePosition, tileManager, entityIndex, "entity_updater");
+            if(currentTileSO != null){
+                currentTileSO.Do(tilePosition, tileManager, entityIndex, "entity_updater");
+            }
             entityIndex++;
         }
         foreach(Vector3Int toRemove in removeList){

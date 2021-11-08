@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -169,7 +170,9 @@ public class tile_manager : MonoBehaviour
         } else {
             offsetY = 0;
         }
-        Vector3 flooredPos = new Vector3(Mathf.Round((currentPos.x) / 10) * 10,Mathf.Round((currentPos.y) / 10) * 10,0);
+
+
+        Vector3 flooredPos = new Vector3(Mathf.Round(currentPos.x / 10 + .01f) * 10,Mathf.Round(currentPos.y / 10 + .01f)  * 10,0);
         //Debug.Log(flooredPos);
         foreach (tile_manager tileManager in Neighbours)
         {
