@@ -18,6 +18,7 @@ public class basic_world_generation_script : MonoBehaviour
     public TileBase ground;
     public TileBase water;
     public TileBase tree;
+    public TileBase sand;
     //public _Tile ground;
     public _Tile foliage;
 
@@ -63,15 +64,21 @@ public class basic_world_generation_script : MonoBehaviour
         for(int x = 0; x < worldWidth; x++){
             for(int y = 0; y < worldHeight; y++){
                 if(myNoiseMap[Mathf.Abs(x-(worldWidth-1)),Mathf.Abs(y-(worldHeight-1))] > .4f){
-                    //generate water
-                    //Debug.Log("here1");
-                    int chance = Random.Range(0,10);
-                    if(chance < 1){
-                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
+                    if(myNoiseMap[Mathf.Abs(x-(worldWidth-1)),Mathf.Abs(y-(worldHeight-1))] < .45f){
+                        //generate sand
+                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), sand, tileManager.maps[0]);
+                    }else{
+                        //generate ground
+                        //Debug.Log("here1");
+                        int chance = Random.Range(0,10);
+                        if(chance < 1){
+                            tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
+                        }
+                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), ground, tileManager.maps[0]);
                     }
-                    tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), ground, tileManager.maps[0]);
+                    
                 }else{
-                    //generate ground
+                    //generate water
                     tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), water, tileManager.maps[0]);
                 }
                 

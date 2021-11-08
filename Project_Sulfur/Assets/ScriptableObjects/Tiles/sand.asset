@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db53b7f1a408b694b94560355a3f5523, type: 3}
+  m_Name: sand
+  m_EditorClassIdentifier: 
+  name: 
+  buildLayer: 0
+  icon: {fileID: 0}
+  isWalkable: 0
+  needsUpdate: 0
+  isDemolishable: 0
+  demolishItem: {fileID: 0}
+  isInteractable: 0
+  hasContainer: 0
+  containerSize: 0
+  hasMultipleSprites: 0
+  xPos: 0
+  yPos: 0
+  tiles: []
+  hasMultipleTiles: 0
+  tileParts: []
+  tilePartPositions: []
