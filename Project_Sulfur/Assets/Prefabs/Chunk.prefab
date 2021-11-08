@@ -536,7 +536,7 @@ MonoBehaviour:
   - {fileID: 2245277376595404573}
   tileAmount: 0
   isPlacing: 0
-  showOutline: 0
+  showOutline: 1
   tiles: 0
   mousePosition: {x: 0, y: 0, z: 0}
   water: {fileID: 11400000, guid: 9f009fa9b42694c41801d1faef7fedbc, type: 2}

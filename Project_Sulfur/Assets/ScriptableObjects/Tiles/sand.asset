@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db53b7f1a408b694b94560355a3f5523, type: 3}
   m_Name: sand
   m_EditorClassIdentifier: 
-  name: 
-  buildLayer: 0
+  name: Sand
+  buildLayer: 1
   icon: {fileID: 0}
-  isWalkable: 0
+  isWalkable: 1
   needsUpdate: 0
   isDemolishable: 0
   demolishItem: {fileID: 0}
@@ -25,7 +25,8 @@ MonoBehaviour:
   hasMultipleSprites: 0
   xPos: 0
   yPos: 0
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 92850a07f32797a4b80eeadb833ba40e, type: 2}
   hasMultipleTiles: 0
   tileParts: []
   tilePartPositions: []

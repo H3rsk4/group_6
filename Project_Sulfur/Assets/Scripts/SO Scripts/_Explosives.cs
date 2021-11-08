@@ -29,64 +29,21 @@ public class _Explosives : _Tile
         if(tileManager.entityUpdater.saveValues[entityIndex] >= ticksToExplode){
             //Debug.Log("Explosion");
             //activate correct tilemanager
-            tile_manager currentTileManager = tileManager.CheckTileManager(tilePosition + new Vector3(1,0));
-            //check left of tnt position if wall and replace it
+            tile_manager currentTileManager = tileManager.CheckTileManager(tilePosition + new Vector3Int(1,0,0));
+            //check right of tnt position if wall and replace it
+            Debug.Log(currentTileManager.transform.position);
             if(currentTileManager != null){
-                _Tile rightTile = tile_dictionary.GetTileSO(tilePosition + new Vector3Int(-1,0,0), currentTileManager.map);
+                _Tile rightTile = tile_dictionary.GetTileSO(tilePosition + new Vector3Int(1,0,0), currentTileManager.maps[1]);
                     //maybe destructible bool in SO??
+                    //Debug.Log(rightTile + " " + (tilePosition + new Vector3Int(1,0,0)));
                     if(rightTile == destroys){
                         //we found wall -> destroy it
-                        currentTileManager.ReplaceTile(tilePosition + new Vector3Int(-1,0,0), replacedWith.tiles[0], currentTileManager.maps[0]);
+                        
+                        currentTileManager.ReplaceTile(tilePosition + new Vector3Int(1,0,0), null, currentTileManager.maps[1]);
                         if(nugget != null){
                             Instantiate(nugget, tilePosition, Quaternion.identity);
                         }
                         
-                    }
-                
-            }
-            //activate correct tilemanager
-            currentTileManager = tileManager.CheckTileManager(tilePosition + new Vector3(1,0));
-            //check up of tnt position if wall and replace it
-            if(currentTileManager != null){
-                Debug.Log("found tilemanager");
-                _Tile rightTile = tile_dictionary.GetTileSO(tilePosition + new Vector3Int(0,1,0), currentTileManager.map);
-                    //maybe destructible bool in SO??
-                    if(rightTile == destroys){
-                        //we found wall -> destroy it
-                        currentTileManager.ReplaceTile(tilePosition + new Vector3Int(0,1,0), replacedWith.tiles[0], currentTileManager.maps[0]);
-                        if(nugget != null){
-                            Instantiate(nugget, tilePosition, Quaternion.identity);
-                        }
-                    }
-                
-            }
-            //activate correct tilemanager
-            currentTileManager = tileManager.CheckTileManager(tilePosition + new Vector3(1,0));
-            //check down of tnt position if wall and replace it
-            if(currentTileManager != null){
-                _Tile rightTile = tile_dictionary.GetTileSO(tilePosition + new Vector3Int(0,-1,0), currentTileManager.map);
-                    //maybe destructible bool in SO??
-                    if(rightTile == destroys){
-                        //we found wall -> destroy it
-                        currentTileManager.ReplaceTile(tilePosition + new Vector3Int(0,-1,0), replacedWith.tiles[0], currentTileManager.maps[0]);
-                        if(nugget != null){
-                            Instantiate(nugget, tilePosition, Quaternion.identity);
-                        }
-                    }
-                
-            }
-            //activate correct tilemanager
-            currentTileManager = tileManager.CheckTileManager(tilePosition + new Vector3(1,0));
-            //check right of tnt position if wall and replace it
-            if(currentTileManager != null){
-                _Tile rightTile = tile_dictionary.GetTileSO(tilePosition + new Vector3Int(1,0,0), currentTileManager.map);
-                    //maybe destructible bool in SO??
-                    if(rightTile == destroys){
-                        //we found wall -> destroy it
-                        currentTileManager.ReplaceTile(tilePosition + new Vector3Int(1,0,0), replacedWith.tiles[0], currentTileManager.maps[0]);
-                        if(nugget != null){
-                            Instantiate(nugget, tilePosition, Quaternion.identity);
-                        }
                     }
                 
             }
@@ -95,7 +52,7 @@ public class _Explosives : _Tile
             tileManager.entityUpdater.removeList.Add(tilePosition);
             
             //tick_system.OnTick -= tileManager.entityUpdater.UpdateEntitys;
-            tileManager.ReplaceTile(tilePosition, replacedWith.tiles[0], tileManager.maps[1]);
+            tileManager.ReplaceTile(tilePosition, null, tileManager.maps[1]);
             //tick_system.OnTick -= this;
             tileManager.entityUpdater.valueRemoveList.Add(tileManager.entityUpdater.saveValues[entityIndex]);
             

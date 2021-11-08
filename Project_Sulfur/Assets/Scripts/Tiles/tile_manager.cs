@@ -78,6 +78,7 @@ public class tile_manager : MonoBehaviour
     public void ReplaceTile(Vector3Int tilePosition, TileBase tile, Tilemap _map){
         
         _Tile tileSO = tile_dictionary.GetTileSO(tilePosition, _map);
+
         if(tileSO != null){
             if(tileSO.hasMultipleTiles){
                 //destroy tileparts
@@ -168,16 +169,22 @@ public class tile_manager : MonoBehaviour
         } else {
             offsetY = 0;
         }
-        Vector3 flooredPos = new Vector3(Mathf.Round((currentPos.x + offsetX) / 10) * 10,Mathf.Round((currentPos.y + offsetY) / 10) * 10,0);
+        Vector3 flooredPos = new Vector3(Mathf.Round((currentPos.x) / 10) * 10,Mathf.Round((currentPos.y) / 10) * 10,0);
         //Debug.Log(flooredPos);
         foreach (tile_manager tileManager in Neighbours)
         {
             if(tileManager != null){
-                if(flooredPos == tileManager.trueCenter){
+                if(flooredPos == tileManager.transform.position){
                     //use this tileManager
                     trueTileManager = tileManager;
                 }
             }
+            
+        }
+        //Debug.Log(this + "\n" + "tilemanager: " + trueTileManager + " " + flooredPos);
+        if(trueTileManager != null){
+            Debug.Log("currentPos: " + currentPos);
+            Debug.Log(this + " " + transform.position + "\n" + "new tilemanager: " + trueTileManager + " " + trueTileManager.transform.position + "\nfloored Position: " + flooredPos);
             
         }
         return trueTileManager;
@@ -277,9 +284,9 @@ public class tile_manager : MonoBehaviour
         mousePos.z = 10;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        //Vector3 mousePosGrid = new Vector3(Mathf.Floor(mousePos.x),Mathf.Floor(mousePos.y),Mathf.Floor(mousePos.z));
+        Vector3Int worldMousePos = new Vector3Int((int)mousePos.x,(int)mousePos.y,0);
         Vector3Int mousePosGrid = maps[1].WorldToCell(mousePos);
-        mousePosition = new Vector3Int((int)mousePos.x, (int)mousePos.y, (int)mousePos.z);
+        mousePosition = mousePosGrid;
         /*
         if(Input.GetKeyDown(KeyCode.G)){
             isPlacing = !isPlacing;
@@ -421,6 +428,8 @@ public class tile_manager : MonoBehaviour
         if(!build_button.isHotBar){
             //means we are interacting
             if(mouse_touch_controller.isBuilding){
+                CheckTileManager(mousePos);
+                
             //if(Input.GetMouseButtonDown(0)){
                 //if(!EventSystem.current.IsPointerOverGameObject()){
                     /*
@@ -571,7 +580,7 @@ public class tile_manager : MonoBehaviour
     public void OnDrawGizmos(){
         if(showOutline){
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(trueCenter,new Vector3(10,10,0));
+            Gizmos.DrawWireCube(transform.position,new Vector3(10,10,0));
         }
         
     }
