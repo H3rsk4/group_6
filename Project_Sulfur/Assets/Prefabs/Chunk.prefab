@@ -604,9 +604,9 @@ MonoBehaviour:
   water: {fileID: 11400000, guid: 812cb880b3dd28241aa90104d32e5426, type: 2}
   tree: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
   sand: {fileID: 11400000, guid: 92850a07f32797a4b80eeadb833ba40e, type: 2}
+  wall: {fileID: 11400000, guid: 615931c6ec90c2241bc085bf05b1853c, type: 2}
   foliage: {fileID: 11400000, guid: d0a6f2496c98b8c44a26e007ff6e0e3a, type: 2}
   veins: {fileID: 11400000, guid: 20d69e409eafcff448d1a023694d2ad5, type: 2}
-  cliff: {fileID: 11400000, guid: 507def2f5f9c4e14ba2fe638e6a904ef, type: 2}
   isGobs: 0
   gob: {fileID: 1691353768677777156, guid: e5bb0ccc7dfb3e247a9720b67478dca8, type: 3}
 --- !u!114 &6039700909655365926

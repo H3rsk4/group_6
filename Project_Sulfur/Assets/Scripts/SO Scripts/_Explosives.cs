@@ -31,10 +31,10 @@ public class _Explosives : _Tile
             //activate correct tilemanager
             Vector3 worldPosition = tileManager.maps[1].CellToWorld(tilePosition);
             tile_manager currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(1,0,0));
-            Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(1,0,0));
-            
+            Vector3Int cellPosition;
             //check right of tnt position if wall and replace it
             if(currentTileManager != null){
+                cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(1,0,0));
                 _Tile rightTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
                     //maybe destructible bool in SO??
                     //Debug.Log(rightTile + " " + (tilePosition + new Vector3Int(1,0,0)));
@@ -50,9 +50,10 @@ public class _Explosives : _Tile
                 
             }
             currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(-1,0,0));
-            cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(-1,0,0));
+            
             //check left of tnt position if wall and replace it
             if(currentTileManager != null){
+                cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(-1,0,0));
                 _Tile rightTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
                     //maybe destructible bool in SO??
                     //Debug.Log(rightTile + " " + (tilePosition + new Vector3Int(1,0,0)));
@@ -68,10 +69,10 @@ public class _Explosives : _Tile
                 
             }
             currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(0,1,0));
-            cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(0,1,0));
-
+            
             //check up of tnt position if wall and replace it
             if(currentTileManager != null){
+                cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(0,1,0));
                 _Tile rightTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
                     //maybe destructible bool in SO??
                     //Debug.Log(rightTile + " " + (tilePosition + new Vector3Int(1,0,0)));
@@ -87,10 +88,10 @@ public class _Explosives : _Tile
                 
             }
             currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(0,-1,0));
-            cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(0,-1,0));
-
+            
             //check down of tnt position if wall and replace it
             if(currentTileManager != null){
+                cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(0,-1,0));
                 _Tile rightTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
                     //maybe destructible bool in SO??
                     //Debug.Log(rightTile + " " + (tilePosition + new Vector3Int(1,0,0)));

@@ -20,7 +20,7 @@ public class entity_updater : MonoBehaviour
     private bool isUpdated;
 
 
-    void Start(){
+    void Awake(){
         tileManager = GetComponent<tile_manager>();
     }
 

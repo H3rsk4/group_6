@@ -19,11 +19,12 @@ public class basic_world_generation_script : MonoBehaviour
     public TileBase water;
     public TileBase tree;
     public TileBase sand;
+    public TileBase wall;
     //public _Tile ground;
     public _Tile foliage;
 
     public _Tile veins;
-    public _Tile cliff;
+    
     public bool isGobs = true;
     public GameObject gob;
 
@@ -38,19 +39,6 @@ public class basic_world_generation_script : MonoBehaviour
 
     }
 
-    private void GenerateWorld(){
-        //GenerateStuff(foliageIterations, foliage);
-        if(veins != null && cliff != null){
-            //GenerateVeins(veinIterations, veins, cliff);
-        }
-        
-        if(Mathf.Abs(tileManager.trueCenter.x) >= 30 || Mathf.Abs(tileManager.trueCenter.y) >= 30){
-            if(isGobs){
-                //GenerateGobs(gobIterations);
-            }
-            
-        }
-    }
 
     // Update is called once per frame
     void Update()
@@ -68,12 +56,17 @@ public class basic_world_generation_script : MonoBehaviour
                         //generate sand
                         tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), sand, tileManager.maps[0]);
                     }else{
+                        if(myNoiseMap[Mathf.Abs(x-(worldWidth-1)),Mathf.Abs(y-(worldHeight-1))] > .8f){
+                            tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), wall, tileManager.maps[1]);
+                        }else{
+                            int chance = Random.Range(0,10);
+                            if(chance < 1){
+                                tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
+                            }
+                        }
                         //generate ground
                         //Debug.Log("here1");
-                        int chance = Random.Range(0,10);
-                        if(chance < 1){
-                            tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
-                        }
+                        
                         tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), ground, tileManager.maps[0]);
                     }
                     
@@ -101,55 +94,5 @@ public class basic_world_generation_script : MonoBehaviour
             //tileManager.ReplaceTile(tileIndex, tile, 0);
         }
     }
-    /*
-    private void GenerateVeins(int iterations, _Tile vein, _Tile cliff){
-        for(int i = 0; i < Random.Range(0,iterations + 1); i++){
-            int tileIndex = Random.Range(0, 100);
-            //tileManager.ReplaceTile(tileIndex, vein, 0);
-            
-            tile_manager currentTileManager = tileManager.CheckTileManager(tileManager.vertices[tileIndex * 4 + 0] + new Vector3(1,0,0));
-            if(currentTileManager != null){
-                if(currentTileManager.CheckTile(tileManager.vertices[tileIndex * 4 + 0] + new Vector3(1,0,0))){
-                    int newTileIndex = currentTileManager.vertexIndex;
-                    //currentTileManager.ReplaceTile(newTileIndex, cliff, 0);
-                }
-            }
-            currentTileManager = tileManager.CheckTileManager(tileManager.vertices[tileIndex * 4 + 0] + new Vector3(-1,0,0));
-            if(currentTileManager != null){
-                if(currentTileManager.CheckTile(tileManager.vertices[tileIndex * 4 + 0] + new Vector3(-1,0,0))){
-                    int newTileIndex = currentTileManager.vertexIndex;
-                    //currentTileManager.ReplaceTile(newTileIndex, cliff, 0);
-                }
-            }
-            currentTileManager = tileManager.CheckTileManager(tileManager.vertices[tileIndex * 4 + 0] + new Vector3(0,1,0));
-            if(currentTileManager != null){
-                if(currentTileManager.CheckTile(tileManager.vertices[tileIndex * 4 + 0] + new Vector3(0,1,0))){
-                    int newTileIndex = currentTileManager.vertexIndex;
-                    //currentTileManager.ReplaceTile(newTileIndex, cliff, 0);
-                }
-            }
-            currentTileManager = tileManager.CheckTileManager(tileManager.vertices[tileIndex * 4 + 0] + new Vector3(0,-1,0));
-            if(currentTileManager != null){
-                if(currentTileManager.CheckTile(tileManager.vertices[tileIndex * 4 + 0] + new Vector3(0,-1,0))){
-                    int newTileIndex = currentTileManager.vertexIndex;
-                    //currentTileManager.ReplaceTile(newTileIndex, cliff, 0);
-                }
-            }
-            
-            
-            
-            
-            
-            
-        }
-    }
 
-    private void GenerateGobs(int iterations){
-        for(int i = 0; i < Random.Range(0,iterations + 1); i++){
-            int tileIndex = Random.Range(0, 100);
-            //tileManager.ReplaceTile(tileIndex, tile, 0);
-            Instantiate(gob, tileManager.vertices[tileIndex * 4 + 0] + new Vector3(.5f,.5f), Quaternion.identity);
-        }
-    }
-    */
 }
