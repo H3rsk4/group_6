@@ -18,6 +18,7 @@ public class tile_manager : MonoBehaviour
     public bool isPlacing = true;
     //public bool isMoving;
     public bool showOutline = false;
+    public bool hasLookedNeighbours = false;
 
     public int tiles;
 
@@ -68,7 +69,8 @@ public class tile_manager : MonoBehaviour
         
         
         //too slow
-        Invoke("GetNeighbours", .5f);
+        //Invoke("GetNeighbours", 1);
+        GetNeighbours();
     }
 
     
@@ -151,6 +153,7 @@ public class tile_manager : MonoBehaviour
                     i++;
                 }
             }
+            hasLookedNeighbours = true;
     }
 
     // This method tries to find a correct tilemanager with a given position from the neighbours list
@@ -189,8 +192,8 @@ public class tile_manager : MonoBehaviour
         
         //Debug.Log(this + "\n" + "tilemanager: " + trueTileManager + " " + flooredPos);
         if(trueTileManager != null){
-            Debug.Log("currentPos: " + currentPos);
-            Debug.Log(this + " " + transform.position + "\n" + "new tilemanager: " + trueTileManager + " " + trueTileManager.transform.position);
+            //Debug.Log("currentPos: " + currentPos);
+            //Debug.Log(this + " " + transform.position + "\n" + "new tilemanager: " + trueTileManager + " " + trueTileManager.transform.position);
             
         }
         return trueTileManager;
@@ -230,6 +233,11 @@ public class tile_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
+        if(Neighbours[3] == null && hasLookedNeighbours){
+            Debug.Log("I don't know myself: " + transform.position);
+        }
+        */
         
         if(check_chunks.isCheckingChunks){
             GetNeighbours();

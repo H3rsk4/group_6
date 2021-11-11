@@ -32,6 +32,7 @@ public class _Explosives : _Tile
             Vector3 worldPosition = tileManager.maps[1].CellToWorld(tilePosition);
             tile_manager currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(1,0,0));
             Vector3Int cellPosition;
+            Debug.Log("currentTilemanager: " + currentTileManager);
             //check right of tnt position if wall and replace it
             if(currentTileManager != null){
                 cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(1,0,0));
@@ -50,7 +51,7 @@ public class _Explosives : _Tile
                 
             }
             currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(-1,0,0));
-            
+            Debug.Log("currentTilemanager: " + currentTileManager);
             //check left of tnt position if wall and replace it
             if(currentTileManager != null){
                 cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(-1,0,0));
@@ -69,7 +70,7 @@ public class _Explosives : _Tile
                 
             }
             currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(0,1,0));
-            
+            Debug.Log("currentTilemanager: " + currentTileManager);
             //check up of tnt position if wall and replace it
             if(currentTileManager != null){
                 cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(0,1,0));
@@ -88,7 +89,7 @@ public class _Explosives : _Tile
                 
             }
             currentTileManager = tileManager.CheckTileManager(worldPosition + new Vector3Int(0,-1,0));
-            
+            Debug.Log("currentTilemanager: " + currentTileManager);
             //check down of tnt position if wall and replace it
             if(currentTileManager != null){
                 cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3Int(0,-1,0));
