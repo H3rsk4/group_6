@@ -5,6 +5,7 @@ using UnityEngine;
 public class spawn_action_indicator : MonoBehaviour
 {
     public GameObject actionPrefab;
+    public LayerMask actionMask;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +22,20 @@ public class spawn_action_indicator : MonoBehaviour
         Vector3Int worldMousePos = new Vector3Int((int)Mathf.Floor(mousePos.x), (int)Mathf.Floor(mousePos.y), 0);
 
 
-        if(Input.GetMouseButton(0)){
-            GameObject newActionPrefab = Instantiate(actionPrefab, worldMousePos, Quaternion.identity);
-            newActionPrefab.GetComponent<action_indicator>().SetupValues(1, 1f, .1f);
+        if(Input.GetMouseButtonDown(0)){
+            if(!build_button.isHotBar){
+                Collider2D actionCollider = Physics2D.OverlapCircle(worldMousePos + new Vector3(.5f,.5f,0), .1f, actionMask);
+                if(actionCollider == null){
+                    GameObject newActionPrefab = Instantiate(actionPrefab, worldMousePos, Quaternion.identity);
+                    newActionPrefab.GetComponent<action_indicator>().SetupValues(1, 1f, 0);
+                }else if(actionCollider.transform.GetComponent<action_indicator>() == null){
+                    GameObject newActionPrefab = Instantiate(actionPrefab, worldMousePos, Quaternion.identity);
+                    newActionPrefab.GetComponent<action_indicator>().SetupValues(1, 1f, 0);
+                    
+                }
+            }
+            
+            
         }
     }
 }

@@ -18,6 +18,7 @@ MonoBehaviour:
   isWalkable: 0
   needsUpdate: 0
   isDemolishable: 1
+  structureHealth: 100
   demolishItem: {fileID: 0}
   isInteractable: 0
   hasContainer: 0

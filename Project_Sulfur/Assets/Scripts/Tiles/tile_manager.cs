@@ -170,24 +170,27 @@ public class tile_manager : MonoBehaviour
         } else {
             offsetY = 0;
         }
-
-
+        //ToPositiveInfinity
+        //double modifiedX = currentPos.x / 10;
+        //System.Math.Round(modifiedX, MidpointRounding.ToPositiveInfinity);
         Vector3 flooredPos = new Vector3(Mathf.Round(currentPos.x / 10 + .01f) * 10,Mathf.Round(currentPos.y / 10 + .01f)  * 10,0);
         //Debug.Log(flooredPos);
+        
         foreach (tile_manager tileManager in Neighbours)
         {
             if(tileManager != null){
-                if(flooredPos == tileManager.transform.position){
+                if(tileManager.transform.position == flooredPos){
                     //use this tileManager
                     trueTileManager = tileManager;
                 }
             }
             
         }
+        
         //Debug.Log(this + "\n" + "tilemanager: " + trueTileManager + " " + flooredPos);
         if(trueTileManager != null){
             Debug.Log("currentPos: " + currentPos);
-            Debug.Log(this + " " + transform.position + "\n" + "new tilemanager: " + trueTileManager + " " + trueTileManager.transform.position + "\nfloored Position: " + flooredPos);
+            Debug.Log(this + " " + transform.position + "\n" + "new tilemanager: " + trueTileManager + " " + trueTileManager.transform.position);
             
         }
         return trueTileManager;
@@ -431,8 +434,7 @@ public class tile_manager : MonoBehaviour
         if(!build_button.isHotBar){
             //means we are interacting
             if(mouse_touch_controller.isBuilding){
-                CheckTileManager(mousePos);
-                
+                //CheckTileManager(mousePos);
             //if(Input.GetMouseButtonDown(0)){
                 //if(!EventSystem.current.IsPointerOverGameObject()){
                     /*

@@ -14,6 +14,7 @@ public class _Tile : Tilebase
     public bool isWalkable;
     public bool needsUpdate;
     public bool isDemolishable;
+    public int structureHealth;
     public _Item demolishItem;
     public bool isInteractable;
     public bool hasContainer;

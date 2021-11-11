@@ -57,16 +57,16 @@ public class basic_world_generation_script : MonoBehaviour
                         tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), sand, tileManager.maps[0]);
                     }else{
                         if(myNoiseMap[Mathf.Abs(x-(worldWidth-1)),Mathf.Abs(y-(worldHeight-1))] > .8f){
+                            //wall
                             tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), wall, tileManager.maps[1]);
                         }else{
                             int chance = Random.Range(0,10);
                             if(chance < 1){
+                                //tree
                                 tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
                             }
                         }
                         //generate ground
-                        //Debug.Log("here1");
-                        
                         tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), ground, tileManager.maps[0]);
                     }
                     

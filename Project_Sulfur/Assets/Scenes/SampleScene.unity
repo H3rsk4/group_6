@@ -4682,6 +4682,7 @@ GameObject:
   - component: {fileID: 1468719561}
   - component: {fileID: 1468719565}
   - component: {fileID: 1468719564}
+  - component: {fileID: 1468719566}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4860,12 +4861,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468719555}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cd841a7e018e8d47ac3dfb1f367866c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionPrefab: {fileID: 4525263548803466287, guid: fdbdac2e367f6134ab7464489843df88, type: 3}
+  actionMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1468719565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4880,6 +4884,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   input: {x: 0, y: 0}
+--- !u!114 &1468719566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468719555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277e6623ee18bbb439da1ad42574757a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  tileManager: {fileID: 0}
 --- !u!1 &1485473320
 GameObject:
   m_ObjectHideFlags: 0
