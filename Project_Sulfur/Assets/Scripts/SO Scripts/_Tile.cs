@@ -19,11 +19,6 @@ public class _Tile : Tilebase
     public bool isInteractable;
     public bool hasContainer;
     public int containerSize;
-    //public bool needsItems;
-
-    public bool hasMultipleSprites;
-    public int xPos;
-    public int yPos;
 
     //tiles in a tilemap that represent this scriptable object
     public TileBase[] tiles;

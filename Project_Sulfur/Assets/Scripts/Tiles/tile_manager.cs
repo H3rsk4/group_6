@@ -159,20 +159,7 @@ public class tile_manager : MonoBehaviour
     // This method tries to find a correct tilemanager with a given position from the neighbours list
     public tile_manager CheckTileManager(Vector3 currentPos){
         tile_manager trueTileManager = null;
-        int offsetX = 0;
-        int offsetY = 0;
         
-        if(currentPos.x > 0){
-            offsetX = 1;
-        } else {
-            offsetX = 0;
-        }
-        
-        if(currentPos.y > 0){
-            offsetY = 1;
-        } else {
-            offsetY = 0;
-        }
         //ToPositiveInfinity
         //double modifiedX = currentPos.x / 10;
         //System.Math.Round(modifiedX, MidpointRounding.ToPositiveInfinity);
