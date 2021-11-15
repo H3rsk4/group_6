@@ -873,7 +873,7 @@ Transform:
   m_GameObject: {fileID: 200398238}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
@@ -890,20 +890,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7239a75067840f48b2b325f4d4087bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 100
-  height: 100
-  texScale: 5
+  width: 10
+  height: 10
+  texScale: 0.05
   altitudeOffsetX: 0
   altitudeOffsetY: 0
   humidityOffsetX: 0
   humidityOffsetY: 0
-  textureOffsetMultiplier: 0.1
+  textureOffsetMultiplier: 0.005
   lowCutoff: 0
   highCutoff: 0.5
   biomeAmount: 3
-  testValue: 0
   seed: 0
-  voronoiPoints: []
 --- !u!1 &300038966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,6 +2945,7 @@ GameObject:
   - component: {fileID: 871603353}
   - component: {fileID: 871603352}
   - component: {fileID: 871603351}
+  - component: {fileID: 871603355}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -2966,11 +2965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6458cec890b8c7a47a1ee3abc38ed217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
-  height: 10
+  width: 100
+  height: 100
   texScale: 2
   textureOffsetMultiplier: 0.2
-  seed: 0
 --- !u!23 &871603352
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3034,6 +3032,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &871603355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871603350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81940af80a77bba4bb06a8175e322802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &940009811
 GameObject:
   m_ObjectHideFlags: 0
@@ -5913,7 +5923,6 @@ MonoBehaviour:
   height: 256
   texScale: 5
   textureOffsetMultiplier: 0.1
-  seed: 0
 --- !u!1 &1714496799
 GameObject:
   m_ObjectHideFlags: 0

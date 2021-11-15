@@ -30,12 +30,8 @@ public class perlin_noise_script_mod_01 : MonoBehaviour
 
     public int biomeAmount;
 
-    [Range(.01f, 10f)]
-    public float testValue;
-
     public int seed;
 
-    public List<Vector2> voronoiPoints = new List<Vector2>();
     float[,] perlinHumidity;
     float[,] perlinAltitude;
 
@@ -76,7 +72,6 @@ public class perlin_noise_script_mod_01 : MonoBehaviour
     }
 
     Texture2D GenerateTexture(){
-        voronoiPoints.Clear();
         System.Random prng = new System.Random(seed);
         Texture2D texture = new Texture2D(width, height);
         Color[] regionColors = new Color[biomeAmount];

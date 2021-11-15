@@ -15,6 +15,10 @@ public class basic_world_generation_script : MonoBehaviour
     public int veinIterations = 5;
     public int gobIterations = 5;
 
+    public _Biome plains;
+    public _Biome snowPlains;
+    private _Biome currentBiome;
+
     public TileBase ground;
     public TileBase water;
     public TileBase tree;
@@ -48,9 +52,18 @@ public class basic_world_generation_script : MonoBehaviour
 
     
     private void GenerateRectangleWorld(){
-        float[,] myNoiseMap = perlin_noise_script.GenerateNoise(worldWidth,worldHeight, transform.position);
+        float[,] myNoiseMap = perlin_noise_script.GenerateFBMNoiseMap(worldWidth,worldHeight, transform.position, 0, 0, perlin_noise_script.scale);
+
+        float[,] myHumidityMap = perlin_noise_script.GenerateFBMNoiseMap(worldWidth,worldHeight,transform.position,perlin_noise_script.humidityOffsetX,perlin_noise_script.humidityOffsetY, perlin_noise_script.biomeScale);
+        float[,] myAltitudeMap = perlin_noise_script.GenerateFBMNoiseMap(worldWidth,worldHeight,transform.position,perlin_noise_script.altitudeOffsetX,perlin_noise_script.altitudeOffsetY, perlin_noise_script.biomeScale);
+
         for(int x = 0; x < worldWidth; x++){
             for(int y = 0; y < worldHeight; y++){
+                if(myHumidityMap[Mathf.Abs(x-(worldWidth-1)),Mathf.Abs(y-(worldHeight-1))] < .5f){
+                    currentBiome = snowPlains;
+                }else{
+                    currentBiome = plains;
+                }
                 if(myNoiseMap[Mathf.Abs(x-(worldWidth-1)),Mathf.Abs(y-(worldHeight-1))] > .4f){
                     if(myNoiseMap[Mathf.Abs(x-(worldWidth-1)),Mathf.Abs(y-(worldHeight-1))] < .45f){
                         //generate sand
@@ -67,12 +80,12 @@ public class basic_world_generation_script : MonoBehaviour
                             }
                         }
                         //generate ground
-                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), ground, tileManager.maps[0]);
+                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), currentBiome.floorTile, tileManager.maps[0]);
                     }
                     
                 }else{
                     //generate water
-                    tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), water, tileManager.maps[0]);
+                    tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), currentBiome.baseTile, tileManager.maps[0]);
                 }
                 
 

@@ -537,6 +537,7 @@ MonoBehaviour:
   tileAmount: 0
   isPlacing: 0
   showOutline: 1
+  hasLookedNeighbours: 0
   tiles: 0
   mousePosition: {x: 0, y: 0, z: 0}
   water: {fileID: 11400000, guid: 9f009fa9b42694c41801d1faef7fedbc, type: 2}
@@ -600,6 +601,8 @@ MonoBehaviour:
   foliageIterations: 10
   veinIterations: 3
   gobIterations: 5
+  plains: {fileID: 11400000, guid: 7f4160f1365642547bb913ddb1698eee, type: 2}
+  snowPlains: {fileID: 11400000, guid: cfa6d180b474d2b43ac18c5dcbb894ab, type: 2}
   ground: {fileID: 11400000, guid: 7a7268beb116966409dd90b3d88b1f41, type: 2}
   water: {fileID: 11400000, guid: 812cb880b3dd28241aa90104d32e5426, type: 2}
   tree: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
