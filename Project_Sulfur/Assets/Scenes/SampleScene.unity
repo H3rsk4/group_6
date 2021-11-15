@@ -2967,7 +2967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 100
   height: 100
-  texScale: 2
+  texScale: 1
   textureOffsetMultiplier: 0.2
 --- !u!23 &871603352
 MeshRenderer:
@@ -3027,7 +3027,7 @@ Transform:
   m_GameObject: {fileID: 871603350}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12

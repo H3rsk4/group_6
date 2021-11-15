@@ -15,11 +15,8 @@ public class perlin_noise_script : MonoBehaviour
 
     //modifying perlin value
     public static int octaves = 3;
-    public static float lacunarity = 2f;
+    public static float lacunarity = 2.5f;
     public static float persistence = .5f;
-    static float maxNoiseHeight = float.MinValue;
-    static float minNoiseHeight = float.MaxValue;
-
     
     // biome variables
     public static float altitudeOffsetX;
@@ -35,7 +32,12 @@ public class perlin_noise_script : MonoBehaviour
 
     public static int seed;
 
+    static float maxNoiseHeight;
+    static float minNoiseHeight;
+
     void Start(){
+        maxNoiseHeight = float.MinValue;
+        minNoiseHeight = float.MaxValue;
         System.Random seedprng = new System.Random(); 
         seed = seedprng.Next();
 
@@ -81,7 +83,7 @@ public class perlin_noise_script : MonoBehaviour
         return new Color(sample,sample,sample);
     }
 
-    public static float[,] GenerateNoise(int mapWidth, int mapHeight, Vector3 chunkCoord){
+    public static float[,] GenerateNoise(int mapWidth, int mapHeight, Vector3 chunkCoord, float biomeOffsetX, float biomeOffsetY, float _scale){
         float[,] noiseMap = new float[mapWidth,mapHeight];
         for(int x = 0; x < mapWidth; x++){
             for(int y = 0; y < mapHeight; y++){
@@ -97,7 +99,7 @@ public class perlin_noise_script : MonoBehaviour
         return noiseMap;
     }
 
-    public static float[,] GenerateBiomeNoise(int mapWidth, int mapHeight, Vector3 chunkCoord, float biomeOffsetX, float biomeOffsetY){
+    public static float[,] GenerateBiomeNoise(int mapWidth, int mapHeight, Vector3 chunkCoord, float biomeOffsetX, float biomeOffsetY, float _scale){
         float[,] noiseMap = new float[mapWidth,mapHeight];
         for(int x = 0; x < mapWidth; x++){
             for(int y = 0; y < mapHeight; y++){
@@ -146,9 +148,13 @@ public class perlin_noise_script : MonoBehaviour
     }
 
     public static float[,] GenerateFBMNoiseMap(int mapWidth, int mapHeight, Vector3 chunkCoord, float biomeOffsetX, float biomeOffsetY, float _scale){
+        
+        
         float[,] noiseMap = new float[mapWidth,mapHeight];
         for(int x = 0; x < mapWidth; x++){
             for(int y = 0; y < mapHeight; y++){
+                float sample = 0;
+                float maxValue = 0;
                 float frequency = 1;
                 float amplitude = 1;
                 float noiseHeight = 0;
@@ -158,9 +164,10 @@ public class perlin_noise_script : MonoBehaviour
                     float xCoord = ((float)x -chunkCoord.x + offsetX + biomeOffsetX) / mapWidth * _scale * frequency;
                     float yCoord = ((float)y -chunkCoord.y + offsetY + biomeOffsetY) / mapHeight * _scale * frequency;
 
-                    float sample = Mathf.PerlinNoise(xCoord,yCoord) * 2 - 1;
+                    sample += Mathf.PerlinNoise(xCoord,yCoord) * amplitude;
 
-                    noiseHeight += sample * amplitude;
+                    //noiseHeight += sample * amplitude;
+                    maxValue += amplitude;
 
                     amplitude *= persistence;
                     frequency *= lacunarity;
@@ -174,16 +181,17 @@ public class perlin_noise_script : MonoBehaviour
                 
                 
 
-                noiseMap[x,y] = noiseHeight;
+                noiseMap[x,y] = sample/maxValue;
             }
         }
-
+        /*
         for (int x = 0; x < mapWidth; x++){
             for (int y = 0; y < mapHeight; y++)
             {
                 noiseMap[x,y] = Mathf.InverseLerp(minNoiseHeight, maxNoiseHeight, noiseMap[x,y]);
             }
         }
+        */
         return noiseMap;
     }
 
