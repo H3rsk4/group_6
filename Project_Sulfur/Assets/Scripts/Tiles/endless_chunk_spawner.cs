@@ -5,7 +5,7 @@ using UnityEngine;
 public class endless_chunk_spawner : MonoBehaviour
 {
     public GameObject chunkPrefab;
-    public const float maxViewDst = 200;
+    public const float maxViewDst = 20;
     public Transform viewer;
 
     public static Vector2 viewerPosition;
