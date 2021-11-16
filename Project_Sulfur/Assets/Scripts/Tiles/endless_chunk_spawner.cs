@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class endless_chunk_spawner : MonoBehaviour
 {
+    private static endless_chunk_spawner _instance;
+
     public GameObject chunkPrefab;
     public const float maxViewDst = 20;
     public Transform viewer;
@@ -15,7 +17,15 @@ public class endless_chunk_spawner : MonoBehaviour
     Dictionary<Vector2, Chunk> chunkDictionary = new Dictionary<Vector2, Chunk>();
     List<Chunk> chunksVisibleLastUpdate = new List<Chunk>();
 
-    private List<Vector3> activeChunks = new List<Vector3>();
+    public List<Vector3> activeChunks = new List<Vector3>();
+
+    private void Awake() {
+        if(_instance != null && _instance != this){
+            Destroy(this.gameObject);
+        }else{
+            _instance = this;
+        }
+    }
 
     void Start(){
         //size of the chunk
@@ -103,8 +113,9 @@ public class endless_chunk_spawner : MonoBehaviour
             }
         }
 
-        foreach(Vector3 activeChunk in activeChunks){
-            chunkDictionary[activeChunk].UpdateChunk();
+        for (int i = 0; i < activeChunks.Count; i++)
+        {
+            chunkDictionary[activeChunks[i]].UpdateChunk();
         }
         
 
@@ -116,10 +127,11 @@ public class endless_chunk_spawner : MonoBehaviour
         GameObject chunkObject;
         Vector2 position;
         Bounds bounds;
+        Vector3 _coord;
 
         public Chunk(Vector3 coord, int size, Transform parent, GameObject _chunkPrefab){
             //
-
+            _coord = coord;
             position = coord * size;
             bounds = new Bounds(position, Vector2.one * size);
             Vector3 positionV3 = new Vector3(position.x,position.y,0);
@@ -151,6 +163,9 @@ public class endless_chunk_spawner : MonoBehaviour
 
         }
         public void SetVisible(bool visible){
+            if(!visible){
+                endless_chunk_spawner._instance.activeChunks.Remove(_coord);
+            }
             chunkObject.SetActive(visible);
         }
 
