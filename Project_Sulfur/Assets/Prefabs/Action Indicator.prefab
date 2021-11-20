@@ -155,6 +155,9 @@ MonoBehaviour:
   actionMask:
     serializedVersion: 2
     m_Bits: 512
+  entityMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &953919260971628995
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class breaking_indicator : MonoBehaviour
 {
-    private int structureHealth;
+    private int maxHealth;
+    public int currentHealth;
     public float inactiveTime = 600;
     private _Tile tileSO;
     private tile_manager tileManager;
 
     private Vector3Int cellPosition;
+    public healthbar_script healthBar;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool isSetup = false;
 
     // Update is called once per frame
     void Update()
@@ -27,20 +25,28 @@ public class breaking_indicator : MonoBehaviour
     }
 
     public void SetupValues(int _structureHealth, _Tile _tileSO, tile_manager _tileManager, Vector3Int _cellPosition){
-        structureHealth = _structureHealth;
+        maxHealth = _structureHealth;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         tileSO = _tileSO;
         tileManager = _tileManager;
         cellPosition = _cellPosition;
+        
+        isSetup = true;
     }
 
     public void Damage(int value){
-        inactiveTime = 600;
-        structureHealth -= value;
-        if(structureHealth < 0){
-            //destroy tile
-            tileManager.ReplaceTile(cellPosition, null, tileManager.maps[1]);
-            //destroy self
-            Destroy(this.gameObject);
+        if(isSetup){
+            inactiveTime = 600;
+            currentHealth -= value;
+            healthBar.SetHealth(currentHealth);
+            if(currentHealth < 0){
+                //destroy tile
+                tileManager.ReplaceTile(cellPosition, null, tileManager.maps[1]);
+                //destroy self
+                Destroy(this.gameObject);
+            }
         }
+        
     }
 }

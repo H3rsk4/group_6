@@ -20,6 +20,7 @@ public class action_indicator : MonoBehaviour
     public GameObject breakingIndicatorPrefab;
 
     public LayerMask actionMask;
+    public LayerMask entityMask;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,7 @@ public class action_indicator : MonoBehaviour
                 //check if there already is a breaking or action indicator
                 Collider2D actionCollider = Physics2D.OverlapCircle(transform.position + new Vector3(.5f,.5f,0), .1f, actionMask);
                 if(actionCollider != null){
-                    Debug.Log("found action");
+                    //Debug.Log("found action");
                     //there already is a action or breaking
                     //find out what type
                     if(actionCollider.transform.GetComponent<action_indicator>() != null){
@@ -65,18 +66,27 @@ public class action_indicator : MonoBehaviour
 
                     }
                 }else{
-                    Debug.Log("did not find action");
+                    //Debug.Log("did not find action");
                     // no collider found
-                    //translate worldpos to gridpos
                     if(currentTile != null && currentTile.isDemolishable){
                         
                         //start breaking the tile there is no breaking indicator
                         GameObject newBreakingIndicator = Instantiate(breakingIndicatorPrefab, transform.position, Quaternion.identity);
                         if(newBreakingIndicator.GetComponent<breaking_indicator>() != null){
                             newBreakingIndicator.GetComponent<breaking_indicator>().SetupValues(currentTile.structureHealth, currentTile, tileManager, cellPosition);
+                            newBreakingIndicator.GetComponent<breaking_indicator>().Damage(51);
                         }
                         
 
+                    }
+                }
+
+                Collider2D[] entityColliders = Physics2D.OverlapBoxAll(transform.position + new Vector3(.5f, .5f), new Vector2(1,1), 0f, entityMask);
+                foreach (Collider2D col in entityColliders)
+                {
+                    if(col.transform.GetComponent<stats>() != null){
+                        //Debug.Log("Damaged");
+                        col.transform.GetComponent<stats>().Damage(damageAmount, 5f,Vector3.Normalize(col.transform.position - (transform.position + new Vector3(.5f, .5f))));
                     }
                 }
 
@@ -92,6 +102,12 @@ public class action_indicator : MonoBehaviour
     }
 
     void Breaking(){
+
+    }
+
+    void OnDrawGizmos(){
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(transform.position + new Vector3(.5f, .5f), new Vector2(1,1));
 
     }
 }

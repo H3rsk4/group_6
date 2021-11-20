@@ -63,8 +63,12 @@ Shader "Custom/GlobalDissolveSprites"
  //clip(dissolve_value - dist / _Radius);
 
  if((dissolve_value - dist / _Radius) < .5f){
-     IN.color.a = .5f;
+    IN.color.a = .5f;
+    //IN.color.r = 1;
+    //IN.color.g = 0;
+    //IN.color.b = 0;
  }
+
 
  fixed4 c = SampleSpriteTexture(IN.uv_MainTex) * IN.color;
  o.Albedo = c.rgb * c.a;

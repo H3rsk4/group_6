@@ -18,7 +18,7 @@ public class explosion_damager : MonoBehaviour
 
         //damage the gob
         if(col != null){
-            col.transform.GetComponent<stats>().Damage(10);
+            col.transform.GetComponent<stats>().Damage(10, 0f, Vector3.zero);
         }
             
 
