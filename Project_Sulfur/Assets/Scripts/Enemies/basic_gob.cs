@@ -16,6 +16,7 @@ public class basic_gob : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        distance = Vector3.Distance(player.playerT.position, transform.position);
     }
 
     // Update is called once per frame
@@ -39,13 +40,14 @@ public class basic_gob : MonoBehaviour
             //rotSpeed = .5f;
         }
 
-        if(distance < 1f && hitCooldown < 0){
+        if(distance < 1f /*&& hitCooldown < 0*/){
             //damage player;
-            player.playerT.GetComponent<stats>().Damage(damage);
-            hitCooldown = 1f;
+            //player.playerT.GetComponent<stats>().Knockback(10f, player.playerT.position - transform.position);
+            player.playerT.GetComponent<stats>().Damage(damage, 10f, player.playerT.position - transform.position);
+            //hitCooldown = 1f;
         }
         
-        hitCooldown -= Time.deltaTime;
+        //hitCooldown -= Time.deltaTime;
 
     }
     void moveCharacter(Vector2 direction)
