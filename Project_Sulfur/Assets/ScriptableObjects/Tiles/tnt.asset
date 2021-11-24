@@ -18,16 +18,15 @@ MonoBehaviour:
   isWalkable: 0
   needsUpdate: 1
   isDemolishable: 1
-  structureHealth: 0
   demolishItem: {fileID: 11400000, guid: 59cd9c9a259bab0468b0f646f232c334, type: 2}
   isInteractable: 0
   hasContainer: 0
   containerSize: 0
+  hasMultipleSprites: 0
+  xPos: 3
+  yPos: 7
   tiles:
   - {fileID: 11400000, guid: 44591b1ab6bf6044da2307b10bb80cba, type: 2}
-  hasMultipleTiles: 0
-  tileParts: []
-  tilePartPositions: []
   ticksToExplode: 5
   explosion: {fileID: 1390175843769098884, guid: 03acf3ceed107064399158d05442d41b, type: 3}
   nugget: {fileID: 7534865057305518138, guid: dc2de11bf92559b439d4b7b80a1e4436, type: 3}

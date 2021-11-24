@@ -20,7 +20,7 @@ public class entity_updater : MonoBehaviour
     private bool isUpdated;
 
 
-    void Awake(){
+    void Start(){
         tileManager = GetComponent<tile_manager>();
     }
 
@@ -50,10 +50,8 @@ public class entity_updater : MonoBehaviour
         //Debug.Log("tick");
         int entityIndex = 0;
         foreach(Vector3Int tilePosition in tilePositions){
-            _Tile currentTileSO = tile_dictionary.GetTileSO(tilePosition, tileManager.maps[1]);
-            if(currentTileSO != null){
-                currentTileSO.Do(tilePosition, tileManager, entityIndex, "entity_updater");
-            }
+            _Tile currentTileSO = tile_dictionary.GetTileSO(tilePosition, tileManager.map);
+            currentTileSO.Do(tilePosition, tileManager, entityIndex, "entity_updater");
             entityIndex++;
         }
         foreach(Vector3Int toRemove in removeList){

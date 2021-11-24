@@ -37,7 +37,7 @@ public class projectile_script : MonoBehaviour
         
         col = Physics2D.OverlapCircle(transform.position, .2f, layerMask);
         if(col != null){
-            col.transform.GetComponent<stats>().Damage(damage, 5f, Vector3.zero);
+            col.transform.GetComponent<stats>().Damage(damage);
             RemoveProjectile();
         }
     }
