@@ -7,8 +7,6 @@ public class keyboard_controls : MonoBehaviour
     public float speed;
     public Vector2 input;
 
-    public tile_manager currentTileManager;
-
     
     private Vector3 leftRay;
 
@@ -113,31 +111,8 @@ public class keyboard_controls : MonoBehaviour
             }
         }
         */
-
-        if(transform.position.x > currentTileManager.trueCenter.x+5){
-            //went right
-            //currentTileManager.showOutline = false;
-            currentTileManager = currentTileManager.Neighbours[1];
-            //currentTileManager.showOutline = true;
-        }
-        if(transform.position.x < currentTileManager.trueCenter.x-5){
-            //went left
-            //currentTileManager.showOutline = false;
-            currentTileManager = currentTileManager.Neighbours[2];
-            //currentTileManager.showOutline = true;
-        }
-        if(transform.position.y > currentTileManager.trueCenter.y+5){
-            //went up
-            //currentTileManager.showOutline = false;
-            currentTileManager = currentTileManager.Neighbours[3];
-            //currentTileManager.showOutline = true;
-        }
-        if(transform.position.y < currentTileManager.trueCenter.y-5){
-            //went down
-            //currentTileManager.showOutline = false;
-            currentTileManager = currentTileManager.Neighbours[4];
-            //currentTileManager.showOutline = true;
-        }
+        
+        
     }
 
     void FixedUpdate(){
