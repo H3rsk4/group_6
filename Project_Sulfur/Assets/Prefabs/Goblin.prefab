@@ -114,7 +114,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 4
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -134,7 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b2db974dcd14c49ab4ac33e9b6f45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MAX_HEALTH: 10
+  IFRAME_TIME: 1
+  currentIFrame: 0
   currentHealth: 0
+  isDead: 0
 --- !u!61 &1691353768677777163
 BoxCollider2D:
   m_ObjectHideFlags: 0
