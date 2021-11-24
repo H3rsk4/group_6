@@ -18,14 +18,15 @@ MonoBehaviour:
   isWalkable: 1
   needsUpdate: 0
   isDemolishable: 0
-  structureHealth: 0
   demolishItem: {fileID: 0}
   isInteractable: 0
   hasContainer: 0
   containerSize: 0
+  hasMultipleSprites: 0
+  xPos: 1
+  yPos: 7
   tiles:
   - {fileID: 11400000, guid: 7a7268beb116966409dd90b3d88b1f41, type: 2}
-  - {fileID: 11400000, guid: c44ff1557f14cfa46bfaab1e096c0839, type: 2}
   hasMultipleTiles: 0
   tileParts: []
   tilePartPositions: []

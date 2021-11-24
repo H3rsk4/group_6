@@ -14,11 +14,15 @@ public class _Tile : Tilebase
     public bool isWalkable;
     public bool needsUpdate;
     public bool isDemolishable;
-    public int structureHealth;
     public _Item demolishItem;
     public bool isInteractable;
     public bool hasContainer;
     public int containerSize;
+    //public bool needsItems;
+
+    public bool hasMultipleSprites;
+    public int xPos;
+    public int yPos;
 
     //tiles in a tilemap that represent this scriptable object
     public TileBase[] tiles;

@@ -10,11 +10,9 @@ public class player_death : MonoBehaviour
 
     private stats playerStats;
 
-    private float deathTimer = 5;
+    private float deathTimer = 10;
 
     private Text respawnText;
-
-    private Collider2D playerCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +24,6 @@ public class player_death : MonoBehaviour
         
         playerStats = GetComponent<stats>();
         respawnText = deathPanel.transform.GetChild(1).GetComponent<Text>();
-
-        playerCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -35,10 +31,6 @@ public class player_death : MonoBehaviour
     {
         if(playerStats.currentHealth <= 0){
             PlayDeathAnimation();
-            playerCollider.enabled = false;
-        }else{
-            playerCollider.enabled = true;
-            playerStats.isDead = false;
         }
     }
 
@@ -62,10 +54,7 @@ public class player_death : MonoBehaviour
         }
         
         transform.position = new Vector3(0,0,0);
-        playerStats.currentHealth = playerStats.MAX_HEALTH;
-        playerStats.UpdateStats();
-        playerStats.IFrame();
-        
-        deathTimer = 5;
+        playerStats.currentHealth = stats.MAX_HEALTH;
+        deathTimer = 10;
     }
 }
