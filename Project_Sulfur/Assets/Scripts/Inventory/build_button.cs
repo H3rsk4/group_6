@@ -20,7 +20,7 @@ public class build_button : MonoBehaviour, IPointerClickHandler
     public drop_down dropDown;
     public GameObject hotBar;
     public GameObject inventory;
-    public static bool isHotBar = false;
+    public static bool isHotBar = true;
     
     //public GameObject Inventory;
 
@@ -128,10 +128,7 @@ public class build_button : MonoBehaviour, IPointerClickHandler
 
             container_script.instance.isContainer = false;
         }
-
-        
     }
-
 
     public void OnPointerClick(PointerEventData pointerEventData){
         //Debug.Log(currentItem);
@@ -155,7 +152,6 @@ public class build_button : MonoBehaviour, IPointerClickHandler
             dButtonImage.sprite = dButtonSelected;
             bButtonImage.sprite = bButton;
         }
-
     }
 
     private void RotationButton(){
@@ -170,5 +166,4 @@ public class build_button : MonoBehaviour, IPointerClickHandler
         //Debug.Log(tileOrientation);
         
     }
-
 }
