@@ -53,12 +53,15 @@ public class inventory : MonoBehaviour, IItemContainer
                 if(itemScripts[i].currentAmount > 0){
                     itemScripts[i].currentAmount--;
                     return true;
+                }else{
+                    itemScripts[i].item = null;
                 }
             }
         }
         return false;
     }
     public bool AddItem(_Item item){
+        //check if there is an item
         for (int i = 0; i < itemScripts.Count; i++)
         {
             if(itemScripts[i].item == item){
@@ -68,6 +71,15 @@ public class inventory : MonoBehaviour, IItemContainer
                 }
             }
         }
+        //try to add the item if there is no same item
+        for (int i = 0; i < itemScripts.Count; i++)
+        {
+            if(itemScripts[i].item == null){
+                itemScripts[i].item = item;
+                return true;
+            }
+        }
+
         return false;
     }
     public bool IsFull(){

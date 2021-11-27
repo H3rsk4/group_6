@@ -13,10 +13,10 @@ public class drop_down : MonoBehaviour, IPointerClickHandler
 
     void Update(){
         if(!isInventory && inventory.activeSelf){
-            inventory.SetActive(false);
+            //inventory.SetActive(false);
         }
         if(isInventory && !inventory.activeSelf){
-            inventory.SetActive(true);
+            //inventory.SetActive(true);
         }
     }
 

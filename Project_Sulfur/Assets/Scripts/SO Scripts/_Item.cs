@@ -13,5 +13,17 @@ public class _Item : ScriptableObject
 
     public _CraftingRecipe craftingRecipe;
 
-    public float pickUpDistance;
+    public float pickUpDistance = .5f;
+
+    public int baseDamage;
+
+    //action indicator
+    public float activateSpeed;
+    public float activeDuration;
+
+    //what can be broken
+    public int axeToughness;
+    public int pickToughness;
+
+
 }

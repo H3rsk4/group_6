@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class item_script : MonoBehaviour, IPointerClickHandler, IDragHandler, IEndDragHandler
+public class item_script : MonoBehaviour/*, IPointerClickHandler*/, IDragHandler, IEndDragHandler, IDropHandler
 {
     public const int MAX_AMOUNT = 999;
     public int currentAmount = 0;
@@ -44,6 +44,7 @@ public class item_script : MonoBehaviour, IPointerClickHandler, IDragHandler, IE
         }
     }
 
+    /*
     public void OnPointerClick(PointerEventData data){
         //select the item
         if(item != null){
@@ -66,23 +67,52 @@ public class item_script : MonoBehaviour, IPointerClickHandler, IDragHandler, IE
         }
         
     }
+    */
     public void OnDrag(PointerEventData data){
-        if(item.tile != null){
+        //check so that "materials" cannot be dragged
+        if(item != null){
+            image.color = new Color(1,1,1,.5f);
+            //if(item.tile != null){
             //grab this item and drag it
             item_drag.isDragging = true;
-            if(item_drag.isDragging){
-                item_drag.draggedItem = item;
-                item_drag.itemDrag.position = Input.mousePosition;
-            }
+                if(item_drag.isDragging){
+                    item_drag.draggedItem = item;
+                    item_drag.itemDrag.position = Input.mousePosition;
+                }
+            //}
         }
+        
     }
 
     public void OnEndDrag(PointerEventData data){
-        
+        //Debug.Log("EndDrag");
+        image.color = new Color(1,1,1,1f);
         if(item_drag.isDragging){
             item_drag.draggedItem = null;
             item_drag.isDragging = false;
         }
+    }
+
+    public void OnDrop(PointerEventData data){
+        //Debug.Log ("Dropped object was: "  + data.pointerDrag);
+        //Debug.Log(data.pointerDrag.GetComponent<item_script>().item);
+        if(item == null){
+            item_drag.isDragging = false;
+            if(!item_drag.isDragging){
+                item = item_drag.draggedItem;
+                //item_drag.dragItem.transform.position = Input.mousePosition;
+                item_script iventoryItem = data.pointerDrag.GetComponent<item_script>();
+                item_hotbar hotbarItem = data.pointerDrag.GetComponent<item_hotbar>();
+
+                if(iventoryItem != null){
+                    iventoryItem.item = null;
+                }else{
+                    hotbarItem.item = null;
+                    hotbarItem.hotbarScript.SetSelectedItem();
+                }
+            }
+        }
+        
     }
 
 

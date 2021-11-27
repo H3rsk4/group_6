@@ -288,34 +288,8 @@ public class tile_manager : MonoBehaviour
         Vector3Int worldMousePos = new Vector3Int((int)mousePos.x,(int)mousePos.y,0);
         Vector3Int mousePosGrid = maps[1].WorldToCell(mousePos);
         mousePosition = mousePosGrid;
-        /*
-        if(Input.GetKeyDown(KeyCode.G)){
-            isPlacing = !isPlacing;
-        }
-        */
-        /*
-        if(isPlacing){
-            if(Input.GetMouseButton(0)){
-            foreach(Vector3 tileposition in tilePositions){
-                if(tileposition == mousePosGrid){
-                    isDuplicate = true;
-                    break;
-                }
-                isDuplicate = false;
-            }
-            if(!isDuplicate){
-                tilePositions[tileIndex] = mousePosGrid;
-                DrawMesh(mousePos);
-                tileAmount++;
-                tileIndex++;
-                Vector3[] temp = new Vector3[tileAmount];
-                tilePositions.CopyTo(temp, 0);
-                tilePositions = temp;
-            }
-          
-            }
-        }
-        */
+        
+        
         //****BUILDING****
         if(build_button.isHotBar && !build_button.isDemolish){    
             //if(Input.GetMouseButton(0)){
@@ -330,7 +304,7 @@ public class tile_manager : MonoBehaviour
                             if(build_button.currentTile != null){
                                 //build_button.currentCR.Craft(inventory.instance);
                                 if(inventory.instance.ItemCount(build_button.currentItem) > 0){
-                                    if(PlaceTile(bottomTileSO, mousePosGrid)){
+                                    if(PlaceTile(bottomTileSO,build_button.currentItem, mousePosGrid)){
                                         
 
                                         if(build_button.currentTile.needsUpdate){
@@ -349,9 +323,9 @@ public class tile_manager : MonoBehaviour
                                 } else {
                                     if(build_button.currentCR != null){
                                         if(build_button.currentCR.CanCraft(inventory.instance)){
-                                            if(PlaceTile(bottomTileSO, mousePosGrid)){
+                                            if(PlaceTile(bottomTileSO,build_button.currentItem, mousePosGrid)){
                                                 
-                                                if(build_button.currentTile.needsUpdate){ 
+                                                if(build_button.currentTile.needsUpdate){
                                                     entityUpdater.tilePositions.Add(mousePosGrid);
                                                     entityUpdater.saveValues.Add(0);
                                                 }
@@ -375,7 +349,7 @@ public class tile_manager : MonoBehaviour
                                     }else{
                                         //No Recipe? just place it, it's probably free
                                         //check if allowed to place on top of
-                                        if(PlaceTile(bottomTileSO, mousePosGrid)){
+                                        if(PlaceTile(bottomTileSO,build_button.currentItem, mousePosGrid)){
                                             if(build_button.currentTile.needsUpdate){ 
                                                 entityUpdater.tilePositions.Add(mousePosGrid);
                                                 entityUpdater.saveValues.Add(0);
@@ -493,9 +467,9 @@ public class tile_manager : MonoBehaviour
         //}
     }
 
-    public bool PlaceTile(_Tile currentTile, Vector3Int tilePosition){
+    public bool PlaceTile(_Tile currentTile, _Item newTile, Vector3Int tilePosition){
         if(currentTile != null){
-            if(currentTile.buildLayer == 0 && build_button.currentTile.buildLayer == 1){
+            if(currentTile.buildLayer == 0 && newTile.tile.buildLayer == 1){
             
             if(inventory.instance.ItemCount(build_button.currentItem) <= 0){
                 if(build_button.currentCR != null){
@@ -503,12 +477,12 @@ public class tile_manager : MonoBehaviour
                 }
             }
             
-            ReplaceTile(tilePosition, build_button.currentTile.tiles[0], maps[1]);
+            ReplaceTile(tilePosition, newTile.tile.tiles[0], maps[1]);
 
-            inventory.instance.RemoveItem(build_button.currentItem);
+            //inventory.instance.RemoveItem(build_button.currentItem);
             return true;
             }
-            if(currentTile.buildLayer == 1 && build_button.currentTile.buildLayer == 2){
+            if(currentTile.buildLayer == 1 && newTile.tile.buildLayer == 2){
 
                 if(inventory.instance.ItemCount(build_button.currentItem) <= 0){
                     if(build_button.currentCR != null){
@@ -516,7 +490,7 @@ public class tile_manager : MonoBehaviour
                     }
                 }
 
-                ReplaceTile(tilePosition, build_button.currentTile.tiles[0], maps[1]);
+                ReplaceTile(tilePosition, newTile.tile.tiles[0], maps[1]);
                 /*
                 if(build_button.currentTile.hasMultipleTiles){
                     for(int i = 0; i < build_button.currentTile.tileParts.Length; i++){
@@ -525,7 +499,7 @@ public class tile_manager : MonoBehaviour
                 }
                 */
 
-                inventory.instance.RemoveItem(build_button.currentItem);
+                //inventory.instance.RemoveItem(build_button.currentItem);
                 return true;
             }
             return false;
