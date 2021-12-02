@@ -50,7 +50,7 @@ public class action_indicator : MonoBehaviour
                 _Tile currentTile = tile_dictionary.GetTileSO(cellPosition, tileManager.maps[1]);
 
                 //check if there already is a breaking or action indicator
-                Collider2D actionCollider = Physics2D.OverlapCircle(transform.position + new Vector3(.5f,.5f,0), .1f, actionMask);
+                Collider2D actionCollider = Physics2D.OverlapCircle(transform.position, .1f, actionMask);
                 if(actionCollider != null){
                     //Debug.Log("found action");
                     //there already is a action or breaking
@@ -80,12 +80,12 @@ public class action_indicator : MonoBehaviour
                     }
                 }
 
-                Collider2D[] entityColliders = Physics2D.OverlapBoxAll(transform.position + new Vector3(.5f, .5f), new Vector2(1,1), 0f, entityMask);
+                Collider2D[] entityColliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1,1), 0f, entityMask);
                 foreach (Collider2D col in entityColliders)
                 {
                     if(col.transform.GetComponent<stats>() != null){
                         //Debug.Log("Damaged");
-                        col.transform.GetComponent<stats>().Damage(damageAmount, 5f,Vector3.Normalize(col.transform.position - (transform.position + new Vector3(.5f, .5f))));
+                        col.transform.GetComponent<stats>().Damage(damageAmount, 5f,Vector3.Normalize(col.transform.position - (transform.position)));
                     }
                 }
 

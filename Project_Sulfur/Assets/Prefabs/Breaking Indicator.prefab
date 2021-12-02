@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28eaa8af462dcb0488d7a2e10fec7139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
   inactiveTime: 600
   healthBar: {fileID: 3400315522010807950}
 --- !u!61 &-3835801596389041701
@@ -109,13 +110,13 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: 0.5}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -202,11 +203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1791090453061367295, guid: 4121d9b0ca96f2a419e40976a99481ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1791090453061367295, guid: 4121d9b0ca96f2a419e40976a99481ea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1791090453061367295, guid: 4121d9b0ca96f2a419e40976a99481ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
