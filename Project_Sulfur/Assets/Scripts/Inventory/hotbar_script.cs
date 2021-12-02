@@ -43,22 +43,24 @@ public class hotbar_script : MonoBehaviour
 
         //Debug.Log("selectedIndex: " + selectedIndex);
         //Debug.Log("lastSelectedIndex: " + lastSelectedIndex);
-
-        selectedItem = itemHotbars[selectedIndex].item;
-        Image itemSlot = itemHotbars[selectedIndex].transform.parent.GetComponent<Image>();
-        if(itemSlot != null){
-            itemSlot.sprite = selectedImage;
-        }
-
-        if(lastSelectedIndex != selectedIndex){
-            //setting last selected items border back
-            Image lastItemSlot = itemHotbars[lastSelectedIndex].transform.parent.GetComponent<Image>();
-            if(lastItemSlot != null){
-                lastItemSlot.sprite = notSelectedImage;
+        if(player_action_animation.animationDone){
+            selectedItem = itemHotbars[selectedIndex].item;
+            Image itemSlot = itemHotbars[selectedIndex].transform.parent.GetComponent<Image>();
+            if(itemSlot != null){
+                itemSlot.sprite = selectedImage;
             }
 
-            lastSelectedIndex = selectedIndex;
+            if(lastSelectedIndex != selectedIndex){
+                //setting last selected items border back
+                Image lastItemSlot = itemHotbars[lastSelectedIndex].transform.parent.GetComponent<Image>();
+                if(lastItemSlot != null){
+                    lastItemSlot.sprite = notSelectedImage;
+                }
+
+                lastSelectedIndex = selectedIndex;
+            }
         }
+        
         
 
         

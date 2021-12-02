@@ -8,6 +8,7 @@ public class _Item : ScriptableObject
 {
     public new string name;
     public Sprite icon;
+    public Sprite placeSprite;
 
     public _Tile tile;
 

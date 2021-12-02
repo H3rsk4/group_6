@@ -17,3 +17,8 @@ MonoBehaviour:
   tile: {fileID: 11400000, guid: 86154b51cb646d3469116ea01a1d0cc2, type: 2}
   craftingRecipe: {fileID: 0}
   pickUpDistance: 0.5
+  baseDamage: 0
+  activateSpeed: 10
+  activeDuration: 0
+  axeToughness: 0
+  pickToughness: 0

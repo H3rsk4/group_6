@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: cliff
   icon: {fileID: 21300000, guid: 62787cab7134d18498c1d25288730d83, type: 3}
+  placeSprite: {fileID: -8407765432104513921, guid: 9f151c5afe587d547b5eff92604b02c5, type: 3}
   tile: {fileID: 11400000, guid: 507def2f5f9c4e14ba2fe638e6a904ef, type: 2}
-  craftingRecipe: {fileID: 11400000, guid: 2cd6770b6f0bab1428b09e784e33829f, type: 2}
+  craftingRecipe: {fileID: 0}
   pickUpDistance: 0.5
+  baseDamage: 0
+  activateSpeed: 5
+  activeDuration: 0
+  axeToughness: 0
+  pickToughness: 0

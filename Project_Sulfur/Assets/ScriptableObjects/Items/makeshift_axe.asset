@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: makeshift_axe
   m_EditorClassIdentifier: 
   name: makeshift_axe
-  icon: {fileID: 21300000, guid: 5976d9cabfc5e0049bb25bb9bee77979, type: 3}
+  icon: {fileID: 21300000, guid: d4cb8c7b987f7b74b8849ae5f2d13ae7, type: 3}
+  placeSprite: {fileID: 4819992666957728501, guid: 4422079b738f8e542a212e48e1bf591e, type: 3}
   tile: {fileID: 0}
   craftingRecipe: {fileID: 0}
   pickUpDistance: 0.5
   baseDamage: 2
-  activateSpeed: 1
-  activeDuration: 0
+  activateSpeed: 3
+  activeDuration: 1
   axeToughness: 0
   pickToughness: 0

@@ -44,7 +44,6 @@ public class action_indicator : MonoBehaviour
         }
         
         if(isSet && tileManager != null){
-            if(activateSpeed < 0){
                 //activate: hit or break something
 
                 Vector3Int cellPosition = tileManager.maps[1].WorldToCell(transform.position);
@@ -95,9 +94,7 @@ public class action_indicator : MonoBehaviour
                 if(activeDuration < 0){
                     Destroy(this.gameObject);
                 }
-            }else{
-                activateSpeed -= Time.deltaTime;
-            }
+            
         }
     }
 
@@ -107,7 +104,7 @@ public class action_indicator : MonoBehaviour
 
     void OnDrawGizmos(){
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position + new Vector3(.5f, .5f), new Vector2(1,1));
+        Gizmos.DrawWireCube(transform.position, new Vector2(1,1));
 
     }
 }

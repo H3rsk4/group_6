@@ -20,11 +20,13 @@ public class player_use_item : MonoBehaviour
 
     public GameObject actionPrefab;
     public LayerMask actionMask;
+
+    private player_action_animation playerActionAnimation;
     
 
     void Start()
     {
-        
+        playerActionAnimation = GetComponent<player_action_animation>();
     }
 
     // Update is called once per frame
@@ -35,24 +37,31 @@ public class player_use_item : MonoBehaviour
         mousePos.z = 10;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
+        
         //calculating floored mouse position
-        flooredMousePos = new Vector3Int((int)Mathf.Floor(mousePos.x), (int)Mathf.Floor(mousePos.y), 0);
+        //flooredMousePos = new Vector3Int((int)Mathf.Floor(mousePos.x), (int)Mathf.Floor(mousePos.y), 0);
+        
 
-
+        /*
         //getting correct tilemanager for that mouse position
         Vector3 currentFlooredPos = new Vector3(Mathf.Round(mousePos.x / 10 + .01f) * 10,Mathf.Round(mousePos.y / 10 + .01f)  * 10,0);
         if(flooredPos != currentFlooredPos){
             flooredPos = currentFlooredPos;
             GetTileManager();
         }
+        */
 
+        /*
         if(currentTileManager != null){
             //calculating cell position
             cellMousePosition = currentTileManager.maps[1].WorldToCell(mousePos);
         }
+        */
 
         if(Input.GetMouseButton(0)){
-            if(hotbar.selectedItem != null){
+            if(hotbar.selectedItem != null && player_action_animation.animationDone){
+                playerActionAnimation.ActionAnimation(mousePos);
+                /*
                 if(hotbar.selectedItem.tile != null){
                     //placing tile
                     Building();
@@ -60,19 +69,39 @@ public class player_use_item : MonoBehaviour
                     //using something else
                     Attacking();
                 }
+                */
             }
         }
 
+
+
     }
 
-    private void GetTileManager(){
-        Collider2D managerCollider = Physics2D.OverlapCircle(flooredPos, 1, chunkMask);
+    private void GetTileManager(Vector3 _position){
+        Vector3 currentFlooredPos = new Vector3(Mathf.Round(_position.x / 10 + .01f) * 10,Mathf.Round(_position.y / 10 + .01f)  * 10,0);
+        Collider2D managerCollider = Physics2D.OverlapCircle(currentFlooredPos, 1, chunkMask);
         if(managerCollider != null){
             currentTileManager = managerCollider.transform.GetComponent<tile_manager>();
         }
     }
 
-    private void Building(){
+    private void GetCellPosition(Vector3 _position){
+        if(currentTileManager != null){
+            cellMousePosition = currentTileManager.maps[1].WorldToCell(_position);
+        }
+    }
+
+    private void GetFlooredPosition(Vector3 _position){
+        //calculating floored mouse position
+        flooredMousePos = new Vector3Int((int)Mathf.Floor(_position.x), (int)Mathf.Floor(_position.y), 0);
+    }
+
+
+
+    public void Building(Vector3 currentPos){
+        GetTileManager(currentPos);
+        GetCellPosition(currentPos);
+
         _Tile currentTileSO = tile_dictionary.GetTileSO(cellMousePosition, currentTileManager.maps[1]);
         _Tile bottomTileSO = tile_dictionary.GetTileSO(cellMousePosition, currentTileManager.maps[0]);
 
@@ -90,21 +119,27 @@ public class player_use_item : MonoBehaviour
         }
     }
 
-    private void Attacking(){
+    public void Attacking(Vector3 currentPos){
+        GetTileManager(currentPos);
+        //GetCellPosition(currentPos);
+        GetFlooredPosition(currentPos);
+
         Collider2D actionCollider = Physics2D.OverlapCircle(flooredMousePos + new Vector3(.5f,.5f,0), .1f, actionMask);
         if(actionCollider == null){
-            GameObject newActionPrefab = Instantiate(actionPrefab, flooredMousePos, Quaternion.identity);
+            GameObject newActionPrefab = Instantiate(actionPrefab, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
             newActionPrefab.GetComponent<action_indicator>().SetupValues(hotbar.selectedItem.baseDamage, hotbar.selectedItem.activateSpeed, hotbar.selectedItem.activeDuration);
         }else if(actionCollider.transform.GetComponent<action_indicator>() == null){
-            GameObject newActionPrefab = Instantiate(actionPrefab, flooredMousePos, Quaternion.identity);
+            GameObject newActionPrefab = Instantiate(actionPrefab, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
             newActionPrefab.GetComponent<action_indicator>().SetupValues(hotbar.selectedItem.baseDamage, hotbar.selectedItem.activateSpeed, hotbar.selectedItem.activeDuration);
             
         }
     }
 
-    public void OnDrawGizmosSelected(){
+    public void OnDrawGizmos(){
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(flooredPos,new Vector3(1,1,0));
     
+        //Gizmos.color = Color.yellow;
+        //Gizmos.DrawWireCube(flooredMousePos,new Vector3(.1f,.1f,0));
     }
 }

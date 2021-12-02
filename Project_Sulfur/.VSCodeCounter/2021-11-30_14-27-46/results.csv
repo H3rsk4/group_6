@@ -1,0 +1,74 @@
+"filename", "language", "C#", "ShaderLab", "comment", "blank", "total"
+"e:\GitProjects\group_6\Project_Sulfur\Assets\GGEZ\PerfectPixelCamera\Scripts\PerfectPixelCamera.cs", "C#", 74, 0, 40, 25, 139
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Actions\action_indicator.cs", "C#", 69, 0, 14, 28, 111
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Actions\breaking_indicator.cs", "C#", 41, 0, 3, 9, 53
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Actions\spawn_action_indicator.cs", "C#", 30, 0, 2, 10, 42
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Camera\camera_follow.cs", "C#", 18, 0, 3, 5, 26
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Enemies\basic_gob.cs", "C#", 38, 0, 10, 10, 58
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Inventory\IItemContainer.cs", "C#", 8, 0, 0, 2, 10
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Inventory\build_button.cs", "C#", 113, 0, 11, 46, 170
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Inventory\drop_down.cs", "C#", 18, 0, 5, 6, 29
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Inventory\hotbar_script.cs", "C#", 52, 0, 5, 12, 69
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Inventory\inventory.cs", "C#", 81, 0, 4, 11, 96
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Inventory\item_drag.cs", "C#", 29, 0, 0, 6, 35
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Inventory\item_hotbar.cs", "C#", 70, 0, 14, 21, 105
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Inventory\item_script.cs", "C#", 68, 0, 34, 20, 122
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Main Menu\MainMenu.cs", "C#", 19, 0, 0, 6, 25
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\PauseMenu.cs", "C#", 36, 0, 0, 8, 44
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\change_tile_color.cs", "C#", 56, 0, 1, 18, 75
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\keyboard_controls.cs", "C#", 80, 0, 28, 24, 132
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\mouse_touch_controller.cs", "C#", 92, 0, 6, 25, 123
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\player.cs", "C#", 11, 0, 0, 2, 13
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\player_action_animation.cs", "C#", 52, 0, 4, 22, 78
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\player_death.cs", "C#", 55, 0, 2, 15, 72
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\player_shader.cs", "C#", 10, 0, 1, 3, 14
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\player_stats.cs", "C#", 10, 0, 1, 2, 13
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\player_use_item.cs", "C#", 76, 0, 35, 35, 146
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Player\ui_joystick.cs", "C#", 104, 0, 37, 39, 180
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\Biomes\_Biome.cs", "C#", 12, 0, 0, 4, 16
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\Tilebase.cs", "C#", 7, 0, 0, 2, 9
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\_CraftingRecipe.cs", "C#", 36, 0, 35, 8, 79
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\_Explosives.cs", "C#", 70, 0, 43, 28, 141
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\_Item.cs", "C#", 18, 0, 2, 11, 31
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\_Miner.cs", "C#", 10, 0, 70, 4, 84
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\_Searchable.cs", "C#", 13, 0, 11, 4, 28
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\_Tile.cs", "C#", 25, 0, 3, 13, 41
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\_Transporter.cs", "C#", 11, 0, 132, 6, 149
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\_Turret.cs", "C#", 13, 0, 23, 4, 40
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\SO Scripts\_Vein.cs", "C#", 10, 0, 1, 4, 15
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\AnimatedTile.cs", "C#", 78, 0, 35, 15, 128
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\basic_world_generation_script.cs", "C#", 70, 0, 19, 23, 112
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\biome_noise.cs", "C#", 12, 0, 2, 5, 19
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\check_chunks.cs", "C#", 80, 0, 20, 26, 126
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\check_tiles_script.cs", "C#", 27, 0, 3, 7, 37
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\chunk.cs", "C#", 10, 0, 0, 3, 13
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\chunk_inventory_manager.cs", "C#", 51, 0, 22, 18, 91
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\endless_chunk_spawner.cs", "C#", 95, 0, 50, 34, 179
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\entity_updater.cs", "C#", 49, 0, 3, 19, 71
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\get_my_tile_manager.cs", "C#", 33, 0, 1, 7, 41
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\perlin_noise_script.cs", "C#", 134, 0, 14, 51, 199
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\perlin_noise_script_mod_01.cs", "C#", 104, 0, 16, 55, 175
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\test_class_spawn.cs", "C#", 18, 0, 3, 7, 28
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\tile_dictionary.cs", "C#", 26, 0, 0, 7, 33
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\tile_manager.cs", "C#", 205, 0, 259, 99, 563
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\Tiles\voronoi_noise.cs", "C#", 43, 0, 9, 16, 68
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\UI\container_script.cs", "C#", 61, 0, 7, 21, 89
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\UI\healthbar_script.cs", "C#", 19, 0, 0, 7, 26
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\UI\item_container.cs", "C#", 57, 0, 4, 7, 68
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\UI\scoreboard_handler_script.cs", "C#", 31, 0, 8, 14, 53
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\UI\ui_manager.cs", "C#", 21, 0, 0, 7, 28
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\audio_pitch_randomizer.cs", "C#", 14, 0, 2, 4, 20
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\destroy_self.cs", "C#", 13, 0, 1, 3, 17
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\explosion_damager.cs", "C#", 18, 0, 8, 7, 33
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\follow_mouse_grid.cs", "C#", 14, 0, 1, 3, 18
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\follow_target_grid_nomesh.cs", "C#", 18, 0, 2, 7, 27
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\follow_target_nogrid.cs", "C#", 11, 0, 0, 3, 14
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\pickup_script.cs", "C#", 42, 0, 6, 9, 57
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\projectile_script.cs", "C#", 39, 0, 9, 12, 60
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\shake_camera.cs", "C#", 25, 0, 3, 8, 36
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\stats.cs", "C#", 59, 0, 3, 16, 78
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\tick_system.cs", "C#", 18, 0, 13, 6, 37
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Scripts\tnt_script.cs", "C#", 13, 0, 2, 6, 21
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Shaders\DissolveDistance.shader", "ShaderLab", 0, 40, 7, 20, 67
+"e:\GitProjects\group_6\Project_Sulfur\Assets\Shaders\test.shader", "ShaderLab", 0, 66, 6, 8, 80
+"Total", "-", 3043, 106, 1118, 1058, 5325
