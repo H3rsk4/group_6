@@ -30,6 +30,8 @@ public class keyboard_controls : MonoBehaviour
     const string RUN_UP = "run_up";
 
 
+
+
     public float speed;
     public Vector2 input;
 
@@ -67,6 +69,57 @@ public class keyboard_controls : MonoBehaviour
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
         //input.Normalize();
+
+        if(input.x == 0 && input.y == 0){
+            //idle
+            switch(lastInput.x){
+                case -1:
+                    switch(lastInput.y){
+                        case -1:
+                            //left down
+                            ChangeAnimationState(IDLE_LEFT_DOWN);
+                            break;
+                        case 0:
+                            //left
+                            ChangeAnimationState(IDLE_LEFT);
+                            break;
+                        case 1:
+                            //left up
+                            ChangeAnimationState(IDLE_LEFT_UP);
+                            break;
+                    }
+                    break;
+                case 0:
+                    switch(lastInput.y){
+                        case -1:
+                            //down
+                            ChangeAnimationState(IDLE_DOWN);
+                            break;
+                        case 1:
+                            //up
+                            ChangeAnimationState(IDLE_UP);
+                            break;
+                    }
+                    break;
+                case 1:
+                    switch(lastInput.y){
+                        case -1:
+                            //right down
+                            ChangeAnimationState(IDLE_RIGHT_DOWN);
+                            break;
+                        case 0:
+                            //right
+                            ChangeAnimationState(IDLE_RIGHT);
+                            break;
+                        case 1:
+                            //right up
+                            ChangeAnimationState(IDLE_RIGHT_UP);
+                            break;
+                    }
+                    break;
+            }
+                
+        }
 
         if(input.x == 1 && input.y == 0){
             //right
@@ -142,56 +195,7 @@ public class keyboard_controls : MonoBehaviour
             lastInput = new Vector2(input.x, input.y);
         }
 
-        if(input.x == 0 && input.y == 0){
-            //idle
-            switch(lastInput.x){
-                case -1:
-                    switch(lastInput.y){
-                        case -1:
-                            //left down
-                            ChangeAnimationState(IDLE_LEFT_DOWN);
-                            break;
-                        case 0:
-                            //left
-                            ChangeAnimationState(IDLE_LEFT);
-                            break;
-                        case 1:
-                            //left up
-                            ChangeAnimationState(IDLE_LEFT_UP);
-                            break;
-                    }
-                    break;
-                case 0:
-                    switch(lastInput.y){
-                        case -1:
-                            //down
-                            ChangeAnimationState(IDLE_DOWN);
-                            break;
-                        case 1:
-                            //up
-                            ChangeAnimationState(IDLE_UP);
-                            break;
-                    }
-                    break;
-                case 1:
-                    switch(lastInput.y){
-                        case -1:
-                            //right down
-                            ChangeAnimationState(IDLE_RIGHT_DOWN);
-                            break;
-                        case 0:
-                            //right
-                            ChangeAnimationState(IDLE_RIGHT);
-                            break;
-                        case 1:
-                            //right up
-                            ChangeAnimationState(IDLE_RIGHT_UP);
-                            break;
-                    }
-                    break;
-            }
-                
-        }
+        
         
         /*
         leftRay = new Vector3(Mathf.Floor(leftRay.x),Mathf.Floor(leftRay.y),Mathf.Floor(leftRay.z));

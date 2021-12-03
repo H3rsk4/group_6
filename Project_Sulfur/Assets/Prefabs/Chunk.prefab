@@ -625,4 +625,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motherInventory:
-    childInventories: []
+    childInventories:
+    - containers:
+      - item: {fileID: 0}
+        Amount: 0
+      - item: {fileID: 0}
+        Amount: 0
+      tileIndex: 0
+    - containers:
+      - item: {fileID: 0}
+        Amount: 0
+      - item: {fileID: 0}
+        Amount: 0
+      tileIndex: 0

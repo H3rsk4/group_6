@@ -467,6 +467,8 @@ public class tile_manager : MonoBehaviour
         //}
     }
 
+
+
     public bool PlaceTile(_Tile currentTile, _Item newTile, Vector3Int tilePosition){
         if(currentTile != null){
             if(currentTile.buildLayer == 0 && newTile.tile.buildLayer == 1){
@@ -507,6 +509,19 @@ public class tile_manager : MonoBehaviour
             return false;
         }
         
+    }
+
+    public bool CheckTileLayer(_Tile bottomTile, _Item newTile){
+        if(bottomTile != null){
+            if(bottomTile.buildLayer == 0 && newTile.tile.buildLayer == 1){
+                return true;
+            }
+            if(bottomTile.buildLayer == 1 && newTile.tile.buildLayer == 2){
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     /*

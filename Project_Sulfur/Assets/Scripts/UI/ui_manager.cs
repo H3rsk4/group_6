@@ -6,9 +6,10 @@ public class ui_manager : MonoBehaviour
 {
     public static bool isInventoryOn = false;
     public GameObject inventory;
+    public GameObject craftingUI;
     void Start()
     {
-        
+        SetInventoryStatus(isInventoryOn);
     }
 
     
@@ -23,5 +24,6 @@ public class ui_manager : MonoBehaviour
 
     private void SetInventoryStatus(bool status){
         inventory.SetActive(status);
+        craftingUI.SetActive(status);
     }
 }

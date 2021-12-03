@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class player_use_item : MonoBehaviour
 {
@@ -60,16 +61,40 @@ public class player_use_item : MonoBehaviour
 
         if(Input.GetMouseButton(0)){
             if(hotbar.selectedItem != null && player_action_animation.animationDone){
-                playerActionAnimation.ActionAnimation(mousePos);
-                /*
-                if(hotbar.selectedItem.tile != null){
-                    //placing tile
-                    Building();
-                }else{
-                    //using something else
-                    Attacking();
+                if(!EventSystem.current.IsPointerOverGameObject() && !item_drag.isDragging){
+                    if(hotbar.selectedItem.tile != null){
+                        //check for building
+                        GetTileManager(mousePos);
+                        GetCellPosition(mousePos);
+
+                        _Tile currentTileSO = tile_dictionary.GetTileSO(cellMousePosition, currentTileManager.maps[1]);
+                        _Tile bottomTileSO = tile_dictionary.GetTileSO(cellMousePosition, currentTileManager.maps[0]);
+
+                        // no tile in the way?
+                        if(currentTileSO == null){
+                            
+                            // if layer checks out
+                            if(currentTileManager.CheckTileLayer(bottomTileSO,hotbar.selectedItem)){
+                                playerActionAnimation.ActionAnimation(mousePos);
+                            }
+                        }
+
+                    }else{
+                        //check for attacking
+                        playerActionAnimation.ActionAnimation(mousePos);
+                    }
+                    
+                    /*
+                    if(hotbar.selectedItem.tile != null){
+                        //placing tile
+                        Building();
+                    }else{
+                        //using something else
+                        Attacking();
+                    }
+                    */
                 }
-                */
+                
             }
         }
 
