@@ -76,6 +76,7 @@ public class inventory : MonoBehaviour, IItemContainer
         {
             if(itemScripts[i].item == null){
                 itemScripts[i].item = item;
+                itemScripts[i].currentAmount++;
                 return true;
             }
         }

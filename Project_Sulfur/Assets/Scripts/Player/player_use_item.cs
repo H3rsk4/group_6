@@ -98,6 +98,23 @@ public class player_use_item : MonoBehaviour
             }
         }
 
+        if(Input.GetMouseButton(1)){
+            if(!EventSystem.current.IsPointerOverGameObject() && !item_drag.isDragging){
+                GetTileManager(mousePos);
+                GetCellPosition(mousePos);
+
+                _Tile currentTileSO = tile_dictionary.GetTileSO(cellMousePosition, currentTileManager.maps[1]);
+                _Tile bottomTileSO = tile_dictionary.GetTileSO(cellMousePosition, currentTileManager.maps[0]);
+
+                if(currentTileSO != null){
+                    if(currentTileSO.isInteractable){
+                        currentTileManager.ReplaceTile(cellMousePosition, null, currentTileManager.maps[1]);
+                    }
+                }
+                
+            }
+        }
+
 
 
     }

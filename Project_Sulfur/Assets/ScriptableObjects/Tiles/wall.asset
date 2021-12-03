@@ -19,13 +19,17 @@ MonoBehaviour:
   needsUpdate: 0
   isDemolishable: 1
   structureHealth: 100
+  itemDrops:
+  - item: {fileID: 11400000, guid: e9592feb8b67b2849a3f83582704d1dc, type: 2}
+    Amount: 1
+  - item: {fileID: 11400000, guid: e9592feb8b67b2849a3f83582704d1dc, type: 2}
+    Amount: 1
+  - item: {fileID: 11400000, guid: e9592feb8b67b2849a3f83582704d1dc, type: 2}
+    Amount: 1
   demolishItem: {fileID: 11400000, guid: 62cd1643717f7f842b0487521d3b6092, type: 2}
   isInteractable: 0
   hasContainer: 0
   containerSize: 0
-  hasMultipleSprites: 0
-  xPos: 2
-  yPos: 7
   tiles:
   - {fileID: 11400000, guid: 615931c6ec90c2241bc085bf05b1853c, type: 2}
   hasMultipleTiles: 1

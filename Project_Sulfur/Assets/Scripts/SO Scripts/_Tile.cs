@@ -1,7 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+
+ [Serializable]
+public struct ItemDrop{
+    public _Item item;
+    [Range(1,999)]
+    public int Amount;
+}
 
 [CreateAssetMenu(fileName = "Tile", menuName = "ScriptableObjects/Tiles/Tile")]
 public class _Tile : Tilebase
@@ -15,6 +23,9 @@ public class _Tile : Tilebase
     public bool needsUpdate;
     public bool isDemolishable;
     public int structureHealth;
+
+    public ItemDrop[] itemDrops;
+    
     public _Item demolishItem;
     public bool isInteractable;
     public bool hasContainer;

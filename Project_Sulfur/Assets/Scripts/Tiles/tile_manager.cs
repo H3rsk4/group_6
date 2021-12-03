@@ -49,6 +49,8 @@ public class tile_manager : MonoBehaviour
     public Vector3 trueCenter;
 
     private basic_world_generation_script basicWorldGen;
+
+    public GameObject droppedItem;
     void Start()
     {
         //map = GetComponent<Tilemap>();
@@ -81,12 +83,20 @@ public class tile_manager : MonoBehaviour
     public void ReplaceTile(Vector3Int tilePosition, TileBase tile, Tilemap _map){
         
         _Tile tileSO = tile_dictionary.GetTileSO(tilePosition, _map);
+        Vector3 worldPos = _map.CellToWorld(tilePosition);
 
         if(tileSO != null){
             if(tileSO.hasMultipleTiles){
                 //destroy tileparts
                 for(int i = 0; i < tileSO.tileParts.Length; i++){
                     maps[2].SetTile(tilePosition + tileSO.tilePartPositions[i], null);
+                }
+            }
+
+            if(tileSO.itemDrops.Length != 0){
+                for(int i = 0; i < tileSO.itemDrops.Length; i++){
+                    GameObject newDroppedItem = Instantiate(droppedItem, worldPos + new Vector3(.5f,.5f), Quaternion.identity);
+                    newDroppedItem.GetComponent<pickup_script>().SetupItem(tileSO.itemDrops[i].item, tileSO.itemDrops[i].Amount);
                 }
             }
         }

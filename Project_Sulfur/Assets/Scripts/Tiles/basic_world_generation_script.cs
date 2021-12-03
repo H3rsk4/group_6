@@ -24,6 +24,10 @@ public class basic_world_generation_script : MonoBehaviour
     public TileBase tree;
     public TileBase sand;
     public TileBase wall;
+    
+    public TileBase pebbles;
+    public TileBase twigs;
+    public TileBase vines;
     //public _Tile ground;
     public _Tile foliage;
 
@@ -76,7 +80,26 @@ public class basic_world_generation_script : MonoBehaviour
                             int chance = Random.Range(0,10);
                             if(chance < 1){
                                 //tree
-                                tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
+                                int rollchange = Random.Range(0,4);
+                                switch(rollchange){
+                                    case 0:
+                                        //tree
+                                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
+                                        break;
+                                    case 1:
+                                        //pebbles
+                                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), pebbles, tileManager.maps[1]);
+                                        break;
+                                    case 2:
+                                        //twigs
+                                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), twigs, tileManager.maps[1]);
+                                        break;
+                                    case 3:
+                                        //vines
+                                        tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), vines, tileManager.maps[1]);
+                                        break;
+                                }
+                                //tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), tree, tileManager.maps[1]);
                             }
                         }
                         //generate ground
