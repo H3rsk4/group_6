@@ -24,6 +24,7 @@ public class player_use_item : MonoBehaviour
 
     private player_action_animation playerActionAnimation;
     
+    public GameObject dustParticles;
 
     void Start()
     {
@@ -79,7 +80,7 @@ public class player_use_item : MonoBehaviour
                             }
                         }
 
-                    }else{
+                    }else if(hotbar.selectedItem.hasAction){
                         //check for attacking
                         playerActionAnimation.ActionAnimation(mousePos);
                     }
@@ -143,6 +144,7 @@ public class player_use_item : MonoBehaviour
     public void Building(Vector3 currentPos){
         GetTileManager(currentPos);
         GetCellPosition(currentPos);
+        GetFlooredPosition(currentPos);
 
         _Tile currentTileSO = tile_dictionary.GetTileSO(cellMousePosition, currentTileManager.maps[1]);
         _Tile bottomTileSO = tile_dictionary.GetTileSO(cellMousePosition, currentTileManager.maps[0]);
@@ -157,6 +159,8 @@ public class player_use_item : MonoBehaviour
                     currentTileManager.entityUpdater.tilePositions.Add(cellMousePosition);
                     currentTileManager.entityUpdater.saveValues.Add(0);
                 }
+
+                Instantiate(dustParticles, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
             }
         }
     }
@@ -170,9 +174,11 @@ public class player_use_item : MonoBehaviour
         if(actionCollider == null){
             GameObject newActionPrefab = Instantiate(actionPrefab, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
             newActionPrefab.GetComponent<action_indicator>().SetupValues(hotbar.selectedItem.baseDamage, hotbar.selectedItem.activateSpeed, hotbar.selectedItem.activeDuration);
+            Instantiate(dustParticles, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
         }else if(actionCollider.transform.GetComponent<action_indicator>() == null){
             GameObject newActionPrefab = Instantiate(actionPrefab, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
             newActionPrefab.GetComponent<action_indicator>().SetupValues(hotbar.selectedItem.baseDamage, hotbar.selectedItem.activateSpeed, hotbar.selectedItem.activeDuration);
+            Instantiate(dustParticles, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
             
         }
     }

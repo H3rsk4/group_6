@@ -16,6 +16,8 @@ public class _Item : ScriptableObject
 
     public float pickUpDistance = .5f;
 
+    public bool hasAction;
+
     public int baseDamage;
 
     //action indicator

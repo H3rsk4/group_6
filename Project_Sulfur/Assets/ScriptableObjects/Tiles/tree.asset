@@ -19,6 +19,11 @@ MonoBehaviour:
   needsUpdate: 0
   isDemolishable: 1
   structureHealth: 500
+  itemDrops:
+  - item: {fileID: 11400000, guid: d3a21f30e50cef64d871e8d1802d8ed8, type: 2}
+    Amount: 1
+  - item: {fileID: 11400000, guid: d3a21f30e50cef64d871e8d1802d8ed8, type: 2}
+    Amount: 1
   demolishItem: {fileID: 0}
   isInteractable: 0
   hasContainer: 0

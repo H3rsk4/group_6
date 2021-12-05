@@ -38,9 +38,15 @@ public class item_script : MonoBehaviour/*, IPointerClickHandler*/, IDragHandler
         }
 
         if(textAmount != null){
-            if(int.Parse(textAmount.text) != currentAmount){
-                textAmount.text = currentAmount.ToString();
+            if(currentAmount <= 1){
+                textAmount.enabled = false;
+            }else{
+                textAmount.enabled = true;
+                if(int.Parse(textAmount.text) != currentAmount){
+                    textAmount.text = currentAmount.ToString();
+                }
             }
+            
         }
     }
 
@@ -77,6 +83,7 @@ public class item_script : MonoBehaviour/*, IPointerClickHandler*/, IDragHandler
             item_drag.isDragging = true;
                 if(item_drag.isDragging){
                     item_drag.draggedItem = item;
+                    item_drag.currentAmount = currentAmount;
                     item_drag.itemDrag.position = Input.mousePosition;
                 }
             //}
@@ -100,14 +107,34 @@ public class item_script : MonoBehaviour/*, IPointerClickHandler*/, IDragHandler
             item_drag.isDragging = false;
             if(!item_drag.isDragging){
                 item = item_drag.draggedItem;
+                currentAmount = item_drag.currentAmount;
                 //item_drag.dragItem.transform.position = Input.mousePosition;
                 item_script iventoryItem = data.pointerDrag.GetComponent<item_script>();
                 item_hotbar hotbarItem = data.pointerDrag.GetComponent<item_hotbar>();
 
                 if(iventoryItem != null){
                     iventoryItem.item = null;
+                    iventoryItem.currentAmount = 0;
                 }else{
                     hotbarItem.item = null;
+                    hotbarItem.currentAmount = 0;
+                    hotbarItem.hotbarScript.SetSelectedItem();
+                }
+            }
+        }else if(item == item_drag.draggedItem){
+            item_drag.isDragging = false;
+            if(!item_drag.isDragging){
+                currentAmount = currentAmount + item_drag.currentAmount;
+                //item_drag.dragItem.transform.position = Input.mousePosition;
+                item_script iventoryItem = data.pointerDrag.GetComponent<item_script>();
+                item_hotbar hotbarItem = data.pointerDrag.GetComponent<item_hotbar>();
+
+                if(iventoryItem != null){
+                    iventoryItem.item = null;
+                    iventoryItem.currentAmount = 0;
+                }else{
+                    hotbarItem.item = null;
+                    hotbarItem.currentAmount = 0;
                     hotbarItem.hotbarScript.SetSelectedItem();
                 }
             }

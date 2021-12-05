@@ -18,6 +18,7 @@ MonoBehaviour:
   tile: {fileID: 0}
   craftingRecipe: {fileID: 0}
   pickUpDistance: 0.5
+  hasAction: 1
   baseDamage: 2
   activateSpeed: 3
   activeDuration: 0

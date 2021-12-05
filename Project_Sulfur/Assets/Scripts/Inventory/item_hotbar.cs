@@ -8,6 +8,9 @@ public class item_hotbar : MonoBehaviour, IPointerClickHandler, IDropHandler, ID
 {
     public _Item item;
 
+    public int currentAmount = 0;
+    public Text textAmount;
+
     private Image image;
 
     public Sprite emptyIcon;
@@ -19,6 +22,7 @@ public class item_hotbar : MonoBehaviour, IPointerClickHandler, IDropHandler, ID
     void Start()
     {
         image = GetComponent<Image>();
+        textAmount = transform.parent.GetComponentInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -30,6 +34,18 @@ public class item_hotbar : MonoBehaviour, IPointerClickHandler, IDropHandler, ID
             }
         }else{
             image.sprite = emptyIcon;
+        }
+
+        if(textAmount != null){
+            if(currentAmount <= 1){
+                textAmount.enabled = false;
+            }else{
+                textAmount.enabled = true;
+                if(int.Parse(textAmount.text) != currentAmount){
+                    textAmount.text = currentAmount.ToString();
+                }
+            }
+            
         }
     }
 
@@ -59,14 +75,36 @@ public class item_hotbar : MonoBehaviour, IPointerClickHandler, IDropHandler, ID
             item_drag.isDragging = false;
             if(!item_drag.isDragging){
                 item = item_drag.draggedItem;
+                currentAmount = item_drag.currentAmount;
                 //item_drag.dragItem.transform.position = Input.mousePosition;
                 item_script iventoryItem = data.pointerDrag.GetComponent<item_script>();
                 item_hotbar hotbarItem = data.pointerDrag.GetComponent<item_hotbar>();
 
                 if(iventoryItem != null){
                     iventoryItem.item = null;
+                    iventoryItem.currentAmount = 0;
                 }else{
                     hotbarItem.item = null;
+                    hotbarItem.currentAmount = 0;
+                }
+                hotbarScript.SetSelectedItem();
+            }
+        }else if(item == item_drag.draggedItem){
+            //sum same items
+            item_drag.isDragging = false;
+            if(!item_drag.isDragging){
+                //item = item_drag.draggedItem;
+                currentAmount = currentAmount + item_drag.currentAmount;
+                //item_drag.dragItem.transform.position = Input.mousePosition;
+                item_script iventoryItem = data.pointerDrag.GetComponent<item_script>();
+                item_hotbar hotbarItem = data.pointerDrag.GetComponent<item_hotbar>();
+
+                if(iventoryItem != null){
+                    iventoryItem.item = null;
+                    iventoryItem.currentAmount = 0;
+                }else{
+                    hotbarItem.item = null;
+                    hotbarItem.currentAmount = 0;
                 }
                 hotbarScript.SetSelectedItem();
             }
@@ -82,6 +120,7 @@ public class item_hotbar : MonoBehaviour, IPointerClickHandler, IDropHandler, ID
                 item_drag.isDragging = true;
                 if(item_drag.isDragging){
                     item_drag.draggedItem = item;
+                    item_drag.currentAmount = currentAmount;
                     item_drag.itemDrag.position = Input.mousePosition;
                 }
             }
