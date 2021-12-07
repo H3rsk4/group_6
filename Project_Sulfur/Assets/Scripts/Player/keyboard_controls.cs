@@ -54,23 +54,42 @@ public class keyboard_controls : MonoBehaviour
 
     private Vector2 lastInput = new Vector2(0,-1);
 
+    private Vector3 targetPosition;
+    private Vector3 velocity = Vector3.zero;
+    public float smoothTime = 0.3f;
+
+    private player_stats playerStats;
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         rays[0] = leftRay;
         rays[1] = centerRay;
         rays[2] = rightRay;
+
+        playerStats = GetComponent<player_stats>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
-
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
+        if(!playerStats.isDead){
+            input.x = Input.GetAxisRaw("Horizontal");
+            input.y = Input.GetAxisRaw("Vertical");
+            spriteRenderer.enabled = true;
+        }else{
+            input.x = 0;
+            input.y = 0;
+            spriteRenderer.enabled = false;
+        }
+        
         //input.Normalize();
 
-        if(input.x == 0 && input.y == 0){
+        targetPosition = transform.position + (Vector3)(input.normalized * speed);
+
+        if(input.x == 0 && input.y == 0 && !playerStats.isDead){
             //idle
             switch(lastInput.x){
                 case -1:
@@ -121,7 +140,7 @@ public class keyboard_controls : MonoBehaviour
                 
         }
 
-        if(input.x == 1 && input.y == 0){
+        if(input.x == 1 && input.y == 0 && !playerStats.isDead){
             //right
             centerRay = transform.position + right;
             rightRay = transform.position + downright;
@@ -219,8 +238,18 @@ public class keyboard_controls : MonoBehaviour
         
     }
 
+    private float GetAnimationFrame(){
+        float frameTime;
+        frameTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        return frameTime;
+    }
+
     void FixedUpdate(){
-        transform.Translate(input * speed * Time.deltaTime);
+        //transform.Translate(input.normalized * speed * Time.deltaTime);
+        //if(!player_stats.isDead){
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        //}
+        
     }
 
     void ChangeAnimationState(string newState){
@@ -228,9 +257,11 @@ public class keyboard_controls : MonoBehaviour
         if(currentState == newState){
             return;
         }
+        float frameTime = GetAnimationFrame();
 
         //play the animation
-        animator.Play(newState);
+        animator.Play(newState, 0, frameTime);
+
 
         //reassign the current state
         currentState = newState;

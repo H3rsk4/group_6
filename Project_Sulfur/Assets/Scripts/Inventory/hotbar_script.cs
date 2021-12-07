@@ -12,6 +12,7 @@ public class hotbar_script : MonoBehaviour
     public int selectedIndex = 0;
     public int lastSelectedIndex = 1;
 
+
     void Start()
     {
         itemHotbars = GetComponentsInChildren<item_hotbar>();

@@ -11,9 +11,15 @@ public class stats : MonoBehaviour
     public float currentIFrame;
     public float currentHealth;
 
+    public float deathInvokeTimer;
     public bool isDead;
+    public bool destroyOnDeath;
 
     public healthbar_script healthBar;
+
+    public GameObject gibPrefab;
+
+    private SpriteRenderer spriteRenderer;
     void Awake()
     {
         currentHealth = MAX_HEALTH;
@@ -23,6 +29,7 @@ public class stats : MonoBehaviour
         if(healthBar != null){
             healthBar.SetMaxHealth(currentHealth);
         }
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -30,10 +37,12 @@ public class stats : MonoBehaviour
     {
         if(currentHealth <= 0){
             //death
-            Invoke("Death", .5f);
+            Invoke("Death", deathInvokeTimer);
         }
         if(currentIFrame >= 0){
             currentIFrame -= Time.deltaTime;
+        }else{
+            spriteRenderer.color = Color.white;
         }
     }
 
@@ -48,6 +57,10 @@ public class stats : MonoBehaviour
             }
         }
 
+        if(spriteRenderer != null){
+            spriteRenderer.color = Color.red;
+        }
+
     }
 
     public void IFrame(){
@@ -56,8 +69,14 @@ public class stats : MonoBehaviour
     
 
     public virtual void Death(){
-        isDead = true;
-        Destroy(this.gameObject);
+        if(gibPrefab != null && !isDead){
+            Instantiate(gibPrefab, this.transform.position, Quaternion.identity);
+            isDead = true;
+        }
+        if(destroyOnDeath){
+            Destroy(this.gameObject);
+        }
+        
     }
 
     public void Knockback(float power, Vector3 direction){

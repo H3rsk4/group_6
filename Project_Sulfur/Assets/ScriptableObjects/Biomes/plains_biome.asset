@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: plains_biome
   m_EditorClassIdentifier: 
   baseTile: {fileID: 11400000, guid: 812cb880b3dd28241aa90104d32e5426, type: 2}
-  floorTile: {fileID: 11400000, guid: 7a7268beb116966409dd90b3d88b1f41, type: 2}
+  floorTile: {fileID: 11400000, guid: d992e046c4ffa2942a8d06bd69660e84, type: 2}
   wallTile: {fileID: 11400000, guid: 615931c6ec90c2241bc085bf05b1853c, type: 2}
   treeTile: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}

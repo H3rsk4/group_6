@@ -9,5 +9,6 @@ public class player : MonoBehaviour
     void Awake()
     {
         playerT = this.transform;
+        
     }
 }
