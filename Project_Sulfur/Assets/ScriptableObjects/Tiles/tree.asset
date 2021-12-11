@@ -30,9 +30,11 @@ MonoBehaviour:
   hasContainer: 0
   containerSize: 0
   tiles:
-  - {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
-  hasMultipleTiles: 1
+  - {fileID: 11400000, guid: 1168f7c26de84a64d8eb12cf024bc12e, type: 2}
+  hasMultipleTiles: 0
   tileParts:
   - {fileID: 11400000, guid: d6c394f5720b55845ba4b1b656551bd5, type: 2}
   tilePartPositions:
   - {x: 0, y: 1, z: 0}
+  isRuleTile: 0
+  tileRules: []

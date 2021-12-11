@@ -17,7 +17,7 @@ MonoBehaviour:
   placeSprite: {fileID: 4819992666957728501, guid: 4422079b738f8e542a212e48e1bf591e, type: 3}
   tile: {fileID: 0}
   craftingRecipe: {fileID: 0}
-  pickUpDistance: 0.5
+  pickUpDistance: 2
   hasAction: 1
   baseDamage: 2
   activateSpeed: 30

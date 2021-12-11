@@ -86,10 +86,13 @@ public class action_indicator : MonoBehaviour
                 Collider2D[] entityColliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1,1), 0f, entityMask);
                 foreach (Collider2D col in entityColliders)
                 {
-                    if(col.transform.GetComponent<stats>() != null){
-                        //Debug.Log("Damaged");
-                        col.transform.GetComponent<stats>().Damage(damageAmount, 5f,Vector3.Normalize(col.transform.position - (caster.position)));
+                    if(col is BoxCollider2D){
+                        if(col.transform.GetComponent<stats>() != null){
+                            //Debug.Log("Damaged");
+                            col.transform.GetComponent<stats>().Damage(damageAmount, 5f,Vector3.Normalize(col.transform.position - (caster.position)));
+                        }
                     }
+                    
                 }
 
                 

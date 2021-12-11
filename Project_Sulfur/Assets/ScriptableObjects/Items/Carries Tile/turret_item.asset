@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: turret_item
   icon: {fileID: 21300000, guid: d0588a2981749a24d868c446173e4ea9, type: 3}
+  placeSprite: {fileID: 0}
   tile: {fileID: 11400000, guid: 95a1d6dbb2b94b2458d4939f5cdcdae7, type: 2}
   craftingRecipe: {fileID: 11400000, guid: a3fb71a4b44e4c84086a475ab7cb6512, type: 2}
-  pickUpDistance: 0.5
+  pickUpDistance: 2
+  hasAction: 0
   baseDamage: 0
   activateSpeed: 10
   activeDuration: 0

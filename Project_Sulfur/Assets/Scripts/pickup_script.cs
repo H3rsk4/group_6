@@ -55,7 +55,7 @@ public class pickup_script : MonoBehaviour
     }
 
     void FixedUpdate(){
-        if(distance < 4){
+        if(distance < item.pickUpDistance){
             isPickingUp = true;
         }
         if(distance < .5f){

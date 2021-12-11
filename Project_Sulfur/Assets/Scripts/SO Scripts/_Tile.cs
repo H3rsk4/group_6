@@ -19,6 +19,8 @@ public class Rules{
 
 }
 
+
+
 [CreateAssetMenu(fileName = "Tile", menuName = "ScriptableObjects/Tiles/Tile")]
 public class _Tile : Tilebase
 {

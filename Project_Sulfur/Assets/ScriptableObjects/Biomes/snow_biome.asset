@@ -23,10 +23,10 @@ MonoBehaviour:
     minHeight: 0.4
     maxHeight: 1
     tileVariantDetails:
-    - tileBase: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
+    - tileBase: {fileID: 11400000, guid: 1168f7c26de84a64d8eb12cf024bc12e, type: 2}
       minHeight: 0.519
       maxHeight: 0.541
-    - tileBase: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
+    - tileBase: {fileID: 11400000, guid: 1168f7c26de84a64d8eb12cf024bc12e, type: 2}
       minHeight: 0.387
       maxHeight: 0.389
   baseTile: {fileID: 11400000, guid: e4a0480463ef260418a8847f06489010, type: 2}

@@ -137,14 +137,19 @@ public class tile_manager : MonoBehaviour
                     for(int x = -1; x < 2; x++){
                         Vector3 neighbourPos = worldPos + new Vector3(x,y,0);
                         tile_manager currentTileManager = tilemanager_from_position.GetTileManager(neighbourPos);
-                        Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(neighbourPos);
-                        _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
-                        if(neighbourTile == placedTile){
-                            TileBase neighbourTileBase = CalculateRule(neighbourTile, neighbourPos);
-                            if(neighbourTileBase != null){
-                                currentTileManager.maps[1].SetTile(cellPosition, neighbourTileBase);
+                        if(currentTileManager != null){
+                            Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(neighbourPos);
+                            _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                            if(neighbourTile == placedTile){
+                                TileBase neighbourTileBase = CalculateRule(neighbourTile, neighbourPos);
+                                if(neighbourTileBase != null){
+                                    currentTileManager.maps[1].SetTile(cellPosition, neighbourTileBase);
+                                }
                             }
+                        }else{
+                            continue;
                         }
+                        
                         
                     }
                 }
@@ -156,14 +161,19 @@ public class tile_manager : MonoBehaviour
                     for(int x = -1; x < 2; x++){
                         Vector3 neighbourPos = worldPos + new Vector3(x,y,0);
                         tile_manager currentTileManager = tilemanager_from_position.GetTileManager(neighbourPos);
-                        Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(neighbourPos);
-                        _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
-                        if(neighbourTile == tileSO){
-                            TileBase neighbourTileBase = CalculateRule(neighbourTile, neighbourPos);
-                            if(neighbourTileBase != null){
-                                currentTileManager.maps[1].SetTile(cellPosition, neighbourTileBase);
+                        if(currentTileManager != null){
+                            Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(neighbourPos);
+                            _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                            if(neighbourTile == tileSO){
+                                TileBase neighbourTileBase = CalculateRule(neighbourTile, neighbourPos);
+                                if(neighbourTileBase != null){
+                                    currentTileManager.maps[1].SetTile(cellPosition, neighbourTileBase);
+                                }
                             }
-                        }
+                        }else{
+                            continue;
+                        }   
+                        
                         
                     }
                 }
@@ -182,6 +192,11 @@ public class tile_manager : MonoBehaviour
         for(int y = 1; y > -2; y--){
             for(int x = -1; x < 2; x++){
                 tile_manager currentTileManager = tilemanager_from_position.GetTileManager(worldPosition + new Vector3(x,y,0));
+                if(currentTileManager == null){
+                    numberRuleSet[index] = 0;
+                    index++;
+                    continue;
+                }
                 Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3(x,y,0));
                 _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
                 if(neighbourTile == tile){

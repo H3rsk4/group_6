@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: tnt_water
   icon: {fileID: 21300000, guid: 46d38ef44360b8d49ae00262ae650d09, type: 3}
+  placeSprite: {fileID: 0}
   tile: {fileID: 11400000, guid: 86154b51cb646d3469116ea01a1d0cc2, type: 2}
   craftingRecipe: {fileID: 0}
-  pickUpDistance: 0.5
+  pickUpDistance: 2
+  hasAction: 0
   baseDamage: 0
   activateSpeed: 10
   activeDuration: 0
