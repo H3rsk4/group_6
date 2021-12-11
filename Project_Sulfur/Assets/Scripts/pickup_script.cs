@@ -61,6 +61,8 @@ public class pickup_script : MonoBehaviour
         if(distance < .5f){
             //pickup
             if(!inventory.instance.IsFull()){
+                //Pickup Sound!
+
                 for(int i = 0; i < itemAmount; i++){
                     inventory.instance.AddItem(item);
                 }

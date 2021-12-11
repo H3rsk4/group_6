@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: logs_item
   m_EditorClassIdentifier: 
   name: logs_item
-  icon: {fileID: 21300000, guid: 4d7bcd5669d5b1b419cf40fddc0b14d3, type: 3}
+  icon: {fileID: 21300000, guid: bc7dc231d98104f4499c0f9cddd7bdae, type: 3}
   placeSprite: {fileID: 0}
   tile: {fileID: 0}
   craftingRecipe: {fileID: 0}
