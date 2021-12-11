@@ -17,6 +17,8 @@ public class item_script : MonoBehaviour/*, IPointerClickHandler*/, IDragHandler
 
     public Sprite emptyItem;
 
+   
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,10 @@ public class item_script : MonoBehaviour/*, IPointerClickHandler*/, IDragHandler
             if(item.icon != image.sprite){
                 image.sprite = item.icon;
             }
-        }else{
+            image.color = new Color(1f, 1f, 1f, 1f);
+        }
+        else{
+            image.color = new Color(1f, 1f, 1f, 0f);
             image.sprite = emptyItem;
         }
 
