@@ -14,21 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: transport_belt
   buildLayer: 2
+  layer: 1
   icon: {fileID: 21300000, guid: 1f51907b7fe00a549aa97fa55e510f48, type: 3}
   isWalkable: 1
   needsUpdate: 1
   isDemolishable: 1
+  structureHealth: 0
+  itemDrops: []
   demolishItem: {fileID: 11400000, guid: d19bae44e3c651b4ea5de43ee9785d3d, type: 2}
   isInteractable: 1
   hasContainer: 1
   containerSize: 1
-  hasMultipleSprites: 1
-  xPos: 0
-  yPos: 5
-  uvs:
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
+  tiles:
+  - {fileID: 11400000, guid: e40d21c5ba4f6cc4ba75e8af69c74ed2, type: 2}
+  hasMultipleTiles: 0
+  tileParts: []
+  tilePartPositions: []
   ticksToTransport: 3
   droppedItem: {fileID: 7534865057305518138, guid: dc2de11bf92559b439d4b7b80a1e4436, type: 3}
+  transportMask:
+    serializedVersion: 2
+    m_Bits: 183

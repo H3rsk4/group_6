@@ -20,7 +20,7 @@ MonoBehaviour:
   pickUpDistance: 0.5
   hasAction: 1
   baseDamage: 2
-  activateSpeed: 3
+  activateSpeed: 30
   activeDuration: 0
   axeToughness: 0
   pickToughness: 0

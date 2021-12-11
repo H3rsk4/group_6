@@ -218,7 +218,7 @@ Tilemap:
   m_Origin: {x: 0, y: -3, z: 0}
   m_Size: {x: 5, y: 3, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
-  m_TileOrientation: 0
+  m_TileOrientation: 6
   m_TileOrientationMatrix:
     e00: 1
     e01: 0
@@ -277,13 +277,13 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 20, y: 20, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 2
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 2
+  m_MaskInteraction: 0
 --- !u!1 &2245277377316345635
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,13 +428,13 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!19719996 &2245277377316345695
@@ -604,6 +604,9 @@ MonoBehaviour:
   gobIterations: 5
   plains: {fileID: 11400000, guid: 7f4160f1365642547bb913ddb1698eee, type: 2}
   snowPlains: {fileID: 11400000, guid: cfa6d180b474d2b43ac18c5dcbb894ab, type: 2}
+  biomes:
+  - {fileID: 11400000, guid: 7f4160f1365642547bb913ddb1698eee, type: 2}
+  - {fileID: 11400000, guid: cfa6d180b474d2b43ac18c5dcbb894ab, type: 2}
   ground: {fileID: 11400000, guid: d992e046c4ffa2942a8d06bd69660e84, type: 2}
   water: {fileID: 11400000, guid: 812cb880b3dd28241aa90104d32e5426, type: 2}
   tree: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}

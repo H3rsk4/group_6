@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff73740c8fe7dc14f8ed9f084adf5cb4, type: 3}
+  m_Name: belt_right
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 2090453429370857164, guid: 0483d778dc9bbf04295b6fc0a025ab58, type: 3}
+  - {fileID: 4914381968835927294, guid: 0483d778dc9bbf04295b6fc0a025ab58, type: 3}
+  - {fileID: 885652956364302788, guid: 0483d778dc9bbf04295b6fc0a025ab58, type: 3}
+  - {fileID: -1749759186406783646, guid: 0483d778dc9bbf04295b6fc0a025ab58, type: 3}
+  - {fileID: 4783831648672380357, guid: 0483d778dc9bbf04295b6fc0a025ab58, type: 3}
+  - {fileID: -5640395355751576400, guid: 0483d778dc9bbf04295b6fc0a025ab58, type: 3}
+  m_MinSpeed: 19
+  m_MaxSpeed: 19
+  m_AnimationStartTime: 0
+  m_TileColliderType: 0

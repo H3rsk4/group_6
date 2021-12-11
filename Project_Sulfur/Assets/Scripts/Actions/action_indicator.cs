@@ -22,16 +22,19 @@ public class action_indicator : MonoBehaviour
     public LayerMask actionMask;
     public LayerMask entityMask;
 
+    private Transform caster;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    public void SetupValues(int _damageAmount, float _activateSpeed, float _activeDuration){
+    public void SetupValues(int _damageAmount, float _activateSpeed, float _activeDuration, Transform _caster){
         damageAmount = _damageAmount;
         activateSpeed = _activateSpeed;
         activeDuration = _activeDuration;
+        caster = _caster;
         
         isSet = true;
     }
@@ -85,7 +88,7 @@ public class action_indicator : MonoBehaviour
                 {
                     if(col.transform.GetComponent<stats>() != null){
                         //Debug.Log("Damaged");
-                        col.transform.GetComponent<stats>().Damage(damageAmount, 5f,Vector3.Normalize(col.transform.position - (transform.position)));
+                        col.transform.GetComponent<stats>().Damage(damageAmount, 5f,Vector3.Normalize(col.transform.position - (caster.position)));
                     }
                 }
 

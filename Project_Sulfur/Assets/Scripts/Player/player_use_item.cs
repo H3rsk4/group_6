@@ -173,11 +173,11 @@ public class player_use_item : MonoBehaviour
         Collider2D actionCollider = Physics2D.OverlapCircle(flooredMousePos + new Vector3(.5f,.5f,0), .1f, actionMask);
         if(actionCollider == null){
             GameObject newActionPrefab = Instantiate(actionPrefab, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
-            newActionPrefab.GetComponent<action_indicator>().SetupValues(hotbar.selectedItem.baseDamage, hotbar.selectedItem.activateSpeed, hotbar.selectedItem.activeDuration);
+            newActionPrefab.GetComponent<action_indicator>().SetupValues(hotbar.selectedItem.baseDamage, hotbar.selectedItem.activateSpeed, hotbar.selectedItem.activeDuration, transform);
             Instantiate(dustParticles, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
         }else if(actionCollider.transform.GetComponent<action_indicator>() == null){
             GameObject newActionPrefab = Instantiate(actionPrefab, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
-            newActionPrefab.GetComponent<action_indicator>().SetupValues(hotbar.selectedItem.baseDamage, hotbar.selectedItem.activateSpeed, hotbar.selectedItem.activeDuration);
+            newActionPrefab.GetComponent<action_indicator>().SetupValues(hotbar.selectedItem.baseDamage, hotbar.selectedItem.activateSpeed, hotbar.selectedItem.activeDuration, transform);
             Instantiate(dustParticles, flooredMousePos + new Vector3(.5f,.5f,0), Quaternion.identity);
             
         }

@@ -34,7 +34,7 @@ public class basic_gob : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(distance > 1f && distance < 10f){
+        if(distance > 1f && distance < 4f){
             moveCharacter(movement);
         } else {
             //rotSpeed = .5f;

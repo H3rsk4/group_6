@@ -11,11 +11,20 @@ public struct ItemDrop{
     public int Amount;
 }
 
+[Serializable]
+public class Rules{
+    public TileBase tile;
+
+    public int[] ruleSet;
+
+}
+
 [CreateAssetMenu(fileName = "Tile", menuName = "ScriptableObjects/Tiles/Tile")]
 public class _Tile : Tilebase
 {
     public new string name;
     public int buildLayer;
+    public int layer;
 
     public Sprite icon;
     
@@ -37,6 +46,11 @@ public class _Tile : Tilebase
     public bool hasMultipleTiles;
     public TileBase[] tileParts;
     public Vector3Int[] tilePartPositions;
+
+    //ruletile stuff
+    public bool isRuleTile;
+    public Rules[] tileRules;
+
 
 
     //public Vector2[] uvs = new Vector2[4];

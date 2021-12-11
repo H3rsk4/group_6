@@ -7,7 +7,7 @@ public class endless_chunk_spawner : MonoBehaviour
     private static endless_chunk_spawner _instance;
 
     public GameObject chunkPrefab;
-    public const float maxViewDst = 20;
+    public const float maxViewDst = 100;
     public Transform viewer;
 
     public static Vector2 viewerPosition;

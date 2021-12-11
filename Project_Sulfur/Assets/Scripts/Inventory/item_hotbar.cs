@@ -70,43 +70,45 @@ public class item_hotbar : MonoBehaviour, IPointerClickHandler, IDropHandler, ID
     }
     public void OnDrop(PointerEventData data){
         //Debug.Log ("Dropped object was: "  + data.pointerDrag);
-        if(item == null){
-            
-            item_drag.isDragging = false;
-            if(!item_drag.isDragging){
-                item = item_drag.draggedItem;
-                currentAmount = item_drag.currentAmount;
-                //item_drag.dragItem.transform.position = Input.mousePosition;
-                item_script iventoryItem = data.pointerDrag.GetComponent<item_script>();
-                item_hotbar hotbarItem = data.pointerDrag.GetComponent<item_hotbar>();
+        if(data.pointerDrag != this.gameObject){
+            if(item == null){
+                
+                item_drag.isDragging = false;
+                if(!item_drag.isDragging){
+                    item = item_drag.draggedItem;
+                    currentAmount = item_drag.currentAmount;
+                    //item_drag.dragItem.transform.position = Input.mousePosition;
+                    item_script iventoryItem = data.pointerDrag.GetComponent<item_script>();
+                    item_hotbar hotbarItem = data.pointerDrag.GetComponent<item_hotbar>();
 
-                if(iventoryItem != null){
-                    iventoryItem.item = null;
-                    iventoryItem.currentAmount = 0;
-                }else{
-                    hotbarItem.item = null;
-                    hotbarItem.currentAmount = 0;
+                    if(iventoryItem != null){
+                        iventoryItem.item = null;
+                        iventoryItem.currentAmount = 0;
+                    }else{
+                        hotbarItem.item = null;
+                        hotbarItem.currentAmount = 0;
+                    }
+                    hotbarScript.SetSelectedItem();
                 }
-                hotbarScript.SetSelectedItem();
-            }
-        }else if(item == item_drag.draggedItem){
-            //sum same items
-            item_drag.isDragging = false;
-            if(!item_drag.isDragging){
-                //item = item_drag.draggedItem;
-                currentAmount = currentAmount + item_drag.currentAmount;
-                //item_drag.dragItem.transform.position = Input.mousePosition;
-                item_script iventoryItem = data.pointerDrag.GetComponent<item_script>();
-                item_hotbar hotbarItem = data.pointerDrag.GetComponent<item_hotbar>();
+            }else if(item == item_drag.draggedItem){
+                //sum same items
+                item_drag.isDragging = false;
+                if(!item_drag.isDragging){
+                    //item = item_drag.draggedItem;
+                    currentAmount = currentAmount + item_drag.currentAmount;
+                    //item_drag.dragItem.transform.position = Input.mousePosition;
+                    item_script iventoryItem = data.pointerDrag.GetComponent<item_script>();
+                    item_hotbar hotbarItem = data.pointerDrag.GetComponent<item_hotbar>();
 
-                if(iventoryItem != null){
-                    iventoryItem.item = null;
-                    iventoryItem.currentAmount = 0;
-                }else{
-                    hotbarItem.item = null;
-                    hotbarItem.currentAmount = 0;
+                    if(iventoryItem != null){
+                        iventoryItem.item = null;
+                        iventoryItem.currentAmount = 0;
+                    }else{
+                        hotbarItem.item = null;
+                        hotbarItem.currentAmount = 0;
+                    }
+                    hotbarScript.SetSelectedItem();
                 }
-                hotbarScript.SetSelectedItem();
             }
         }
         

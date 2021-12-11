@@ -99,9 +99,18 @@ public class tile_manager : MonoBehaviour
                     newDroppedItem.GetComponent<pickup_script>().SetupItem(tileSO.itemDrops[i].item, tileSO.itemDrops[i].Amount);
                 }
             }
+
+
+            
+
         }
 
+
+        //_Tile tileSO = tile_dictionary.GetTileSO(tilePosition, _map);
         _map.SetTile(tilePosition, tile);
+        
+        
+        
 
         _Tile placedTile = tile_dictionary.GetTileSO(tilePosition, _map);
         if(placedTile != null){
@@ -111,11 +120,113 @@ public class tile_manager : MonoBehaviour
                     maps[2].SetTile(tilePosition + placedTile.tilePartPositions[i], placedTile.tileParts[i]);
                 }
             }
+
+            if(placedTile != null && placedTile.isRuleTile){
+                
+                TileBase tileBase = CalculateRule(placedTile, worldPos);
+                if(tileBase != null){
+                    _map.SetTile(tilePosition, tileBase);
+                }
+            }
+        }
+        
+        if(placedTile != null){
+            if(placedTile.isRuleTile){
+                //recalculate neighbour tiles
+                for(int y = 1; y > -2; y--){
+                    for(int x = -1; x < 2; x++){
+                        Vector3 neighbourPos = worldPos + new Vector3(x,y,0);
+                        tile_manager currentTileManager = tilemanager_from_position.GetTileManager(neighbourPos);
+                        Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(neighbourPos);
+                        _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                        if(neighbourTile == placedTile){
+                            TileBase neighbourTileBase = CalculateRule(neighbourTile, neighbourPos);
+                            if(neighbourTileBase != null){
+                                currentTileManager.maps[1].SetTile(cellPosition, neighbourTileBase);
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }else if(tileSO != null){
+            if(tileSO.isRuleTile){
+                //recalculate neighbour tiles
+                for(int y = 1; y > -2; y--){
+                    for(int x = -1; x < 2; x++){
+                        Vector3 neighbourPos = worldPos + new Vector3(x,y,0);
+                        tile_manager currentTileManager = tilemanager_from_position.GetTileManager(neighbourPos);
+                        Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(neighbourPos);
+                        _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                        if(neighbourTile == tileSO){
+                            TileBase neighbourTileBase = CalculateRule(neighbourTile, neighbourPos);
+                            if(neighbourTileBase != null){
+                                currentTileManager.maps[1].SetTile(cellPosition, neighbourTileBase);
+                            }
+                        }
+                        
+                    }
+                }
+            }
         }
         
     }
 
 
+    private TileBase CalculateRule(_Tile tile, Vector3 worldPosition){
+        //Debug.Log("calculating");
+        TileBase tileBase;
+        int[] numberRuleSet = new int[9];
+
+        int index = 0;
+        for(int y = 1; y > -2; y--){
+            for(int x = -1; x < 2; x++){
+                tile_manager currentTileManager = tilemanager_from_position.GetTileManager(worldPosition + new Vector3(x,y,0));
+                Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3(x,y,0));
+                _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                if(neighbourTile == tile){
+                    //store this
+                    numberRuleSet[index] = 1;
+                }else{
+                    numberRuleSet[index] = 0;
+                }
+                index++;
+            }
+        }
+
+
+        //Debug.Log(ruleSet);
+        
+        for(int i = 0; i < tile.tileRules.Length; i++){
+            int matches = 0;
+            for(int j = 0; j < tile.tileRules[i].ruleSet.Length; j++){
+                if(tile.tileRules[i].ruleSet[j] == 2){
+                    matches++;
+                }else if(numberRuleSet[j] == tile.tileRules[i].ruleSet[j]){
+                    matches++;
+                }
+                
+            }
+            if(matches == 9){
+                //full match pick this
+                tileBase = tile.tileRules[i].tile;
+                return tileBase;
+            }else{
+                continue;
+            }
+            /*
+            if(ruleSet == tile.tileRules[i].ruleSet){
+                Debug.Log("brug");
+                //match found use this
+                tileBase = tile.tileRules[i].tile;
+                return tileBase;
+            }
+            */
+        }
+        tileBase = tile.tileRules[0].tile;
+        return tileBase;
+        
+    }
 
     // finds tilemanager scripts from other chunks by checking collisions
     private void GetNeighbours(){

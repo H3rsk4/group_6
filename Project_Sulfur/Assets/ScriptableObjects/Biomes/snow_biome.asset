@@ -12,7 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df45ef6960982de4e91e1f59a6e18f38, type: 3}
   m_Name: snow_biome
   m_EditorClassIdentifier: 
+  tileVariants:
+  - tileBase: {fileID: 11400000, guid: e4a0480463ef260418a8847f06489010, type: 2}
+    buildLayer: 0
+    minHeight: 0
+    maxHeight: 0.4
+    tileVariantDetails: []
+  - tileBase: {fileID: 11400000, guid: c44ff1557f14cfa46bfaab1e096c0839, type: 2}
+    buildLayer: 0
+    minHeight: 0.4
+    maxHeight: 1
+    tileVariantDetails:
+    - tileBase: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
+      minHeight: 0.519
+      maxHeight: 0.541
+    - tileBase: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
+      minHeight: 0.387
+      maxHeight: 0.389
   baseTile: {fileID: 11400000, guid: e4a0480463ef260418a8847f06489010, type: 2}
   floorTile: {fileID: 11400000, guid: c44ff1557f14cfa46bfaab1e096c0839, type: 2}
   wallTile: {fileID: 11400000, guid: 615931c6ec90c2241bc085bf05b1853c, type: 2}
   treeTile: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
+  minAltitude: 0.5
+  maxAltitude: 1
+  minHumidity: 0.5
+  maxHumidity: 0

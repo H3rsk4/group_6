@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: pebbles
   buildLayer: 1
+  layer: 1
   icon: {fileID: 0}
   isWalkable: 1
   needsUpdate: 0
