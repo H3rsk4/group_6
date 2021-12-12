@@ -12,6 +12,7 @@ public class ColliderAggro : MonoBehaviour
     private Transform target;
     public bool Aggro = false;
     public float OriginalRadius;
+    public Vector3 direction;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,7 @@ public class ColliderAggro : MonoBehaviour
     {
  
         if(Aggro){
-            Vector3 direction = player.playerT.position - transform.position;
+            direction = player.playerT.position - transform.position;
             direction.Normalize();
             movement = direction; 
         }

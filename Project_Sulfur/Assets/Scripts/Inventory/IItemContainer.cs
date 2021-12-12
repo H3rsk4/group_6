@@ -5,5 +5,6 @@ public interface IItemContainer
     bool ContainsItem(_Item item);
     bool RemoveItem(_Item item);
     bool AddItem(_Item item);
-    bool IsFull();  
+    bool IsFull();
+    bool ItemFits(_Item item, int amount);
 }

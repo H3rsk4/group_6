@@ -11,6 +11,7 @@ public class pickup_script : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private float smoothTime = .3f;
     private bool isPickingUp = false;
+    private bool isPickedUp = false;
 
     public _Item item;
     public int itemAmount;
@@ -20,6 +21,8 @@ public class pickup_script : MonoBehaviour
     private Vector3 endPos;
     private Vector3 midPos;
     private float time = 0;
+
+    public AudioSource audioSource;
     void Start()
     {
         target = player.playerT;
@@ -55,18 +58,27 @@ public class pickup_script : MonoBehaviour
     }
 
     void FixedUpdate(){
-        if(distance < item.pickUpDistance){
+        if(distance < item.pickUpDistance && inventory.instance.ItemFits(item, itemAmount)){
             isPickingUp = true;
         }
-        if(distance < .5f){
+        if(distance < .5f && !isPickedUp && isPickingUp){
             //pickup
             if(!inventory.instance.IsFull()){
+                //pickup sound
+                audioSource.Play(0);
+
                 for(int i = 0; i < itemAmount; i++){
-                    inventory.instance.AddItem(item);
+                    if(!inventory.instance.AddItem(item)){
+                        
+                    }
                 }
-                Destroy(this.gameObject);
+                isPickingUp = false;
+                isPickedUp = true;
+                Invoke("DestroySelf", .1f);
+                
+                
             }
-            isPickingUp = false;
+            
             
         }
 
@@ -76,6 +88,10 @@ public class pickup_script : MonoBehaviour
         }else{
             smoothTime = .3f;
         }
+    }
+
+    private void DestroySelf(){
+        Destroy(this.gameObject);
     }
 
 }

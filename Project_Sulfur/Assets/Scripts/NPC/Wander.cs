@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wander : MonoBehaviour
 {
     public float moveSpeed;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     public float moveTime;
     private float moveCounter;

@@ -10,6 +10,7 @@ public class Retreat : MonoBehaviour
     public bool retreat = false;
     public float timeLeft = 0f;
     float startingTime = 10f;
+    public Vector3 direction;
 
 
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class Retreat : MonoBehaviour
             retreat=true;
         }
         if(retreat){
-            Vector3 direction = player.playerT.position - transform.position;
+            direction = player.playerT.position - transform.position;
             direction.Normalize();
             movement = -direction;
             timeLeft -= 1 * Time.deltaTime;

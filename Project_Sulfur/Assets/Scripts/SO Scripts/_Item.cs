@@ -14,7 +14,7 @@ public class _Item : ScriptableObject
 
     public _CraftingRecipe craftingRecipe;
 
-    public float pickUpDistance = .5f;
+    public float pickUpDistance = 2f;
 
     public bool hasAction;
 

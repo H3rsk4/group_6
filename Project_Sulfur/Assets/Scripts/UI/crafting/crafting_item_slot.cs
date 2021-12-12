@@ -28,6 +28,7 @@ public class crafting_item_slot : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData data){
         //craft the item
         craftingUI.craftingRecipes[myIndex].Craft(inventory.instance);
+        craftingUI.UpdateCraftingList();
 
     }
 }

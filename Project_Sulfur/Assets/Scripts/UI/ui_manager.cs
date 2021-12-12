@@ -25,5 +25,6 @@ public class ui_manager : MonoBehaviour
     private void SetInventoryStatus(bool status){
         inventory.SetActive(status);
         craftingUI.SetActive(status);
+        crafting_ui_script.listChecked = false;
     }
 }

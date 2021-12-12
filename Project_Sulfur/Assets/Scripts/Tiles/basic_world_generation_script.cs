@@ -204,6 +204,12 @@ public class basic_world_generation_script : MonoBehaviour
                 tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), currentTile, tileManager.maps[baseLayer]);
                 if(baseLayer != 1){
                     tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), detailTile, tileManager.maps[1]);
+                    /*
+                    if(detailTile == vines){
+                        Debug.Log(detailTile);
+                    }
+                    */
+                    
                 }else{
                     tileManager.ReplaceTile(new Vector3Int(x-worldWidth/2, y-worldHeight/2, 0), ground, tileManager.maps[0]);
                 }

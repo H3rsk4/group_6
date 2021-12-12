@@ -30,10 +30,12 @@ public class action_indicator : MonoBehaviour
         
     }
 
-    public void SetupValues(int _damageAmount, float _activateSpeed, float _activeDuration, Transform _caster){
+    public void SetupValues(int _damageAmount, float _activateSpeed, float _activeDuration, int _axeToughness, int _pickToughness, Transform _caster){
         damageAmount = _damageAmount;
         activateSpeed = _activateSpeed;
         activeDuration = _activeDuration;
+        axeToughness = _axeToughness;
+        pickToughness = _pickToughness;
         caster = _caster;
         
         isSet = true;
@@ -64,20 +66,29 @@ public class action_indicator : MonoBehaviour
                     }else{
                         // this is a breaking indicator
                         // try to break the tile
-                        actionCollider.GetComponent<breaking_indicator>().Damage(51);
+                        breaking_indicator currentBreakingIndicator = actionCollider.GetComponent<breaking_indicator>();
+                        if(currentBreakingIndicator.axeToughness <= axeToughness || currentBreakingIndicator.pickToughness <= pickToughness){
+                            //weaker than tool, strike
+                            actionCollider.GetComponent<breaking_indicator>().Damage(damageAmount * (1 + axeToughness/10) * (1 + pickToughness/10));
+                        }
+                        
+                        
 
                     }
                 }else{
                     //Debug.Log("did not find action");
                     // no collider found
                     if(currentTile != null && currentTile.isDemolishable){
-                        
-                        //start breaking the tile there is no breaking indicator
-                        GameObject newBreakingIndicator = Instantiate(breakingIndicatorPrefab, transform.position, Quaternion.identity);
-                        if(newBreakingIndicator.GetComponent<breaking_indicator>() != null){
-                            newBreakingIndicator.GetComponent<breaking_indicator>().SetupValues(currentTile.structureHealth, currentTile, tileManager, cellPosition);
-                            newBreakingIndicator.GetComponent<breaking_indicator>().Damage(51);
+                        //check if our tool is stronger than the tile
+                        if(currentTile.axeToughness <= axeToughness || currentTile.pickToughness <= pickToughness){
+                            //start breaking the tile there is no breaking indicator
+                            GameObject newBreakingIndicator = Instantiate(breakingIndicatorPrefab, transform.position, Quaternion.identity);
+                            if(newBreakingIndicator.GetComponent<breaking_indicator>() != null){
+                                newBreakingIndicator.GetComponent<breaking_indicator>().SetupValues(currentTile.structureHealth, currentTile, tileManager, cellPosition);
+                                newBreakingIndicator.GetComponent<breaking_indicator>().Damage(damageAmount * (1 + axeToughness/10) * (1 + pickToughness/10));
+                            }
                         }
+                        
                         
 
                     }

@@ -34,6 +34,8 @@ public class _Tile : Tilebase
     public bool needsUpdate;
     public bool isDemolishable;
     public int structureHealth;
+    public int axeToughness;
+    public int pickToughness;
 
     public ItemDrop[] itemDrops;
     
