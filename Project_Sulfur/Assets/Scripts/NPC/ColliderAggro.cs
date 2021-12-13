@@ -10,7 +10,7 @@ public class ColliderAggro : MonoBehaviour
     private CircleCollider2D ccol;
     //private CircleCollider2D ccolB;
     private Transform target;
-    public bool Aggro = false;
+    public bool IsAggro = false;
     public float OriginalRadius;
     public Vector3 direction;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class ColliderAggro : MonoBehaviour
         ccol.radius = OriginalRadius;
         ccol.isTrigger = true;
 
-        Aggro = false;
+        IsAggro = false;
 
        /* ccolB = gameObject.AddComponent<CircleCollider2D>();
         ccolB.radius = 10;
@@ -33,7 +33,7 @@ public class ColliderAggro : MonoBehaviour
     void Update()
     {
  
-        if(Aggro){
+        if(IsAggro){
             direction = player.playerT.position - transform.position;
             direction.Normalize();
             movement = direction; 
@@ -44,7 +44,7 @@ public class ColliderAggro : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            Aggro = true;
+            IsAggro = true;
             ccol.radius = (OriginalRadius + 5);
            // transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
@@ -58,7 +58,7 @@ public class ColliderAggro : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.CompareTag("Player")){
-        Aggro = false;
+        IsAggro = false;
         ccol.radius = OriginalRadius;
         Debug.Log("Exit");
         }
@@ -66,7 +66,7 @@ public class ColliderAggro : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Aggro){
+        if(IsAggro){
             moveCharacter(movement);
         }
     }

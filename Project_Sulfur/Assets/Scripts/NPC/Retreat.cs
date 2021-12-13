@@ -35,6 +35,7 @@ public class Retreat : MonoBehaviour
         if(timeLeft <= 0){
             retreat = false;
             timeLeft = 10;
+            this.GetComponent<stats>().currentHealth = 4;
         }
     }
     void FixedUpdate()

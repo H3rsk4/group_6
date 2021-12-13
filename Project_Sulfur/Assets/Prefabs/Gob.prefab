@@ -61,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aee452b9a3cb54f4b8a8926f76b46a64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -206,11 +206,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d0d2b1a844b9e44993b7f23017c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.27
-  rb: {fileID: 0}
-  moveTime: 0
-  waitTime: 0
-  isMoving: 0
+  moveSpeed: 1
+  rb: {fileID: 98894909965339694}
+  moveDirection: {x: 0, y: 0}
+  moveTime: 3
+  waitTime: 3
+  wander: 1
 --- !u!114 &4185174669215824040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf8f4daca262844faeba693164d9e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  retreat: {fileID: 4185174669215824046}
+  wander: {fileID: 4185174669215824041}
+  attack: {fileID: 0}
+  Aggro: {fileID: 0}
 --- !u!114 &4185174669215824046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +279,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   currentDirection: {x: 0, y: 0, z: 0}
   newDirection: {x: 0, y: 0, z: 0}
+  isIdle: 0
 --- !u!1 &1079885792447312131
 GameObject:
   m_ObjectHideFlags: 0
