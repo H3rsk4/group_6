@@ -35,7 +35,7 @@ public class pick_animation : MonoBehaviour
         //direction.Normalize();
         newDirection = RoundDirection(direction);
 
-        if(colliderAggro.Aggro){
+        if(colliderAggro.IsAggro){
             //running
             direction = colliderAggro.direction;
         }
@@ -43,23 +43,21 @@ public class pick_animation : MonoBehaviour
             //retreating
             direction = retreat.direction;
         }
-        if(!colliderAggro.Aggro && !retreat.retreat){
+        if(!colliderAggro.IsAggro && !retreat.retreat){
             //wander
             direction = wander.rb.velocity;
             direction.Normalize();
 
-            if(wander.isMoving){
+            if(wander.IsMoving){
                 isIdle = false;
             }else{
                 isIdle = true;
             }
 
-        }else{
-                isIdle = true;
         }
 
 
-        if(currentDirection != newDirection || isIdle != wander.isMoving){
+        if(currentDirection != newDirection || isIdle != wander.IsMoving){
             //Debug.Log("snapped");
             currentDirection = newDirection;
             //change animation

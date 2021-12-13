@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class NPCStateMachine : MonoBehaviour
 {
+
+public Retreat Retreat;
+public Wander Wander;
+public Attack Attack;
+public ColliderAggro Aggro;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,25 +18,23 @@ public class NPCStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.GetComponent<ColliderAggro>().Aggro)
+      
+        if(Aggro.IsAggro)
         {
-            this.GetComponent<Wander>().enabled = false;
-            this.GetComponent<Wander>().isMoving = false;
-        }   else 
-
-        {
-          this.GetComponent<Wander>().enabled = true;  
+        this.Wander.wander = false;
+        }  
+         else { 
+        this.Wander.wander = true;
         }   
- if(this.GetComponent<Retreat>().retreat)
+ 
+ if(Retreat.retreat)
         {
-            this.GetComponent<Wander>().enabled = false;
-            this.GetComponent<Wander>().isMoving = false;
-            this.GetComponent<ColliderAggro>().Aggro =false;
-        }   else 
-
-        {
-          this.GetComponent<Wander>().enabled = true;  
+        this.Wander.wander = false;        
+        this.Aggro.IsAggro =false;
         }   
+        else {
+          this.Wander.wander = true;  
+        } 
 
     
     }
