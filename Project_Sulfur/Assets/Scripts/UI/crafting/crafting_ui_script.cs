@@ -62,6 +62,8 @@ public class crafting_ui_script : MonoBehaviour
                     }else{
                         itemSlots[i].transform.parent.gameObject.SetActive(false);
                     }
+
+
                 }else{
                     //tool not found
                     itemSlots[i].transform.parent.gameObject.SetActive(false);

@@ -30,6 +30,7 @@ public class _Tile : Tilebase
 
     public Sprite icon;
     
+    public bool doSpinAnimation;
     public bool isWalkable;
     public bool needsUpdate;
     public bool isDemolishable;

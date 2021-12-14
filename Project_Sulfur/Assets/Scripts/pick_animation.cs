@@ -41,7 +41,7 @@ public class pick_animation : MonoBehaviour
         }
         if(retreat.retreat){
             //retreating
-            direction = retreat.direction;
+            direction = -retreat.direction;
         }
         if(!colliderAggro.IsAggro && !retreat.retreat){
             //wander
@@ -54,6 +54,8 @@ public class pick_animation : MonoBehaviour
                 isIdle = true;
             }
 
+        }else{
+            isIdle = false;
         }
 
 
@@ -61,7 +63,7 @@ public class pick_animation : MonoBehaviour
             //Debug.Log("snapped");
             currentDirection = newDirection;
             //change animation
-            if(direction == new Vector3(0,-1,0)){
+            if(currentDirection == new Vector3(0,-1,0)){
                 //down
                 if(!isIdle){
                     ChangeAnimationState("run_down");
@@ -69,7 +71,24 @@ public class pick_animation : MonoBehaviour
                     ChangeAnimationState("idle_down");
                 }
             }
-            if(direction == new Vector3(-1,0,0)){
+            if(currentDirection == new Vector3(1,-1,0)){
+                //down
+                if(!isIdle){
+                    ChangeAnimationState("run_right_down");
+                }else{
+                    ChangeAnimationState("idle_right_down");
+                }
+            }
+            if(currentDirection == new Vector3(-1,-1,0)){
+                //down
+                if(!isIdle){
+                    ChangeAnimationState("run_left_down");
+                }else{
+                    ChangeAnimationState("idle_left_down");
+                }
+            }
+            
+            if(currentDirection == new Vector3(-1,0,0)){
                 //left
                 if(!isIdle){
                     ChangeAnimationState("run_left");
@@ -77,7 +96,7 @@ public class pick_animation : MonoBehaviour
                     ChangeAnimationState("idle_left");
                 }
             }
-            if(direction == new Vector3(1,0,0)){
+            if(currentDirection == new Vector3(1,0,0)){
                 //right
                 if(!isIdle){
                     ChangeAnimationState("run_right");
@@ -85,12 +104,28 @@ public class pick_animation : MonoBehaviour
                     ChangeAnimationState("idle_right");
                 }
             }
-            if(direction == new Vector3(0,1,0)){
+            if(currentDirection == new Vector3(0,1,0)){
                 //up
                 if(!isIdle){
                     ChangeAnimationState("run_up");
                 }else{
                     ChangeAnimationState("idle_up");
+                }
+            }
+            if(currentDirection == new Vector3(-1,1,0)){
+                //up
+                if(!isIdle){
+                    ChangeAnimationState("run_left_up");
+                }else{
+                    ChangeAnimationState("idle_left_up");
+                }
+            }
+            if(currentDirection == new Vector3(1,1,0)){
+                //up
+                if(!isIdle){
+                    ChangeAnimationState("run_right_up");
+                }else{
+                    ChangeAnimationState("idle_right_up");
                 }
             }
         }

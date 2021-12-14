@@ -65,7 +65,8 @@ public class pickup_script : MonoBehaviour
             //pickup
             if(!inventory.instance.IsFull()){
                 //pickup sound
-                audioSource.Play(0);
+                //audioSource.Play(0);
+                sound_player.PlaySound(audioSource.clip);
 
                 for(int i = 0; i < itemAmount; i++){
                     if(!inventory.instance.AddItem(item)){
@@ -74,8 +75,8 @@ public class pickup_script : MonoBehaviour
                 }
                 isPickingUp = false;
                 isPickedUp = true;
-                Invoke("DestroySelf", .1f);
-                
+                //Invoke("DestroySelf", .1f);
+                DestroySelf();
                 
             }
             

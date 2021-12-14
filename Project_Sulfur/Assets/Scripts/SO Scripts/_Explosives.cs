@@ -43,9 +43,6 @@ public class _Explosives : _Tile
                         //we found wall -> destroy it
                         
                         currentTileManager.ReplaceTile(cellPosition, null, currentTileManager.maps[1]);
-                        if(nugget != null){
-                            Instantiate(nugget, worldPosition + new Vector3Int(1,0,0), Quaternion.identity);
-                        }
                         
                     }
                 
@@ -62,9 +59,6 @@ public class _Explosives : _Tile
                         //we found wall -> destroy it
                         
                         currentTileManager.ReplaceTile(cellPosition, null, currentTileManager.maps[1]);
-                        if(nugget != null){
-                            Instantiate(nugget, worldPosition + new Vector3Int(-1,0,0), Quaternion.identity);
-                        }
                         
                     }
                 
@@ -81,9 +75,6 @@ public class _Explosives : _Tile
                         //we found wall -> destroy it
                         
                         currentTileManager.ReplaceTile(cellPosition, null, currentTileManager.maps[1]);
-                        if(nugget != null){
-                            Instantiate(nugget, worldPosition + new Vector3Int(0,1,0), Quaternion.identity);
-                        }
                         
                     }
                 
@@ -100,9 +91,6 @@ public class _Explosives : _Tile
                         //we found wall -> destroy it
                         
                         currentTileManager.ReplaceTile(cellPosition, null, currentTileManager.maps[1]);
-                        if(nugget != null){
-                            Instantiate(nugget, worldPosition + new Vector3Int(0,-1,0), Quaternion.identity);
-                        }
                         
                     }
                 

@@ -21,7 +21,7 @@ MonoBehaviour:
   - tileBase: {fileID: 11400000, guid: c44ff1557f14cfa46bfaab1e096c0839, type: 2}
     buildLayer: 0
     minHeight: 0.4
-    maxHeight: 1
+    maxHeight: 0.5
     tileVariantDetails:
     - tileBase: {fileID: 11400000, guid: 1168f7c26de84a64d8eb12cf024bc12e, type: 2}
       minHeight: 0.519
@@ -29,6 +29,28 @@ MonoBehaviour:
     - tileBase: {fileID: 11400000, guid: 1168f7c26de84a64d8eb12cf024bc12e, type: 2}
       minHeight: 0.387
       maxHeight: 0.389
+  - tileBase: {fileID: 11400000, guid: 8f9c473df28ddfb44872586148534976, type: 2}
+    buildLayer: 1
+    minHeight: 0.5
+    maxHeight: 0.55
+    tileVariantDetails: []
+  - tileBase: {fileID: 11400000, guid: dc3886c53c0d5fc478740d53c8d3f782, type: 2}
+    buildLayer: 0
+    minHeight: 0.55
+    maxHeight: 1
+    tileVariantDetails:
+    - tileBase: {fileID: 11400000, guid: 4447cbf762fab1c488d61005c598a8d5, type: 2}
+      minHeight: 0.572
+      maxHeight: 0.631
+    - tileBase: {fileID: 11400000, guid: 98d9775d1741bd64bbb8bda5fe31fac7, type: 2}
+      minHeight: 0.392
+      maxHeight: 0.406
+    - tileBase: {fileID: 11400000, guid: 82aa054400b600a4c827c3b0a39c5fd7, type: 2}
+      minHeight: 0.183
+      maxHeight: 0.204
+    - tileBase: {fileID: 11400000, guid: 82aa054400b600a4c827c3b0a39c5fd7, type: 2}
+      minHeight: 0
+      maxHeight: 0.054
   baseTile: {fileID: 11400000, guid: e4a0480463ef260418a8847f06489010, type: 2}
   floorTile: {fileID: 11400000, guid: c44ff1557f14cfa46bfaab1e096c0839, type: 2}
   wallTile: {fileID: 11400000, guid: 615931c6ec90c2241bc085bf05b1853c, type: 2}

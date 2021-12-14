@@ -87,7 +87,30 @@ public class Wander : MonoBehaviour
     //Randomizes the move direction.
     public void chooseDirection()
     {
-       moveDirection = new Vector2(Random.Range(-1,2),Random.Range(-1,2));
+        int xDir = Random.Range(-1,2);
+        int yDir = Random.Range(-1,2);
+
+        if(xDir == 0 && yDir == 0){
+            int picker = Random.Range(0,2);
+            if(picker == 1){
+                picker = Random.Range(0,2);
+                if(picker == 1){
+                    xDir = -1;
+                }else{
+                    xDir = 1;
+                }
+
+            }else{
+                picker = Random.Range(0,2);
+                if(picker == 1){
+                    yDir = -1;
+                }else{
+                    yDir = 1;
+                }
+            }
+        }
+
+       moveDirection = new Vector2(xDir,yDir);
        IsMoving = true;
        moveCounter = moveTime; 
     }

@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 4185174669215824046}
   - component: {fileID: 4185174669215823953}
   - component: {fileID: -4124185235608827060}
+  - component: {fileID: 7889687946976319550}
   m_Layer: 7
   m_Name: Gob
   m_TagString: Untagged
@@ -149,6 +150,12 @@ MonoBehaviour:
   destroyOnDeath: 1
   healthBar: {fileID: 0}
   gibPrefab: {fileID: 6010184173178491028, guid: e8f79998c5d7144429ab888e2a04f17c, type: 3}
+  droppedItem: {fileID: 7534865057305518138, guid: dc2de11bf92559b439d4b7b80a1e4436, type: 3}
+  loot:
+  - item: {fileID: 11400000, guid: e1459dd0a4d08374cb2ed2a681cf3773, type: 2}
+    Amount: 1
+  - item: {fileID: 11400000, guid: 9ae0b8f91ff50144d8228cd4972ff181, type: 2}
+    Amount: 1
 --- !u!61 &98894909965339693
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -212,6 +219,7 @@ MonoBehaviour:
   moveTime: 3
   waitTime: 3
   wander: 1
+  IsMoving: 1
 --- !u!114 &4185174669215824040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,10 +232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf8f4daca262844faeba693164d9e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  retreat: {fileID: 4185174669215824046}
-  wander: {fileID: 4185174669215824041}
-  attack: {fileID: 0}
-  Aggro: {fileID: 0}
+  Retreat: {fileID: 4185174669215824046}
+  Wander: {fileID: 4185174669215824041}
+  Attack: {fileID: 7889687946976319550}
+  Aggro: {fileID: 4185174669215823953}
 --- !u!114 &4185174669215824046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  Aggro: 0
+  IsAggro: 0
   OriginalRadius: 5
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &-4124185235608827060
@@ -280,6 +288,20 @@ MonoBehaviour:
   currentDirection: {x: 0, y: 0, z: 0}
   newDirection: {x: 0, y: 0, z: 0}
   isIdle: 0
+--- !u!114 &7889687946976319550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98894909965339682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f15f1e75cf1c0f4ba7ab78e53a5c313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  damage: 5
 --- !u!1 &1079885792447312131
 GameObject:
   m_ObjectHideFlags: 0

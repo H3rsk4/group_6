@@ -16,4 +16,8 @@ public class audio_pitch_randomizer : MonoBehaviour
     {
         
     }
+
+    public void RandomizePitch(){
+        audioSource.pitch = Random.Range(.8f,1.2f);
+    }
 }

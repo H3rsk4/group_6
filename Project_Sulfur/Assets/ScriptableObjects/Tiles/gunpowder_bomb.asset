@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334a980b6778f324784b2c41d24c834f, type: 3}
+  m_Name: gunpowder_bomb
+  m_EditorClassIdentifier: 
+  name: gunpowder_bomb
+  buildLayer: 2
+  layer: 1
+  icon: {fileID: 0}
+  doSpinAnimation: 1
+  isWalkable: 1
+  needsUpdate: 1
+  isDemolishable: 0
+  structureHealth: 0
+  axeToughness: 0
+  pickToughness: 0
+  itemDrops: []
+  demolishItem: {fileID: 0}
+  isInteractable: 0
+  hasContainer: 0
+  containerSize: 0
+  tiles:
+  - {fileID: 11400000, guid: 887dd5230428537458af0558a9d2eb15, type: 2}
+  hasMultipleTiles: 0
+  tileParts: []
+  tilePartPositions: []
+  isRuleTile: 0
+  tileRules: []
+  ticksToExplode: 3
+  explosion: {fileID: 1390175843769098884, guid: 03acf3ceed107064399158d05442d41b, type: 3}
+  nugget: {fileID: 0}
+  destroys: {fileID: 11400000, guid: 507def2f5f9c4e14ba2fe638e6a904ef, type: 2}
+  replacedWith: {fileID: 11400000, guid: 89527561367c068448d43d054c66460e, type: 2}

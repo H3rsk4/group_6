@@ -1,6 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable]
+public struct Loot{
+    public _Item item;
+    [Range(1,999)]
+    public int Amount;
+}
 
 public class stats : MonoBehaviour
 {
@@ -16,10 +24,14 @@ public class stats : MonoBehaviour
     public bool destroyOnDeath;
 
     public healthbar_script healthBar;
+    private bool healthBarIsOn = false;
 
     public GameObject gibPrefab;
 
     private SpriteRenderer spriteRenderer;
+
+    public GameObject droppedItem;
+    public Loot[] loot;
     void Awake()
     {
         currentHealth = MAX_HEALTH;
@@ -28,6 +40,7 @@ public class stats : MonoBehaviour
         healthBar = GetComponentInChildren<healthbar_script>();
         if(healthBar != null){
             healthBar.SetMaxHealth(currentHealth);
+            healthBar.transform.gameObject.SetActive(false);
         }
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -43,6 +56,18 @@ public class stats : MonoBehaviour
             currentIFrame -= Time.deltaTime;
         }else{
             spriteRenderer.color = Color.white;
+        }
+
+        if(currentHealth < MAX_HEALTH && !healthBarIsOn){
+            //activate healthbar
+            healthBar.transform.gameObject.SetActive(true);
+            healthBarIsOn = true;
+        }
+
+        if(currentHealth == MAX_HEALTH && healthBarIsOn){
+            //deactivate healthbar
+            healthBar.transform.gameObject.SetActive(false);
+            healthBarIsOn = false;
         }
     }
 
@@ -71,6 +96,13 @@ public class stats : MonoBehaviour
     public virtual void Death(){
         if(gibPrefab != null && !isDead){
             Instantiate(gibPrefab, this.transform.position, Quaternion.identity);
+            if(loot.Length != 0){
+                for(int i = 0; i < loot.Length; i++){
+                    GameObject lootPrefab = Instantiate(droppedItem, this.transform.position, Quaternion.identity);
+                    lootPrefab.GetComponent<pickup_script>().SetupItem(loot[i].item, loot[i].Amount);
+                }
+                
+            }
             isDead = true;
         }
         if(destroyOnDeath){
