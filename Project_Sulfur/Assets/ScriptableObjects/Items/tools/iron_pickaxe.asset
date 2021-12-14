@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: iron_pickaxe
   icon: {fileID: 21300000, guid: ad35a88e00953bf43920b02c87f3d5eb, type: 3}
-  placeSprite: {fileID: 0}
+  placeSprite: {fileID: 4819992666957728501, guid: 4422079b738f8e542a212e48e1bf591e, type: 3}
   tile: {fileID: 0}
   craftingRecipe: {fileID: 0}
   pickUpDistance: 2
