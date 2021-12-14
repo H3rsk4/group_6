@@ -6,7 +6,9 @@ public class player_stats : stats
 {
     public override void Death()
     {
-        isDead = true;
+        base.Death();
+        //isDead = true;
         //Debug.Log("player died, OOF!");
     }
+
 }

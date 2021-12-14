@@ -16,6 +16,8 @@ public class _CraftingRecipe : ScriptableObject
     public List<ItemAmount> Materials;
     public List<ItemAmount> Results;
 
+    public _Tile requiredTile;
+
     //public List<ItemAmount> ToBeReverted;
 
     public bool CanCraft(IItemContainer itemContainer){

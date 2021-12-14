@@ -14,9 +14,17 @@ public class tile_dictionary : MonoBehaviour
         SOFromTiles = new Dictionary<TileBase, _Tile>();
 
         foreach(var currentTileSO in tileScriptableObjects){
-            foreach(var tile in currentTileSO.tiles){
-                SOFromTiles.Add(tile, currentTileSO);
+            if(currentTileSO.isRuleTile){
+                //store different tiles
+                for(int i = 0; i < currentTileSO.tileRules.Length; i++){
+                    SOFromTiles.Add(currentTileSO.tileRules[i].tile, currentTileSO);
+                }
+            }else{
+                foreach(var tile in currentTileSO.tiles){
+                    SOFromTiles.Add(tile, currentTileSO);
+                }
             }
+            
         }
     }
 

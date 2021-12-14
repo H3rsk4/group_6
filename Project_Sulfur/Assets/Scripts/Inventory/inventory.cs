@@ -7,6 +7,7 @@ public class inventory : MonoBehaviour, IItemContainer
 
     public List<item_script> itemScripts = new List<item_script>();
     public static inventory instance;
+    public crafting_ui_script craftingUI;
 
     void Awake(){
         instance = this;
@@ -52,22 +53,45 @@ public class inventory : MonoBehaviour, IItemContainer
             if(itemScripts[i].item == item){
                 if(itemScripts[i].currentAmount > 0){
                     itemScripts[i].currentAmount--;
+                    if(itemScripts[i].currentAmount < 1){
+                        itemScripts[i].item = null;
+                    }
+                    craftingUI.UpdateCraftingList();
                     return true;
+                }else{
+                    itemScripts[i].item = null;
                 }
             }
         }
         return false;
+
+        
     }
     public bool AddItem(_Item item){
+        //check if there is an item
         for (int i = 0; i < itemScripts.Count; i++)
         {
             if(itemScripts[i].item == item){
                 if(itemScripts[i].currentAmount < item_script.MAX_AMOUNT){
                     itemScripts[i].currentAmount++;
+                    craftingUI.UpdateCraftingList();
                     return true;
                 }
             }
+
         }
+        //try to add the item if there is no same item
+        for (int i = 0; i < itemScripts.Count; i++)
+        {
+            if(itemScripts[i].item == null){
+                itemScripts[i].item = item;
+                itemScripts[i].currentAmount++;
+                craftingUI.UpdateCraftingList();
+                return true;
+            }
+        }
+        
+
         return false;
     }
     public bool IsFull(){
@@ -78,6 +102,21 @@ public class inventory : MonoBehaviour, IItemContainer
             }
         }
         return true;
+    }
+
+    public bool ItemFits(_Item item, int amount){
+        for (int i = 0; i < itemScripts.Count; i++)
+        {
+            if(itemScripts[i].item == item){
+                if(itemScripts[i].currentAmount + amount < item_script.MAX_AMOUNT){
+                    return true;
+                }
+            }
+            if(itemScripts[i].item == null){
+                return true;
+            }
+        }
+        return false;
     }
     
 }

@@ -49,6 +49,8 @@ public class tile_manager : MonoBehaviour
     public Vector3 trueCenter;
 
     private basic_world_generation_script basicWorldGen;
+
+    public GameObject droppedItem;
     void Start()
     {
         //map = GetComponent<Tilemap>();
@@ -81,6 +83,7 @@ public class tile_manager : MonoBehaviour
     public void ReplaceTile(Vector3Int tilePosition, TileBase tile, Tilemap _map){
         
         _Tile tileSO = tile_dictionary.GetTileSO(tilePosition, _map);
+        Vector3 worldPos = _map.CellToWorld(tilePosition);
 
         if(tileSO != null){
             if(tileSO.hasMultipleTiles){
@@ -89,9 +92,25 @@ public class tile_manager : MonoBehaviour
                     maps[2].SetTile(tilePosition + tileSO.tilePartPositions[i], null);
                 }
             }
+
+            if(tileSO.itemDrops.Length != 0){
+                for(int i = 0; i < tileSO.itemDrops.Length; i++){
+                    GameObject newDroppedItem = Instantiate(droppedItem, worldPos + new Vector3(.5f,.5f), Quaternion.identity);
+                    newDroppedItem.GetComponent<pickup_script>().SetupItem(tileSO.itemDrops[i].item, tileSO.itemDrops[i].Amount);
+                }
+            }
+
+
+            
+
         }
 
+
+        //_Tile tileSO = tile_dictionary.GetTileSO(tilePosition, _map);
         _map.SetTile(tilePosition, tile);
+        
+        
+        
 
         _Tile placedTile = tile_dictionary.GetTileSO(tilePosition, _map);
         if(placedTile != null){
@@ -101,11 +120,128 @@ public class tile_manager : MonoBehaviour
                     maps[2].SetTile(tilePosition + placedTile.tilePartPositions[i], placedTile.tileParts[i]);
                 }
             }
+
+            if(placedTile != null && placedTile.isRuleTile){
+                
+                TileBase tileBase = CalculateRule(placedTile, worldPos);
+                if(tileBase != null){
+                    _map.SetTile(tilePosition, tileBase);
+                }
+            }
+        }
+        
+        if(placedTile != null){
+            if(placedTile.isRuleTile){
+                //recalculate neighbour tiles
+                for(int y = 1; y > -2; y--){
+                    for(int x = -1; x < 2; x++){
+                        Vector3 neighbourPos = worldPos + new Vector3(x,y,0);
+                        tile_manager currentTileManager = tilemanager_from_position.GetTileManager(neighbourPos);
+                        if(currentTileManager != null){
+                            Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(neighbourPos);
+                            _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                            if(neighbourTile == placedTile){
+                                TileBase neighbourTileBase = CalculateRule(neighbourTile, neighbourPos);
+                                if(neighbourTileBase != null){
+                                    currentTileManager.maps[1].SetTile(cellPosition, neighbourTileBase);
+                                }
+                            }
+                        }else{
+                            continue;
+                        }
+                        
+                        
+                    }
+                }
+            }
+        }else if(tileSO != null){
+            if(tileSO.isRuleTile){
+                //recalculate neighbour tiles
+                for(int y = 1; y > -2; y--){
+                    for(int x = -1; x < 2; x++){
+                        Vector3 neighbourPos = worldPos + new Vector3(x,y,0);
+                        tile_manager currentTileManager = tilemanager_from_position.GetTileManager(neighbourPos);
+                        if(currentTileManager != null){
+                            Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(neighbourPos);
+                            _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                            if(neighbourTile == tileSO){
+                                TileBase neighbourTileBase = CalculateRule(neighbourTile, neighbourPos);
+                                if(neighbourTileBase != null){
+                                    currentTileManager.maps[1].SetTile(cellPosition, neighbourTileBase);
+                                }
+                            }
+                        }else{
+                            continue;
+                        }   
+                        
+                        
+                    }
+                }
+            }
         }
         
     }
 
 
+    private TileBase CalculateRule(_Tile tile, Vector3 worldPosition){
+        //Debug.Log("calculating");
+        TileBase tileBase;
+        int[] numberRuleSet = new int[9];
+
+        int index = 0;
+        for(int y = 1; y > -2; y--){
+            for(int x = -1; x < 2; x++){
+                tile_manager currentTileManager = tilemanager_from_position.GetTileManager(worldPosition + new Vector3(x,y,0));
+                if(currentTileManager == null){
+                    numberRuleSet[index] = 0;
+                    index++;
+                    continue;
+                }
+                Vector3Int cellPosition = currentTileManager.maps[1].WorldToCell(worldPosition + new Vector3(x,y,0));
+                _Tile neighbourTile = tile_dictionary.GetTileSO(cellPosition, currentTileManager.maps[1]);
+                if(neighbourTile == tile){
+                    //store this
+                    numberRuleSet[index] = 1;
+                }else{
+                    numberRuleSet[index] = 0;
+                }
+                index++;
+            }
+        }
+
+
+        //Debug.Log(ruleSet);
+        
+        for(int i = 0; i < tile.tileRules.Length; i++){
+            int matches = 0;
+            for(int j = 0; j < tile.tileRules[i].ruleSet.Length; j++){
+                if(tile.tileRules[i].ruleSet[j] == 2){
+                    matches++;
+                }else if(numberRuleSet[j] == tile.tileRules[i].ruleSet[j]){
+                    matches++;
+                }
+                
+            }
+            if(matches == 9){
+                //full match pick this
+                tileBase = tile.tileRules[i].tile;
+                return tileBase;
+            }else{
+                continue;
+            }
+            /*
+            if(ruleSet == tile.tileRules[i].ruleSet){
+                Debug.Log("brug");
+                //match found use this
+                tileBase = tile.tileRules[i].tile;
+                return tileBase;
+            }
+            */
+        }
+        tileBase = tile.tileRules[0].tile;
+        return tileBase;
+        
+    }
 
     // finds tilemanager scripts from other chunks by checking collisions
     private void GetNeighbours(){
@@ -288,34 +424,8 @@ public class tile_manager : MonoBehaviour
         Vector3Int worldMousePos = new Vector3Int((int)mousePos.x,(int)mousePos.y,0);
         Vector3Int mousePosGrid = maps[1].WorldToCell(mousePos);
         mousePosition = mousePosGrid;
-        /*
-        if(Input.GetKeyDown(KeyCode.G)){
-            isPlacing = !isPlacing;
-        }
-        */
-        /*
-        if(isPlacing){
-            if(Input.GetMouseButton(0)){
-            foreach(Vector3 tileposition in tilePositions){
-                if(tileposition == mousePosGrid){
-                    isDuplicate = true;
-                    break;
-                }
-                isDuplicate = false;
-            }
-            if(!isDuplicate){
-                tilePositions[tileIndex] = mousePosGrid;
-                DrawMesh(mousePos);
-                tileAmount++;
-                tileIndex++;
-                Vector3[] temp = new Vector3[tileAmount];
-                tilePositions.CopyTo(temp, 0);
-                tilePositions = temp;
-            }
-          
-            }
-        }
-        */
+        
+        
         //****BUILDING****
         if(build_button.isHotBar && !build_button.isDemolish){    
             //if(Input.GetMouseButton(0)){
@@ -330,7 +440,7 @@ public class tile_manager : MonoBehaviour
                             if(build_button.currentTile != null){
                                 //build_button.currentCR.Craft(inventory.instance);
                                 if(inventory.instance.ItemCount(build_button.currentItem) > 0){
-                                    if(PlaceTile(bottomTileSO, mousePosGrid)){
+                                    if(PlaceTile(bottomTileSO,build_button.currentItem, mousePosGrid)){
                                         
 
                                         if(build_button.currentTile.needsUpdate){
@@ -349,9 +459,9 @@ public class tile_manager : MonoBehaviour
                                 } else {
                                     if(build_button.currentCR != null){
                                         if(build_button.currentCR.CanCraft(inventory.instance)){
-                                            if(PlaceTile(bottomTileSO, mousePosGrid)){
+                                            if(PlaceTile(bottomTileSO,build_button.currentItem, mousePosGrid)){
                                                 
-                                                if(build_button.currentTile.needsUpdate){ 
+                                                if(build_button.currentTile.needsUpdate){
                                                     entityUpdater.tilePositions.Add(mousePosGrid);
                                                     entityUpdater.saveValues.Add(0);
                                                 }
@@ -375,7 +485,7 @@ public class tile_manager : MonoBehaviour
                                     }else{
                                         //No Recipe? just place it, it's probably free
                                         //check if allowed to place on top of
-                                        if(PlaceTile(bottomTileSO, mousePosGrid)){
+                                        if(PlaceTile(bottomTileSO,build_button.currentItem, mousePosGrid)){
                                             if(build_button.currentTile.needsUpdate){ 
                                                 entityUpdater.tilePositions.Add(mousePosGrid);
                                                 entityUpdater.saveValues.Add(0);
@@ -493,9 +603,11 @@ public class tile_manager : MonoBehaviour
         //}
     }
 
-    public bool PlaceTile(_Tile currentTile, Vector3Int tilePosition){
+
+
+    public bool PlaceTile(_Tile currentTile, _Item newTile, Vector3Int tilePosition){
         if(currentTile != null){
-            if(currentTile.buildLayer == 0 && build_button.currentTile.buildLayer == 1){
+            if(currentTile.buildLayer == 0 && newTile.tile.buildLayer == 1){
             
             if(inventory.instance.ItemCount(build_button.currentItem) <= 0){
                 if(build_button.currentCR != null){
@@ -503,12 +615,12 @@ public class tile_manager : MonoBehaviour
                 }
             }
             
-            ReplaceTile(tilePosition, build_button.currentTile.tiles[0], maps[1]);
+            ReplaceTile(tilePosition, newTile.tile.tiles[0], maps[1]);
 
-            inventory.instance.RemoveItem(build_button.currentItem);
+            //inventory.instance.RemoveItem(build_button.currentItem);
             return true;
             }
-            if(currentTile.buildLayer == 1 && build_button.currentTile.buildLayer == 2){
+            if(currentTile.buildLayer == 1 && newTile.tile.buildLayer == 2){
 
                 if(inventory.instance.ItemCount(build_button.currentItem) <= 0){
                     if(build_button.currentCR != null){
@@ -516,7 +628,7 @@ public class tile_manager : MonoBehaviour
                     }
                 }
 
-                ReplaceTile(tilePosition, build_button.currentTile.tiles[0], maps[1]);
+                ReplaceTile(tilePosition, newTile.tile.tiles[0], maps[1]);
                 /*
                 if(build_button.currentTile.hasMultipleTiles){
                     for(int i = 0; i < build_button.currentTile.tileParts.Length; i++){
@@ -525,7 +637,7 @@ public class tile_manager : MonoBehaviour
                 }
                 */
 
-                inventory.instance.RemoveItem(build_button.currentItem);
+                //inventory.instance.RemoveItem(build_button.currentItem);
                 return true;
             }
             return false;
@@ -533,6 +645,19 @@ public class tile_manager : MonoBehaviour
             return false;
         }
         
+    }
+
+    public bool CheckTileLayer(_Tile bottomTile, _Item newTile){
+        if(bottomTile != null){
+            if(bottomTile.buildLayer == 0 && newTile.tile.buildLayer == 1){
+                return true;
+            }
+            if(bottomTile.buildLayer == 1 && newTile.tile.buildLayer == 2){
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     /*

@@ -15,6 +15,9 @@ public class breaking_indicator : MonoBehaviour
 
     private bool isSetup = false;
 
+    public int axeToughness;
+    public int pickToughness;
+
     // Update is called once per frame
     void Update()
     {
@@ -29,6 +32,8 @@ public class breaking_indicator : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         tileSO = _tileSO;
+        axeToughness = tileSO.axeToughness;
+        pickToughness = tileSO.pickToughness;
         tileManager = _tileManager;
         cellPosition = _cellPosition;
         

@@ -1,6 +1,8 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // https://sudonull.com/post/9435-Shaders-of-dissolution-and-exploration-of-the-world
 
-Shader "Custom/GlobalDissolveSprites"
+Shader "Custom/MYGlobalDissolveSprites"
 {
  Properties
  {

@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: common_material
   icon: {fileID: 21300000, guid: 95709e1574a1088449e953e221565226, type: 3}
+  placeSprite: {fileID: 0}
   tile: {fileID: 0}
-  pickUpDistance: 4
+  craftingRecipe: {fileID: 0}
+  pickUpDistance: 2
+  hasAction: 0
+  baseDamage: 0
+  activateSpeed: 0
+  activeDuration: 0
+  axeToughness: 0
+  pickToughness: 0

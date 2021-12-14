@@ -27,10 +27,10 @@ public class spawn_action_indicator : MonoBehaviour
                 Collider2D actionCollider = Physics2D.OverlapCircle(worldMousePos + new Vector3(.5f,.5f,0), .1f, actionMask);
                 if(actionCollider == null){
                     GameObject newActionPrefab = Instantiate(actionPrefab, worldMousePos, Quaternion.identity);
-                    newActionPrefab.GetComponent<action_indicator>().SetupValues(1, 1f, 0);
+                    newActionPrefab.GetComponent<action_indicator>().SetupValues(1, 1f, 0, 0, 0, transform);
                 }else if(actionCollider.transform.GetComponent<action_indicator>() == null){
                     GameObject newActionPrefab = Instantiate(actionPrefab, worldMousePos, Quaternion.identity);
-                    newActionPrefab.GetComponent<action_indicator>().SetupValues(1, 1f, 0);
+                    newActionPrefab.GetComponent<action_indicator>().SetupValues(1, 1f, 0, 0, 0, transform);
                     
                 }
             }

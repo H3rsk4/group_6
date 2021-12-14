@@ -5,9 +5,11 @@ using UnityEngine;
 public class destroy_self : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float lifespan;
     void Start()
     {
-        Invoke("Destroy",1f);
+        Invoke("Destroy",lifespan);
+        
     }
 
     private void Destroy(){

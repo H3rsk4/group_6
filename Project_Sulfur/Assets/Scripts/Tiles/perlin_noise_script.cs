@@ -1,5 +1,8 @@
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 public class perlin_noise_script : MonoBehaviour
 {
@@ -34,6 +37,10 @@ public class perlin_noise_script : MonoBehaviour
 
     static float maxNoiseHeight;
     static float minNoiseHeight;
+    
+    //public static List<CustomOffsets> customOffsets = new List<CustomOffsets>();
+    public static Dictionary<TileBase, Vector2> customOffsets = new Dictionary<TileBase, Vector2>();
+
 
     void Start(){
         maxNoiseHeight = float.MinValue;
@@ -51,6 +58,19 @@ public class perlin_noise_script : MonoBehaviour
         altitudeOffsetY = prng.Next(-100000,100000);
         humidityOffsetX = prng.Next(-100000,100000);
         humidityOffsetY = prng.Next(-100000,100000);
+    }
+
+    public static Vector2 newRandomOffset(){
+        Vector2 newOffset;
+
+        System.Random prng = new System.Random(seed);
+        float newOffsetX = prng.Next(-100000,100000);
+        float newOffsetY = prng.Next(-100000,100000);
+
+        newOffset = new Vector2(newOffsetX,newOffsetY);
+
+        return newOffset;
+
     }
 
     void Update(){

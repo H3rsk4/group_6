@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: tnt
   buildLayer: 2
+  layer: 1
   icon: {fileID: 21300000, guid: 46d38ef44360b8d49ae00262ae650d09, type: 3}
   isWalkable: 0
   needsUpdate: 1
   isDemolishable: 1
   structureHealth: 0
+  itemDrops: []
   demolishItem: {fileID: 11400000, guid: 59cd9c9a259bab0468b0f646f232c334, type: 2}
   isInteractable: 0
   hasContainer: 0
@@ -28,8 +30,10 @@ MonoBehaviour:
   hasMultipleTiles: 0
   tileParts: []
   tilePartPositions: []
+  isRuleTile: 0
+  tileRules: []
   ticksToExplode: 5
   explosion: {fileID: 1390175843769098884, guid: 03acf3ceed107064399158d05442d41b, type: 3}
-  nugget: {fileID: 7534865057305518138, guid: dc2de11bf92559b439d4b7b80a1e4436, type: 3}
+  nugget: {fileID: 0}
   destroys: {fileID: 11400000, guid: 507def2f5f9c4e14ba2fe638e6a904ef, type: 2}
   replacedWith: {fileID: 11400000, guid: 89527561367c068448d43d054c66460e, type: 2}

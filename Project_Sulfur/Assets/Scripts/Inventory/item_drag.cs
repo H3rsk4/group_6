@@ -6,6 +6,7 @@ public class item_drag : MonoBehaviour
 {
     public static Transform itemDrag;
     public static _Item draggedItem;
+    public static int currentAmount;
     private Image image;
 
     public static bool isDragging;

@@ -9,8 +9,20 @@ public class _Transporter : _Tile
     public int ticksToTransport;
 
     public GameObject droppedItem;
+    public LayerMask transportMask;
 
     public override void Do(Vector3Int tilePosition,tile_manager tileManager, int entityIndex, object sender){
+        Vector3 worldPos = tileManager.maps[1].CellToWorld(tilePosition);
+        //Debug.Log(worldPos);
+        Collider2D[] entityColliders = Physics2D.OverlapBoxAll(worldPos + new Vector3(.5f,.5f), new Vector2(.5f,.5f), 0f, transportMask);
+        for(int i = 0; i < entityColliders.Length; i++){
+            //entityColliders[i].transform.Translate(new Vector3(.1f,0,0));
+            //entityColliders[i].transform.position = Vector3.Lerp(entityColliders[i].transform.position, entityColliders[i].transform.position + new Vector3(.2f,0,0),.1f);
+            Rigidbody2D rb = entityColliders[i].transform.GetComponent<Rigidbody2D>();
+            if(rb != null){
+                rb.AddForce(new Vector3(1,0,0) * .5f, ForceMode2D.Impulse);
+            }
+        }
         /*
         if((string)sender == "entity_updater"){
             //Debug.Log("the sender was entity updater");

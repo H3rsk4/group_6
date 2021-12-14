@@ -39,6 +39,7 @@ public class player_death : MonoBehaviour
         }else{
             playerCollider.enabled = true;
             playerStats.isDead = false;
+
         }
     }
 

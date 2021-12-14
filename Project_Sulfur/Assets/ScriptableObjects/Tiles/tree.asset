@@ -14,22 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tree
   buildLayer: 2
+  layer: 1
   icon: {fileID: 0}
   isWalkable: 0
   needsUpdate: 0
   isDemolishable: 1
-  structureHealth: 100
+  structureHealth: 20
+  axeToughness: 1
+  pickToughness: 3
+  itemDrops:
+  - item: {fileID: 11400000, guid: d3a21f30e50cef64d871e8d1802d8ed8, type: 2}
+    Amount: 1
+  - item: {fileID: 11400000, guid: d3a21f30e50cef64d871e8d1802d8ed8, type: 2}
+    Amount: 1
   demolishItem: {fileID: 0}
   isInteractable: 0
   hasContainer: 0
   containerSize: 0
-  hasMultipleSprites: 0
-  xPos: 0
-  yPos: 0
   tiles:
-  - {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
-  hasMultipleTiles: 1
+  - {fileID: 11400000, guid: 1168f7c26de84a64d8eb12cf024bc12e, type: 2}
+  hasMultipleTiles: 0
   tileParts:
-  - {fileID: 11400000, guid: d2f596fd97f4e2346950270a4e493b79, type: 2}
+  - {fileID: 11400000, guid: d6c394f5720b55845ba4b1b656551bd5, type: 2}
   tilePartPositions:
   - {x: 0, y: 1, z: 0}
+  isRuleTile: 0
+  tileRules: []

@@ -12,7 +12,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df45ef6960982de4e91e1f59a6e18f38, type: 3}
   m_Name: plains_biome
   m_EditorClassIdentifier: 
+  tileVariants:
+  - tileBase: {fileID: 11400000, guid: 812cb880b3dd28241aa90104d32e5426, type: 2}
+    buildLayer: 0
+    minHeight: 0
+    maxHeight: 0.4
+    tileVariantDetails: []
+  - tileBase: {fileID: 11400000, guid: 92850a07f32797a4b80eeadb833ba40e, type: 2}
+    buildLayer: 0
+    minHeight: 0.4
+    maxHeight: 0.44
+    tileVariantDetails:
+    - tileBase: {fileID: 11400000, guid: 73530db68a3fc1e4f940c834f9007089, type: 2}
+      minHeight: 0.096
+      maxHeight: 0.2
+    - tileBase: {fileID: 11400000, guid: 5e898803d8326514d9f55ada355f8a9f, type: 2}
+      minHeight: 0.2
+      maxHeight: 0.265
+  - tileBase: {fileID: 11400000, guid: d992e046c4ffa2942a8d06bd69660e84, type: 2}
+    buildLayer: 0
+    minHeight: 0.44
+    maxHeight: 0.6
+    tileVariantDetails:
+    - tileBase: {fileID: 11400000, guid: 1168f7c26de84a64d8eb12cf024bc12e, type: 2}
+      minHeight: 0.519
+      maxHeight: 0.555
+    - tileBase: {fileID: 11400000, guid: 73530db68a3fc1e4f940c834f9007089, type: 2}
+      minHeight: 0.285
+      maxHeight: 0.3
+    - tileBase: {fileID: 11400000, guid: 5e898803d8326514d9f55ada355f8a9f, type: 2}
+      minHeight: 0.367
+      maxHeight: 0.388
+    - tileBase: {fileID: 11400000, guid: e946446e371c53943a8fa76a33095df4, type: 2}
+      minHeight: 0.6
+      maxHeight: 0.735
+  - tileBase: {fileID: 11400000, guid: 8f9c473df28ddfb44872586148534976, type: 2}
+    buildLayer: 1
+    minHeight: 0.6
+    maxHeight: 0.65
+    tileVariantDetails:
+    - tileBase: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
+      minHeight: 0.519
+      maxHeight: 0.555
+    - tileBase: {fileID: 11400000, guid: 73530db68a3fc1e4f940c834f9007089, type: 2}
+      minHeight: 0.105
+      maxHeight: 0.155
+    - tileBase: {fileID: 11400000, guid: 5e898803d8326514d9f55ada355f8a9f, type: 2}
+      minHeight: 0.367
+      maxHeight: 0.388
+    - tileBase: {fileID: 11400000, guid: e946446e371c53943a8fa76a33095df4, type: 2}
+      minHeight: 0.818
+      maxHeight: 0.877
+  - tileBase: {fileID: 11400000, guid: dc3886c53c0d5fc478740d53c8d3f782, type: 2}
+    buildLayer: 0
+    minHeight: 0.65
+    maxHeight: 1
+    tileVariantDetails:
+    - tileBase: {fileID: 11400000, guid: 4447cbf762fab1c488d61005c598a8d5, type: 2}
+      minHeight: 0.572
+      maxHeight: 0.631
+    - tileBase: {fileID: 11400000, guid: 98d9775d1741bd64bbb8bda5fe31fac7, type: 2}
+      minHeight: 0.392
+      maxHeight: 0.406
+    - tileBase: {fileID: 11400000, guid: 82aa054400b600a4c827c3b0a39c5fd7, type: 2}
+      minHeight: 0.183
+      maxHeight: 0.204
+    - tileBase: {fileID: 11400000, guid: 82aa054400b600a4c827c3b0a39c5fd7, type: 2}
+      minHeight: 0
+      maxHeight: 0.017
   baseTile: {fileID: 11400000, guid: 812cb880b3dd28241aa90104d32e5426, type: 2}
-  floorTile: {fileID: 11400000, guid: 7a7268beb116966409dd90b3d88b1f41, type: 2}
+  floorTile: {fileID: 11400000, guid: d992e046c4ffa2942a8d06bd69660e84, type: 2}
   wallTile: {fileID: 11400000, guid: 615931c6ec90c2241bc085bf05b1853c, type: 2}
-  treeTile: {fileID: 11400000, guid: 05b5c9cae61a3874e8c0591876bce040, type: 2}
+  treeTile: {fileID: 11400000, guid: 1168f7c26de84a64d8eb12cf024bc12e, type: 2}
+  minAltitude: 0
+  maxAltitude: 0.5
+  minHumidity: 0.5
+  maxHumidity: 1

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2476f4ef17f8b94993b852b4c1ed30a, type: 3}
+  m_Name: makeshift_pickaxe_CR
+  m_EditorClassIdentifier: 
+  Materials:
+  - item: {fileID: 11400000, guid: e9592feb8b67b2849a3f83582704d1dc, type: 2}
+    Amount: 3
+  - item: {fileID: 11400000, guid: 4ddb6a79a90bec6438e274ab97e67635, type: 2}
+    Amount: 3
+  - item: {fileID: 11400000, guid: 8c6b4855788197f4b8e4d95f90bfaa73, type: 2}
+    Amount: 3
+  Results:
+  - item: {fileID: 11400000, guid: c0902995acd45d945b95e067e3f1f2a7, type: 2}
+    Amount: 1
+  requiredTile: {fileID: 0}

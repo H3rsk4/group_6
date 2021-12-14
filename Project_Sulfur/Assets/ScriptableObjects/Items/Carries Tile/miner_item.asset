@@ -14,6 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: miner_item
   icon: {fileID: 21300000, guid: 5976d9cabfc5e0049bb25bb9bee77979, type: 3}
+  placeSprite: {fileID: 0}
   tile: {fileID: 11400000, guid: 2000224c08ad9c64ea08114d5b70c4f6, type: 2}
   craftingRecipe: {fileID: 11400000, guid: 6cb4dece3637cf24b95367d626a067ca, type: 2}
-  pickUpDistance: 0.5
+  pickUpDistance: 2
+  hasAction: 0
+  baseDamage: 0
+  activateSpeed: 10
+  activeDuration: 0
+  axeToughness: 0
+  pickToughness: 0
